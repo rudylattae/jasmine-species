@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>Specs | Jasmine-Bloom</title>
+    <link rel="stylesheet" type="text/css" href="../libs/jasmine-1.0.0/jasmine.css">
+    <script type="text/javascript" src="../libs/jasmine-1.0.0/jasmine.js"></script>
+    <script type="text/javascript" src="../libs/jasmine-1.0.0/jasmine-html.js"></script>
+    <script type="text/javascript" src="../libs/jasmine-aroma-0.2.1dev/jasmine-aroma.js"></script>
+    <script type="text/javascript" src="../libs/namespacedotjs-1.1/Namespace.js"></script>
+    
+    <script type="text/javascript" src="../src/jasmine-bloom/jasmine-bloom.js"></script>
+    <style>h1 {font-size:1em;}</style>
+</head>
+<body>
+    <h1>Specs | Jasmine-Bloom</h1>
+</body>
+<script type="text/javascript">
+    (function() {
+        Namespace.use('jasmine.aroma.FeatureStory.*');
+        Namespace.use('jasmine.aroma.GWT.*');
+        
+        document.addEventListener("DOMContentLoaded", init, false);
+    
+        function init() {
+            jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+            jasmine.getEnv().execute();
+        }
+    })();
+</script>
+<script type="text/javascript" src="jasmine-bloom/StyledHtmlReporterSpecs.js"></script>
+</html>
