@@ -13,8 +13,8 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
         
         body = document.createElement("body");
         fakeDocument = { body: body, location: { search: "" }};
-        reporter = new jasmine.aroma.StyledReporter(fakeDocument);
-        reporter = new jasmine.TrivialReporter(fakeDocument);
+        reporter = new jasmine.bloom.StyledReporter(fakeDocument);
+        env.addReporter(reporter);
     });
 
     function findElements(divs, withClass) {
@@ -39,13 +39,23 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
             });
         });
         
-        env.addReporter(reporter);
         runner.execute();
-                
+        
         var divs = fakeDocument.body.getElementsByTagName("div");
         var passedSpecDiv = findElement(divs, 'suite passed');
         
         expect(passedSpecDiv.className).toEqual('suite passed');
         expect(passedSpecDiv.innerHTML).toContain("here be passing specs");
+    });
+    
+    it('should mark a feature suite by adding a class to the output markup', function() {
+        var runner = env.currentRunner();
+        FeatureStory.feature('Some cool feature', function() {});
+        runner.execute();
+        
+        var divs = fakeDocument.body.getElementsByTagName("div");
+        var passedSpecDiv = findElement(divs, 'suite feature skipped');
+        
+        expect(passedSpecDiv.className).toEqual('suite feature skipped');
     });
 });
