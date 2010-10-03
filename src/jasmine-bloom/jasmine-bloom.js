@@ -89,3 +89,12 @@ jasmine.bloom.StyledReporter.prototype.reportRunnerStarting = function(runner) {
     }
   };
 };
+
+jasmine.bloom.StyledReporter.prototype.reportSuiteResults = function(suite) {
+  var results = suite.results();
+  var status = results.passed() ? 'passed' : 'failed';
+  if (results.totalCount == 0 && (!status == 'failed' || !suite.isIntermediate)) { // todo: change this to check results.skipped
+    status = 'skipped';
+  }
+  this.suiteDivs[suite.id].className += " " + status;
+};

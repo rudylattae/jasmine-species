@@ -128,4 +128,54 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
         expect(suiteDiv.className).toEqual('suite feature failed');
         expect(suiteDescription.text).toEqual('Feature: A failing suite');
     });
+    
+    it('should render an intermediate suite with no specs as passed', function() {
+        var runner = env.currentRunner();
+        GWT.when('an intermediate event occurs', function() {});
+        
+        runner.execute();
+        
+        var divs = fakeDocument.body.getElementsByTagName("div");
+        var suiteDiv = getElementByClassName(divs, 'suite step when passed');
+        var suiteDescription = getElementByClassName(suiteDiv.children, 'description');
+        
+        expect(suiteDiv.className).toEqual('suite step when passed');
+        expect(suiteDescription.text).toEqual('When an intermediate event occurs');
+    });
+    
+    it('should render an intermediate suite with passing specs as passed', function() {
+        var runner = env.currentRunner();
+        GWT.given('a pre-condition is met', function() {
+            env.it("should pass", function() {
+                this.expect(true).toBeTruthy();
+            });
+        });
+        
+        runner.execute();
+        
+        var divs = fakeDocument.body.getElementsByTagName("div");
+        var suiteDiv = getElementByClassName(divs, 'suite step given passed');
+        var suiteDescription = getElementByClassName(suiteDiv.children, 'description');
+        
+        expect(suiteDiv.className).toEqual('suite step given passed');
+        expect(suiteDescription.text).toEqual('Given a pre-condition is met');
+    });
+    
+    it('should render an intermediate suite with failing specs as failed', function() {
+        var runner = env.currentRunner();
+        GWT.given('a pre-condition is met', function() {
+            env.it("should fail", function() {
+                this.expect(true).toBeFalsey();
+            });
+        });
+        
+        runner.execute();
+        
+        var divs = fakeDocument.body.getElementsByTagName("div");
+        var suiteDiv = getElementByClassName(divs, 'suite step given failed');
+        var suiteDescription = getElementByClassName(suiteDiv.children, 'description');
+        
+        expect(suiteDiv.className).toEqual('suite step given failed');
+        expect(suiteDescription.text).toEqual('Given a pre-condition is met');
+    });
 });
