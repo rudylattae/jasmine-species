@@ -33,141 +33,145 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
         throw new Error("Could not find element with class \"" + withClass + "\"");
     };
     
-    it('should render a skipped suite with "skipped" class', function() {
-        var runner = env.currentRunner();
-        env.describe("A skipped suite", function() {});
-        
-        runner.execute();
-        
-        var divs = fakeDocument.body.getElementsByTagName("div");
-        expect(function() {
-            getElementByClassName(divs, 'suite skipped');
-        }).not.toThrow();
-    });
-    
-    it('should render a passing suite with "passed" class', function() {
-        var runner = env.currentRunner();
-        env.describe("A passing suite", function() {
-            env.it("should pass", function() {
-                this.expect(true).toBeTruthy();
-            });
+    describe('when reporting results for default suites and specs', function() {
+        it('should render a skipped suite with "skipped" class', function() {
+            var runner = env.currentRunner();
+            env.describe("A skipped suite", function() {});
+            
+            runner.execute();
+            
+            var divs = fakeDocument.body.getElementsByTagName("div");
+            expect(function() {
+                getElementByClassName(divs, 'suite skipped');
+            }).not.toThrow();
         });
         
-        runner.execute();
-        
-        var divs = fakeDocument.body.getElementsByTagName("div");
-        var suiteDiv = getElementByClassName(divs, 'suite passed');
-        
-        expect(suiteDiv.innerHTML).toContain("should pass");
-    });
-    
-    it('should render a failing suite with "failed" class', function() {
-        var runner = env.currentRunner();
-        env.describe("A failing suite", function() {
-            env.it("should fail", function() {
-                this.expect(true).toBeFalsey();
+        it('should render a passing suite with "passed" class', function() {
+            var runner = env.currentRunner();
+            env.describe("A passing suite", function() {
+                env.it("should pass", function() {
+                    this.expect(true).toBeTruthy();
+                });
             });
+            
+            runner.execute();
+            
+            var divs = fakeDocument.body.getElementsByTagName("div");
+            var suiteDiv = getElementByClassName(divs, 'suite passed');
+            
+            expect(suiteDiv.innerHTML).toContain("should pass");
         });
         
-        runner.execute();
-        
-        var divs = fakeDocument.body.getElementsByTagName("div");
-        var suiteDiv = getElementByClassName(divs, 'suite failed');
-        
-        expect(suiteDiv.innerHTML).toContain("should fail");
-    });
-    
-    it('should render tags on a skipped suite as class attributes', function() {
-        var runner = env.currentRunner();
-        FeatureStory.feature('A skipped suite', function() {});
-        
-        runner.execute();
-        
-        var divs = fakeDocument.body.getElementsByTagName("div");
-        var suiteDiv = getElementByClassName(divs, 'suite feature skipped');
-        var suiteDescription = getElementByClassName(suiteDiv.children, 'description');
-        
-        expect(suiteDescription.text).toEqual('Feature: A skipped suite');
-    });
-    
-    it('should render tags on a passing suite as class attributes', function() {
-        var runner = env.currentRunner();
-        FeatureStory.feature('A passing suite', function() {
-            env.it("should pass", function() {
-                this.expect(true).toBeTruthy();
+        it('should render a failing suite with "failed" class', function() {
+            var runner = env.currentRunner();
+            env.describe("A failing suite", function() {
+                env.it("should fail", function() {
+                    this.expect(true).toBeFalsey();
+                });
             });
+            
+            runner.execute();
+            
+            var divs = fakeDocument.body.getElementsByTagName("div");
+            var suiteDiv = getElementByClassName(divs, 'suite failed');
+            
+            expect(suiteDiv.innerHTML).toContain("should fail");
+        });
+    });
+    
+    describe('when reporting results for extended suites and specs', function() { 
+        it('should render tags on a skipped suite as class attributes', function() {
+            var runner = env.currentRunner();
+            FeatureStory.feature('A skipped suite', function() {});
+            
+            runner.execute();
+            
+            var divs = fakeDocument.body.getElementsByTagName("div");
+            var suiteDiv = getElementByClassName(divs, 'suite feature skipped');
+            var suiteDescription = getElementByClassName(suiteDiv.children, 'description');
+            
+            expect(suiteDescription.text).toEqual('Feature: A skipped suite');
         });
         
-        runner.execute();
-        
-        var divs = fakeDocument.body.getElementsByTagName("div");
-        var suiteDiv = getElementByClassName(divs, 'suite feature passed');
-        var suiteDescription = getElementByClassName(suiteDiv.children, 'description');
-        
-        expect(suiteDescription.text).toEqual('Feature: A passing suite');
-    });
-    
-    it('should render tags on a failing suite as class attributes', function() {
-        var runner = env.currentRunner();
-        FeatureStory.feature('A failing suite', function() {
-            env.it("should fail", function() {
-                this.expect(true).toBeFalsey();
+        it('should render tags on a passing suite as class attributes', function() {
+            var runner = env.currentRunner();
+            FeatureStory.feature('A passing suite', function() {
+                env.it("should pass", function() {
+                    this.expect(true).toBeTruthy();
+                });
             });
+            
+            runner.execute();
+            
+            var divs = fakeDocument.body.getElementsByTagName("div");
+            var suiteDiv = getElementByClassName(divs, 'suite feature passed');
+            var suiteDescription = getElementByClassName(suiteDiv.children, 'description');
+            
+            expect(suiteDescription.text).toEqual('Feature: A passing suite');
         });
         
-        runner.execute();
-        
-        var divs = fakeDocument.body.getElementsByTagName("div");
-        var suiteDiv = getElementByClassName(divs, 'suite feature failed');
-        var suiteDescription = getElementByClassName(suiteDiv.children, 'description');
-        
-        expect(suiteDescription.text).toEqual('Feature: A failing suite');
-    });
-    
-    it('should render an intermediate suite with no specs as passed', function() {
-        var runner = env.currentRunner();
-        GWT.when('an intermediate event occurs', function() {});
-        
-        runner.execute();
-        
-        var divs = fakeDocument.body.getElementsByTagName("div");
-        var suiteDiv = getElementByClassName(divs, 'suite step when passed');
-        var suiteDescription = getElementByClassName(suiteDiv.children, 'description');
-        
-        expect(suiteDescription.text).toEqual('When an intermediate event occurs');
-    });
-    
-    it('should render an intermediate suite with passing specs as passed', function() {
-        var runner = env.currentRunner();
-        GWT.given('a pre-condition is met', function() {
-            env.it("should pass", function() {
-                this.expect(true).toBeTruthy();
+        it('should render tags on a failing suite as class attributes', function() {
+            var runner = env.currentRunner();
+            FeatureStory.feature('A failing suite', function() {
+                env.it("should fail", function() {
+                    this.expect(true).toBeFalsey();
+                });
             });
+            
+            runner.execute();
+            
+            var divs = fakeDocument.body.getElementsByTagName("div");
+            var suiteDiv = getElementByClassName(divs, 'suite feature failed');
+            var suiteDescription = getElementByClassName(suiteDiv.children, 'description');
+            
+            expect(suiteDescription.text).toEqual('Feature: A failing suite');
         });
         
-        runner.execute();
-        
-        var divs = fakeDocument.body.getElementsByTagName("div");
-        var suiteDiv = getElementByClassName(divs, 'suite step given passed');
-        var suiteDescription = getElementByClassName(suiteDiv.children, 'description');
-        
-        expect(suiteDescription.text).toEqual('Given a pre-condition is met');
-    });
-    
-    it('should render an intermediate suite with failing specs as failed', function() {
-        var runner = env.currentRunner();
-        GWT.given('a pre-condition is met', function() {
-            env.it("should fail", function() {
-                this.expect(true).toBeFalsey();
-            });
+        it('should render an intermediate suite with no specs as passed', function() {
+            var runner = env.currentRunner();
+            GWT.when('an intermediate event occurs', function() {});
+            
+            runner.execute();
+            
+            var divs = fakeDocument.body.getElementsByTagName("div");
+            var suiteDiv = getElementByClassName(divs, 'suite step when passed');
+            var suiteDescription = getElementByClassName(suiteDiv.children, 'description');
+            
+            expect(suiteDescription.text).toEqual('When an intermediate event occurs');
         });
         
-        runner.execute();
+        it('should render an intermediate suite with passing specs as passed', function() {
+            var runner = env.currentRunner();
+            GWT.given('a pre-condition is met', function() {
+                env.it("should pass", function() {
+                    this.expect(true).toBeTruthy();
+                });
+            });
+            
+            runner.execute();
+            
+            var divs = fakeDocument.body.getElementsByTagName("div");
+            var suiteDiv = getElementByClassName(divs, 'suite step given passed');
+            var suiteDescription = getElementByClassName(suiteDiv.children, 'description');
+            
+            expect(suiteDescription.text).toEqual('Given a pre-condition is met');
+        });
         
-        var divs = fakeDocument.body.getElementsByTagName("div");
-        var suiteDiv = getElementByClassName(divs, 'suite step given failed');
-        var suiteDescription = getElementByClassName(suiteDiv.children, 'description');
-        
-        expect(suiteDescription.text).toEqual('Given a pre-condition is met');
+        it('should render an intermediate suite with failing specs as failed', function() {
+            var runner = env.currentRunner();
+            GWT.given('a pre-condition is met', function() {
+                env.it("should fail", function() {
+                    this.expect(true).toBeFalsey();
+                });
+            });
+            
+            runner.execute();
+            
+            var divs = fakeDocument.body.getElementsByTagName("div");
+            var suiteDiv = getElementByClassName(divs, 'suite step given failed');
+            var suiteDescription = getElementByClassName(suiteDiv.children, 'description');
+            
+            expect(suiteDescription.text).toEqual('Given a pre-condition is met');
+        });
     });
 });
