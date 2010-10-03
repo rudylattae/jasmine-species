@@ -17,14 +17,7 @@
 // Top level namespace for the package
 jasmine.aroma = (typeof jasmine.aroma === 'undefined') ? {} : jasmine.aroma;
 
-jasmine.aroma.VERSION = '0.5.0dev';
-
-/**
- * Getter for the Jasmine environment. Makes it possible to inject a different environment when necessary.
- */
-jasmine.aroma.getEnv = function() {
-  return jasmine.aroma._currentEnv = jasmine.aroma._currentEnv || jasmine.getEnv();
-};
+jasmine.aroma.VERSION = '0.6.2b';
 
 
 /**
@@ -113,4 +106,50 @@ jasmine.aroma.ContextSpecification = {
     spec: function(desc, func) {
         return jasmine.aroma.getEnv().it(desc, func);
     }
+}
+
+/**
+ * Executable docs (Topic => Example) style grammar
+ */
+jasmine.aroma.XDocs = {
+    topic: function(description, specDefinitions) {
+        var suite = jasmine.aroma.getEnv().describe(description, specDefinitions);
+        suite.tags = ['topic'];
+        return suite;
+    },    
+    
+    example: function(description, specDefinitions) {
+        var suite = jasmine.aroma.getEnv().describe(description, specDefinitions);
+        suite.tags = ['example'];
+        return suite;
+    },
+    
+    /**
+     * Specifies the passing condition for an example
+     */
+    pass: function(desc, func) {
+        return jasmine.aroma.getEnv().it(desc);
+    },
+    
+    details: function(value, tags) {
+        jasmine.aroma.getEnv().currentSuite.details = new jasmine.aroma.SuiteDetails(value, tags);
+    }
+}
+
+// Utilities
+// =========
+
+/**
+ * Getter for the Jasmine environment. Makes it possible to inject a different environment when necessary.
+ */
+jasmine.aroma.getEnv = function() {
+  return jasmine.aroma._currentEnv = jasmine.aroma._currentEnv || jasmine.getEnv();
+};
+
+/**
+ * Defines a details object to be attached to a suite
+ */
+jasmine.aroma.SuiteDetails = function(value, tags) {
+    this.value = value;
+    this.tags = tags;
 }
