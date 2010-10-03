@@ -15,7 +15,7 @@
 // Top level namespace for the package
 jasmine.bloom = (typeof jasmine.bloom === 'undefined') ? {} : jasmine.bloom;
 
-jasmine.bloom.VERSION = '0.2.0dev';
+jasmine.bloom.VERSION = '0.2.5dev';
 
 
 jasmine.bloom.StyledReporter = function(doc) {
@@ -57,9 +57,9 @@ jasmine.bloom.StyledReporter.prototype.reportRunnerStarting = function(runner) {
   for (var i = 0; i < suites.length; i++) {
     var suite = suites[i];
 
-    var suiteType = (typeof suite.tags === 'undefined') ? '' : ' ' + suite.tags.join(' ');
+    var suiteTags = (typeof suite.tags === 'undefined') ? '' : ' ' + suite.tags.join(' ');
     
-    var suiteDiv = this.createDom('div', { className: 'suite' + suiteType },
+    var suiteDiv = this.createDom('div', { className: 'suite' + suiteTags },
         this.createDom('a', { className: 'run_spec', href: '?spec=' + encodeURIComponent(suite.getFullName()) }, "run"),
         this.createDom('a', { className: 'description', href: '?spec=' + encodeURIComponent(suite.getFullName()) }, suite.description));
     this.suiteDivs[suite.id] = suiteDiv;
