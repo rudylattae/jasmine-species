@@ -30,7 +30,7 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
     function getElementByClassName(domFragment, withClass) {
         var els = getElementsByClassName(domFragment, withClass);
         if (els.length > 0) return els[0];
-        throw new Error("couldn't find element with class \"" + withClass + "\"");
+        throw new Error("Could not find element with class \"" + withClass + "\"");
     };
     
     it('should render a skipped suite with "skipped" class', function() {
@@ -40,9 +40,9 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
         runner.execute();
         
         var divs = fakeDocument.body.getElementsByTagName("div");
-        var suiteDiv = getElementByClassName(divs, 'suite skipped');
-        
-        expect(suiteDiv.className).toEqual('suite skipped');
+        expect(function() {
+            getElementByClassName(divs, 'suite skipped');
+        }).not.toThrow();
     });
     
     it('should render a passing suite with "passed" class', function() {
@@ -58,7 +58,6 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
         var divs = fakeDocument.body.getElementsByTagName("div");
         var suiteDiv = getElementByClassName(divs, 'suite passed');
         
-        expect(suiteDiv.className).toEqual('suite passed');
         expect(suiteDiv.innerHTML).toContain("should pass");
     });
     
@@ -75,7 +74,6 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
         var divs = fakeDocument.body.getElementsByTagName("div");
         var suiteDiv = getElementByClassName(divs, 'suite failed');
         
-        expect(suiteDiv.className).toEqual('suite failed');
         expect(suiteDiv.innerHTML).toContain("should fail");
     });
     
@@ -89,7 +87,6 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
         var suiteDiv = getElementByClassName(divs, 'suite feature skipped');
         var suiteDescription = getElementByClassName(suiteDiv.children, 'description');
         
-        expect(suiteDiv.className).toEqual('suite feature skipped');
         expect(suiteDescription.text).toEqual('Feature: A skipped suite');
     });
     
@@ -107,7 +104,6 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
         var suiteDiv = getElementByClassName(divs, 'suite feature passed');
         var suiteDescription = getElementByClassName(suiteDiv.children, 'description');
         
-        expect(suiteDiv.className).toEqual('suite feature passed');
         expect(suiteDescription.text).toEqual('Feature: A passing suite');
     });
     
@@ -125,7 +121,6 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
         var suiteDiv = getElementByClassName(divs, 'suite feature failed');
         var suiteDescription = getElementByClassName(suiteDiv.children, 'description');
         
-        expect(suiteDiv.className).toEqual('suite feature failed');
         expect(suiteDescription.text).toEqual('Feature: A failing suite');
     });
     
@@ -139,7 +134,6 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
         var suiteDiv = getElementByClassName(divs, 'suite step when passed');
         var suiteDescription = getElementByClassName(suiteDiv.children, 'description');
         
-        expect(suiteDiv.className).toEqual('suite step when passed');
         expect(suiteDescription.text).toEqual('When an intermediate event occurs');
     });
     
@@ -157,7 +151,6 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
         var suiteDiv = getElementByClassName(divs, 'suite step given passed');
         var suiteDescription = getElementByClassName(suiteDiv.children, 'description');
         
-        expect(suiteDiv.className).toEqual('suite step given passed');
         expect(suiteDescription.text).toEqual('Given a pre-condition is met');
     });
     
@@ -175,7 +168,6 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
         var suiteDiv = getElementByClassName(divs, 'suite step given failed');
         var suiteDescription = getElementByClassName(suiteDiv.children, 'description');
         
-        expect(suiteDiv.className).toEqual('suite step given failed');
         expect(suiteDescription.text).toEqual('Given a pre-condition is met');
     });
 });
