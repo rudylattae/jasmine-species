@@ -15,7 +15,7 @@
 // Top level namespace for the package
 jasmine.bloom = (typeof jasmine.bloom === 'undefined') ? {} : jasmine.bloom;
 
-jasmine.bloom.VERSION = '0.3.1dev';
+jasmine.bloom.VERSION = '0.4.0dev';
 
 
 jasmine.bloom.StyledReporter = function(doc) {
@@ -61,7 +61,8 @@ jasmine.bloom.StyledReporter.prototype.reportRunnerStarting = function(runner) {
     
     var suiteDiv = this.createDom('div', { className: 'suite' + suiteTags },
         this.createDom('a', { className: 'run_spec', href: '?spec=' + encodeURIComponent(suite.getFullName()) }, "run"),
-        this.createDom('a', { className: 'description', href: '?spec=' + encodeURIComponent(suite.getFullName()) }, suite.description));
+        this.createDom('a', { className: 'description', href: '?spec=' + encodeURIComponent(suite.getFullName()) }, suite.description),
+        (typeof suite.details !== 'undefined') ? this.createDomFromDetails(suite.details) : null);
     this.suiteDivs[suite.id] = suiteDiv;
     var parentDiv = this.outerDiv;
     if (suite.parentSuite) {
@@ -97,4 +98,38 @@ jasmine.bloom.StyledReporter.prototype.reportSuiteResults = function(suite) {
     status = 'skipped';
   }
   this.suiteDivs[suite.id].className += " " + status;
+};
+
+
+/**
+ * Creates the proper dom element for the given details object.
+ *
+ * If the details.value is a simple string, the element created is a "p".
+ * If the details.value is a list, the element created is an unordered list.
+ * The details.tags are rendered to the class attribute on the dom element created  
+ */
+jasmine.bloom.StyledReporter.prototype.createDomFromDetails = function(details) {
+    var classAttrs = '';
+    if (typeof details.tags !== 'undefined') {
+        classAttrs = (details.tags instanceof Array) ? details.tags.join(' ') : details.tags; 
+    }
+    if (details.value instanceof Array) {
+        return this.createDomList('ul', { className: classAttrs}, details.value);
+    }
+    
+    return this.createDom('p', { className: classAttrs}, details.value);
+}
+
+/**
+ * Creates a list of 'li' elements given an array
+ */
+jasmine.bloom.StyledReporter.prototype.createDomList = function(type, attrs, items) {
+    var list;
+    if (typeof items !== 'undefined' && items.length > 0) {
+        list = this.createDom(type, attrs);
+        for (var i = 0; i < items.length; i++) {
+            list.appendChild(this.createDom('li', {}, items[i]));
+        }
+    }
+    return list;
 };

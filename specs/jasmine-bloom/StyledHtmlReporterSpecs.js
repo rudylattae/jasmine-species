@@ -6,6 +6,7 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
     
     var FeatureStory = jasmine.aroma.FeatureStory;
     var GWT = jasmine.aroma.GWT;
+    var XDocs = jasmine.aroma.XDocs;
     
     // these helpers were ripped clean out of the jasmin's TrivialReporterSpec
     beforeEach(function() {
@@ -79,7 +80,7 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
         });
     });
     
-    describe('when reporting results for extended suites and specs', function() { 
+    describe('when reporting results for suites and specs with tags', function() { 
         it('should render tags on a skipped suite as class attributes', function() {
             var runner = env.currentRunner();
             FeatureStory.feature('A skipped suite', function() {});
@@ -126,7 +127,9 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
             
             expect(suiteDescription.text).toEqual('Feature: A failing suite');
         });
-        
+    });
+    
+    describe('when reporting results for intermediate suites', function() { 
         it('should render an intermediate suite with no specs as passed', function() {
             var runner = env.currentRunner();
             GWT.when('an intermediate event occurs', function() {});
@@ -172,6 +175,57 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
             var suiteDescription = getElementByClassName(suiteDiv.children, 'description');
             
             expect(suiteDescription.text).toEqual('Given a pre-condition is met');
+        });
+    });
+    
+    describe('when reporting results for suites with details', function() {
+        describe('given the details are provided as a string', function() {
+            it('should render the details as a paragraph with the given tag as the class attribute', function() {
+                var runner = env.currentRunner();
+                XDocs.example('Providing details for a suite', function() {
+                    XDocs.details('This is a simple example', 'note');
+                });
+                
+                runner.execute();
+            
+                var divs = fakeDocument.body.getElementsByTagName("div");
+                var suiteDiv = getElementByClassName(divs, 'suite example skipped');
+                suiteDetails = getElementByClassName(suiteDiv.children, 'note');
+                
+                expect(suiteDetails.textContent).toEqual('This is a simple example');
+            });
+        });
+        
+        describe('given the details are provided as a string with a list of tags', function() {
+            it('should render the details as a paragraph with the given tags as the class attributes', function() {
+                var runner = env.currentRunner();
+                XDocs.example('Providing details for a suite', function() {
+                    XDocs.details('This is a simple example', ['note', 'readme']);
+                });
+                
+                runner.execute();
+            
+                var divs = fakeDocument.body.getElementsByTagName("div");
+                var suiteDiv = getElementByClassName(divs, 'suite example skipped');
+                var suiteDetails = getElementByClassName(suiteDiv.children, 'note readme');
+            });
+        });
+        
+        describe('given the details are provided as a list', function() {
+            it('should render the details as an unordered list', function() {
+                var runner = env.currentRunner();
+                XDocs.example('Providing details for a suite', function() {
+                    XDocs.details(['Step 1', 'Step 2', 'Step 3'], 'info');
+                });
+                
+                runner.execute();
+            
+                var divs = fakeDocument.body.getElementsByTagName("div");
+                var suiteDiv = getElementByClassName(divs, 'suite example skipped');
+                suiteDetails = getElementByClassName(suiteDiv.children, 'info');
+                
+                expect(suiteDetails.children[1].textContent).toEqual('Step 2');
+            });
         });
     });
 });
