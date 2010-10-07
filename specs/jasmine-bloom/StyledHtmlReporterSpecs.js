@@ -16,7 +16,7 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
         
         body = document.createElement("body");
         fakeDocument = { body: body, location: { search: "" }};
-        reporter = new jasmine.bloom.StyledReporter(fakeDocument);
+        reporter = new jasmine.bloom.StyledHtmlReporter(fakeDocument);
         env.addReporter(reporter);
     });
 
@@ -208,6 +208,8 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
                 var divs = fakeDocument.body.getElementsByTagName("div");
                 var suiteDiv = getElementByClassName(divs, 'suite example skipped');
                 var suiteDetails = getElementByClassName(suiteDiv.children, 'note readme');
+                
+                expect(suiteDetails.textContent).toEqual('This is a simple example');
             });
         });
         

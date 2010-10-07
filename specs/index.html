@@ -18,7 +18,7 @@
         document.addEventListener("DOMContentLoaded", init, false);
     
         function init() {
-            jasmine.getEnv().addReporter(new jasmine.bloom.StyledReporter());
+            jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
             jasmine.getEnv().execute();
         }
     })();

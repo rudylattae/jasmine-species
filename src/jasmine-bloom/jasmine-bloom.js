@@ -18,17 +18,17 @@ jasmine.bloom = (typeof jasmine.bloom === 'undefined') ? {} : jasmine.bloom;
 jasmine.bloom.VERSION = '0.4.0dev';
 
 
-jasmine.bloom.StyledReporter = function(doc) {
+jasmine.bloom.StyledHtmlReporter = function(doc) {
     this.document = doc || document;
     this.suiteDivs = {};
     this.logRunningSpecs = false;
 };
 
-jasmine.bloom.StyledReporter.prototype = new jasmine.TrivialReporter();
-jasmine.bloom.StyledReporter.prototype.constructor = jasmine.aroma.StyledReporter;
+jasmine.bloom.StyledHtmlReporter.prototype = new jasmine.TrivialReporter();
+jasmine.bloom.StyledHtmlReporter.prototype.constructor = jasmine.aroma.StyledHtmlReporter;
 
 
-jasmine.bloom.StyledReporter.prototype.reportRunnerStarting = function(runner) {
+jasmine.bloom.StyledHtmlReporter.prototype.reportRunnerStarting = function(runner) {
   var showPassed, showSkipped;
 
   this.outerDiv = this.createDom('div', { className: 'jasmine_reporter' },
@@ -91,7 +91,7 @@ jasmine.bloom.StyledReporter.prototype.reportRunnerStarting = function(runner) {
   };
 };
 
-jasmine.bloom.StyledReporter.prototype.reportSuiteResults = function(suite) {
+jasmine.bloom.StyledHtmlReporter.prototype.reportSuiteResults = function(suite) {
   var results = suite.results();
   var status = results.passed() ? 'passed' : 'failed';
   if (results.totalCount == 0 && (!status == 'failed' || !suite.isIntermediate)) { // todo: change this to check results.skipped
@@ -108,7 +108,7 @@ jasmine.bloom.StyledReporter.prototype.reportSuiteResults = function(suite) {
  * If the details.value is a list, the element created is an unordered list.
  * The details.tags are rendered to the class attribute on the dom element created  
  */
-jasmine.bloom.StyledReporter.prototype.createDomFromDetails = function(details) {
+jasmine.bloom.StyledHtmlReporter.prototype.createDomFromDetails = function(details) {
     var classAttrs = '';
     if (typeof details.tags !== 'undefined') {
         classAttrs = (details.tags instanceof Array) ? details.tags.join(' ') : details.tags; 
@@ -123,7 +123,7 @@ jasmine.bloom.StyledReporter.prototype.createDomFromDetails = function(details) 
 /**
  * Creates a list of 'li' elements given an array
  */
-jasmine.bloom.StyledReporter.prototype.createDomList = function(type, attrs, items) {
+jasmine.bloom.StyledHtmlReporter.prototype.createDomList = function(type, attrs, items) {
     var list;
     if (typeof items !== 'undefined' && items.length > 0) {
         list = this.createDom(type, attrs);
