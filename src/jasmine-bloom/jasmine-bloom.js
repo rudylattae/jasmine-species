@@ -4,12 +4,12 @@
  * License: Simplified BSD
  * 
  * Jasmine-Bloom provides a slightly modified Html Reporter that outputs additional 
- * meta-data relating to your specs. The aim is to make it easier to augment the 
- * visual display of spec report.
+ * meta-data relating to your specs. The aim is to make it easier to modify the 
+ * presentation of the spec report.
  * 
  * Although jasmine-bloom is completely compatible with output from 
  * the standard "Describe" and "it" grammar, I encourage you to try it out
- * with jasmine-aroma's "feature", "story", etc. constructs. It's cool.
+ * with jasmine-aroma's "feature", "story", etc. constructs. It's cool there too.
  */
  
 // Top level namespace for the package
@@ -58,11 +58,11 @@ jasmine.bloom.StyledHtmlReporter.prototype.reportRunnerStarting = function(runne
     var suite = suites[i];
 
     var suiteTags = (typeof suite.tags === 'undefined') ? '' : ' ' + suite.tags.join(' ');
-    
     var suiteDiv = this.createDom('div', { className: 'suite' + suiteTags },
         this.createDom('a', { className: 'run_spec', href: '?spec=' + encodeURIComponent(suite.getFullName()) }, "run"),
         this.createDom('a', { className: 'description', href: '?spec=' + encodeURIComponent(suite.getFullName()) }, suite.description),
-        (typeof suite.details !== 'undefined') ? this.createDomFromDetails(suite.details) : null);
+        (typeof suite.details !== 'undefined') ? this.createDomFromDetails(suite.details) : null,
+        (typeof suite.expose !== 'undefined' && suite.expose) ? this.createDom('p', {}, suite.defs): null);
     this.suiteDivs[suite.id] = suiteDiv;
     var parentDiv = this.outerDiv;
     if (suite.parentSuite) {
@@ -118,6 +118,16 @@ jasmine.bloom.StyledHtmlReporter.prototype.createDomFromDetails = function(detai
     }
     
     return this.createDom('p', { className: classAttrs}, details.value);
+}
+
+/**
+ * Creates dom element with the suite defs as content 
+ */
+jasmine.bloom.StyledHtmlReporter.prototype.createDomFromSuiteDefs = function(defs) {
+    var classAttrs = '';
+    if (typeof defs !== 'undefined') {
+        return this.createDom('p', {}, defs);
+    }
 }
 
 /**

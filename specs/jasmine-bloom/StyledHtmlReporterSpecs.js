@@ -230,4 +230,25 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
             });
         });
     });
+    
+    describe('when reporting the results of "examples"', function() {
+        it('should render the contents of the example in the output', function() {
+            var runner = env.currentRunner();
+            XDocs.example('Illustrating the output of an example', function() {
+                env.describe('A simple example', function() {
+                    env.it('should be rendered in the report', function() {
+                        this.expect(true).toBeTruthy();
+                    });
+                });
+            });
+            
+            runner.execute();
+            
+            var divs = fakeDocument.body.getElementsByTagName("div");
+            //console.log(divs);
+            var suiteDiv = getElementByClassName(divs, 'suite example passed');
+            exampleOutput = suiteDiv.getElementsByTagName("p");
+            expect(exampleOutput[0].textContent).toContain("env.describe('A simple example', function() {");
+        });
+    });
 });

@@ -17,7 +17,7 @@
 // Top level namespace for the package
 jasmine.aroma = (typeof jasmine.aroma === 'undefined') ? {} : jasmine.aroma;
 
-jasmine.aroma.VERSION = '0.6.2b';
+jasmine.aroma.VERSION = '0.6.5b';
 
 
 /**
@@ -121,6 +121,8 @@ jasmine.aroma.XDocs = {
     example: function(description, specDefinitions) {
         var suite = jasmine.aroma.getEnv().describe(description, specDefinitions);
         suite.tags = ['example'];
+        suite.expose = true;
+        suite.defs = specDefinitions.toString(); // stored for later output 
         return suite;
     },
     
