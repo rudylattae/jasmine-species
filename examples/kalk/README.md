@@ -21,10 +21,9 @@ Layout
 ------
 
     kalk/
-        specs/      <-- specifications for the project (^1)
+        specs/      <-- specifications for the project
         src/        <-- the code that is crafted based on the specs
 
-(*1)
 depending on the size and complexity of the project, you may need to create 
 sub directories for each spec family. e.g.:
 
