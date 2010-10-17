@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Specs | kalk example</title>
+    <!-- using the "calm"theme from jasmine-bloom -->
+    <link rel="stylesheet" type="text/css" href="../../../libs/jasmine-1.0.0/jasmine.css">
+    <link rel="stylesheet" type="text/css" href="../../../src/jasmine-bloom/calm.css">
+    
+    <!-- jasmine must be loaded ahead of aroma and bloom -->
+    <script type="text/javascript" src="../../../libs/jasmine-1.0.0/jasmine.js"></script>
+    <script type="text/javascript" src="../../../libs/jasmine-1.0.0/jasmine-html.js"></script>
+    
+    <!-- load aroma and bloom -->
+    <script type="text/javascript" src="../../../libs/jasmine-aroma-0.6.6b/jasmine-aroma.js"></script>
+    <script type="text/javascript" src="../../../src/jasmine-bloom/jasmine-bloom.js"></script>
+    
+    <!-- we use namespacedotjs to importing only the needed grammar 
+        into the global namespace feel free to use your preferred 
+        import/load system to pull in the grammar you need
+    -->
+    <script type="text/javascript" src="../../../libs/namespacedotjs-1.1/Namespace.js"></script>
+    
+    <!-- bring in the source code -->
+    <script type="text/javascript" src="../src/kalk/Calculator.js"></script>
+</head>
+<body>
+    <!-- bloom has styles for a header block with "h1" and "ul.menu" elements 
+        So you can spread your specs over multiple suites and provide 
+        usable navigation without much effort.
+    -->
+    <div class="header">
+        <h1>Specs - kalk example</h1>
+    </div>
+</body>
+<script type="text/javascript">
+    (function() {
+        // load the grammar we need
+        Namespace.use('jasmine.aroma.FeatureStory.*');  // imports feature, scenario, ...
+        Namespace.use('jasmine.aroma.GWT.*');   // imports given, when, ...
+        
+        // import "details" so we can add "In order to ... I want to" story details 
+        Namespace.use('jasmine.aroma.XDocs.details');
+        
+        // register the handler to run the specs after the document is loaded
+        if (document.addEventListener) {
+            document.addEventListener("DOMContentLoaded", init, false);
+        } else {
+            window.onload = function() { init(); }
+        }
+        
+        function init() {
+            jasmine.getEnv().addReporter(new jasmine.bloom.StyledHtmlReporter());
+            jasmine.getEnv().execute();
+        }
+    })();
+</script>
+<!-- we make sure our specifictions are loaded last because 
+    our grammar needs to be available first -->
+<script type="text/javascript" src="CalculatorSpec.js"></script>
+<script type="text/javascript" src="addition_feature.js"></script>
+</html>
