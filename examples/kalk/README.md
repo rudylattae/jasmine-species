@@ -20,34 +20,33 @@ This example project illustrates:
 Layout
 ------
 
-kalk/
-    specs/      <-- specifications for the project (*1)
-    src/        <-- the code that is crafted based on the specs
-    
-    
+    kalk/
+        specs/      <-- specifications for the project (^1)
+        src/        <-- the code that is crafted based on the specs
+
 (*1)
 depending on the size and complexity of the project, you may need to create 
 sub directories for each spec family. e.g.:
 
-specs/
-    features/
     specs/
-    stories/
-    xdocs/
-    
+        features/
+        specs/
+        stories/
+        xdocs/
+
 However, in some cases it may make more sense to group spec families under 
 the product features/components they describe. e.g.:
 
-specs/
-    account/
-        link_account_feature.js
-        manage_account_feature.js
-        UserAccountSpec.js
-    cart/
-        index.html
-        CartSpecs.js
-    billing/
-    
+    specs/
+        account/
+            link_account_feature.js
+            manage_account_feature.js
+            UserAccountSpec.js
+        cart/
+            index.html
+            CartSpecs.js
+        billing/
+
 Use whichever best suites the context and clearly communicates the product 
 design to the stakeholders.
 
