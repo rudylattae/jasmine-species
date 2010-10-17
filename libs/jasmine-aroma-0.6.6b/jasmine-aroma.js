@@ -17,7 +17,7 @@
 // Top level namespace for the package
 jasmine.aroma = (typeof jasmine.aroma === 'undefined') ? {} : jasmine.aroma;
 
-jasmine.aroma.VERSION = '0.6.5b';
+jasmine.aroma.VERSION = '0.6.6b';
 
 
 /**
@@ -134,6 +134,9 @@ jasmine.aroma.XDocs = {
     },
     
     details: function(value, tags) {
+        if (typeof tags === 'undefined') {
+            tags = 'details';
+        }
         jasmine.aroma.getEnv().currentSuite.details = new jasmine.aroma.SuiteDetails(value, tags);
     }
 }
