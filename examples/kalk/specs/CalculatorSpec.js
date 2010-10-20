@@ -13,7 +13,7 @@ describe('kalk.Calculator', function() {
     });
     
     describe('input', function() {
-        it('should accept numbers ok', function() {
+        it('should accept regular numbers', function() {
             var calc = new kalk.Calculator();
              
             expect(function() {
@@ -21,21 +21,49 @@ describe('kalk.Calculator', function() {
             }).not.toThrow();
         });
         
-        it('should accept valid operation (+ - / * =) ok', function() {
+        it('should accept "stringified" numbers', function() {
+            var calc = new kalk.Calculator();
+             
+            expect(function() {
+                 calc.input('3');
+            }).not.toThrow();
+        });
+        
+        it('should accept + as a valid operation', function() {
             var calc = new kalk.Calculator();
              
             expect(function() {
                  calc.input('+');
             }).not.toThrow();
+        });
+        
+        it('should accept - as a valid operation', function() {
+            var calc = new kalk.Calculator();
+             
             expect(function() {
                  calc.input('-');
             }).not.toThrow();
+        });
+        
+        it('should accept / as a valid operation', function() {
+            var calc = new kalk.Calculator();
+             
             expect(function() {
                  calc.input('/');
             }).not.toThrow();
+        });
+        
+        it('should accept * as a valid operation', function() {
+            var calc = new kalk.Calculator();
+             
             expect(function() {
                  calc.input('*');
             }).not.toThrow();
+        });
+        
+        it('should accept = as a valid operation', function() {
+            var calc = new kalk.Calculator();
+             
             expect(function() {
                  calc.input('=');
             }).not.toThrow();
