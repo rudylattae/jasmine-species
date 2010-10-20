@@ -18,7 +18,16 @@ describe('kalk.Calculator', function() {
         beforeEach(function() {
             calc = new kalk.Calculator();
         });
-    
+        
+        it('should overwrite the last buffer entry if it is number and the new input is also a number', function() {
+            expect(calc.buffer[0]).toBe(0);
+            
+            calc.input(5);
+            expect(calc.buffer[0]).toBe(5);
+            calc.input(14);
+            expect(calc.buffer[0]).toBe(14);
+        });
+        
         it('should fail on any non-numeric and non-valid operation', function() {             
             expect(function() {
                  calc.input('r');
@@ -66,5 +75,13 @@ describe('kalk.Calculator', function() {
                  calc.input('=');
             }).not.toThrow();
         });
+    });
+
+    describe('buffer', function() {
+        it('should initialize with 0 as the first entry', function() {
+            var calc = new kalk.Calculator();
+            
+            expect(calc.buffer[0]).toBe(0);
+        });    
     });
 });
