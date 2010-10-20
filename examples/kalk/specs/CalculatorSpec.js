@@ -13,68 +13,58 @@ describe('kalk.Calculator', function() {
     });
     
     describe('input', function() {
-        it('should accept regular numbers', function() {
-            var calc = new kalk.Calculator();
-             
+        var calc;
+        
+        beforeEach(function() {
+            calc = new kalk.Calculator();
+        });
+    
+        it('should fail on any non-numeric and non-valid operation', function() {             
+            expect(function() {
+                 calc.input('r');
+            }).toThrow('Invalid input. "r" is not a number or a valid operation');
+        });
+        
+        it('should accept regular numbers', function() {             
             expect(function() {
                  calc.input(3);
             }).not.toThrow();
         });
         
-        it('should accept "stringified" numbers', function() {
-            var calc = new kalk.Calculator();
-             
+        it('should accept "stringified" numbers', function() {             
             expect(function() {
                  calc.input('3');
             }).not.toThrow();
         });
         
-        it('should accept + as a valid operation', function() {
-            var calc = new kalk.Calculator();
-             
+        it('should accept + as a valid operation', function() {             
             expect(function() {
                  calc.input('+');
             }).not.toThrow();
         });
         
-        it('should accept - as a valid operation', function() {
-            var calc = new kalk.Calculator();
-             
+        it('should accept - as a valid operation', function() {             
             expect(function() {
                  calc.input('-');
             }).not.toThrow();
         });
         
-        it('should accept / as a valid operation', function() {
-            var calc = new kalk.Calculator();
-             
+        it('should accept / as a valid operation', function() {             
             expect(function() {
                  calc.input('/');
             }).not.toThrow();
         });
         
-        it('should accept * as a valid operation', function() {
-            var calc = new kalk.Calculator();
-             
+        it('should accept * as a valid operation', function() {             
             expect(function() {
                  calc.input('*');
             }).not.toThrow();
         });
         
-        it('should accept = as a valid operation', function() {
-            var calc = new kalk.Calculator();
-             
+        it('should accept = as a valid operation', function() {             
             expect(function() {
                  calc.input('=');
             }).not.toThrow();
-        });
-        
-        it('should fail on any non-numeric and non-valid operation', function() {
-            var calc = new kalk.Calculator();
-             
-            expect(function() {
-                 calc.input('r');
-            }).toThrow('Invalid input. "r" is not a number or a valid operation');
         });
     });
 });
