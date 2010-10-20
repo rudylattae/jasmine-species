@@ -9,6 +9,11 @@
 .jasmine_reporter a {
   text-decoration:none; }
 
+.jasmine_reporter > .suite {
+    padding-bottom: 0.3em;
+    margin-bottom: 0.3em;
+    border-bottom: solid 2px #eee;}
+
 .banner, .runner {
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
