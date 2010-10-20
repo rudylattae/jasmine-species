@@ -18,6 +18,8 @@ kalk.Calculator.prototype.input = function(val) {
     var lastVal = this.buffer[this.buffer.length - 1]
     if (!isNaN(Number(val)) && !isNaN(lastVal)) {
         this.buffer[this.buffer.length - 1] = Number(val);
+    } else {
+        this.buffer.push(val);
     }
 };
 

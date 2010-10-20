@@ -68,7 +68,37 @@ describe('kalk.Calculator', function() {
             calc.input(5);
             expect(calc.buffer[0]).toBe(5);
             calc.input(14);
+            
             expect(calc.buffer[0]).toBe(14);
+            expect(calc.buffer.length).toBe(1);
+        });
+        
+        it('should push an operation into the buffer if the last entry is a number', function() {             
+            calc.input(7);
+            
+            calc.input('+');
+            
+            expect(calc.buffer.length).toBe(2);
+            expect(calc.buffer[1]).toBe('+');
+        });
+        
+        it('should push a number into the buffer if the last entry is not a number', function() {             
+            calc.input(50);
+            calc.input('-');
+            calc.input(10);
+            
+            expect(calc.buffer.length).toBe(3);
+            expect(calc.buffer[2]).toBe(10);
+        });
+        
+        it('should calculate the result if the expression in the buffer given the "=" operation', function() {
+            calc.input(25);
+            calc.input('+');
+            calc.input(15);
+            
+            calc.input('=');
+            
+            expect(calc.result).toBe(40);
         });
     });
 
