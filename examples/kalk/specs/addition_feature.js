@@ -1,19 +1,20 @@
 feature('Addition', function() {
     details([
-        'In order to minimize brain usage',
-        'As a math-challenged person',
+        'In order to do simple calculations',
+        'As an accountant',
         'I want to be told the sum of two numbers'
         ]);
 
     scenario('Adding two positive numbers', function() {
         var calc = new kalk.Calculator();
         
-        given('I have entered 2 and 3 into the calculator', function() {
-            calc.enter(2);
-            calc.enter(3);
+        given('I have input 2 + 3 into the calculator', function() {
+            calc.input(2);
+            calc.input('+');
+            calc.input(3);
         });
-        when('I choose add', function() {
-            calc.add();
+        when('I input =', function() {
+            calc.input('=');
         });
         then('The result should be 5', function() {
             expect(calc.result).toEqual(5);
