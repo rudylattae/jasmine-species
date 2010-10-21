@@ -45,11 +45,19 @@ kalk.Calculator.prototype.isValidOperation = function(op) {
  * @param {String} opCode   The character notation for the desired operation
  */
 kalk.Calculator.prototype.getOp = function(opCode) {
+    var op = null;
+    
     if (opCode === '+') {
-        return this.add;
+        op = this.add;
     } else if (opCode === '-') {
-        return this.sub;
+        op = this.sub;
+    } else if (opCode === '*') {
+        op = this.prod;
+    } else if (opCode === '/') {
+        op = this.div;
     }
+    
+    return op;
 };
 
 /**

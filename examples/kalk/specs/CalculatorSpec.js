@@ -64,6 +64,22 @@ describe('kalk.Calculator', function() {
             
             expect(op).toBe(calc.sub);
         });
+        
+        it('should yield a prod function given a "*" operator', function() {
+            var calc = new kalk.Calculator();
+            
+            op = calc.getOp('*');
+            
+            expect(op).toBe(calc.prod);
+        });
+        
+        it('should yield a div function given a "/" operator', function() {
+            var calc = new kalk.Calculator();
+            
+            op = calc.getOp('/');
+            
+            expect(op).toBe(calc.div);
+        });
     });
     
     describe('input', function() {
