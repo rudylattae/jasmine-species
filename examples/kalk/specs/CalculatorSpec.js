@@ -143,8 +143,9 @@ describe('kalk.Calculator', function() {
             expect(calc.lhs).toBe(5);
         });
             
-        it('should overwrite an existing value in "lhs" given no "lhs" value and no "op" entered yet', function() {
-            calc.input(5);
+        it('should overwrite an existing value in "lhs" given no "op" entered yet', function() {
+            calc.lhs = 5;
+            
             calc.input(10);
             calc.input(43);
             
@@ -152,7 +153,8 @@ describe('kalk.Calculator', function() {
         });
         
         it('should store the corresponding operation in "op" given a valid op-code and an existing value in "lhs"', function() {
-            calc.input(5);
+            calc.lhs = 5;
+            
             calc.input('+');
             
             expect(calc.op).toBe(calc.add);
@@ -166,12 +168,11 @@ describe('kalk.Calculator', function() {
         });
         
         it('should store numeric value into "rhs" given no "rhs" value and "op" has been difined', function() {             
-            calc.input(5);
-            calc.input('+');
+            calc.lhs = 5;
+            calc.op = function() {};
+            
             calc.input(23);
             
-            expect(calc.lhs).toBe(5);
-            expect(calc.op).toBe(calc.add);
             expect(calc.rhs).toBe(23);
         });
     });
