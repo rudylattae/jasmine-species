@@ -1,25 +1,36 @@
 describe('kalk.Calculator', function() {
-    describe('buffer', function() {
-        it('should initialize with 0 as the first entry', function() {
+    describe('When instantiated', function() {
+        it('should initialize "buffer" with 0 as the first entry', function() {
             var calc = new kalk.Calculator();
             
             expect(calc.buffer[0]).toBe(0);
-        });    
+        });
+        
+        it('should initialize "lhs", "rhs" and "result" to 0', function() {
+            var calc = new kalk.Calculator();
+            
+            expect(calc.lhs).toBe(0);
+            expect(calc.rhs).toBe(0);
+            expect(calc.result).toBe(0);
+        });
     });
     
     describe('add', function() {
+        var calc;
+        
+        beforeEach(function() {
+            calc = new kalk.Calculator();
+        });
+        
         it('should calculate the sum of two positive operands', function() {
-            var calc = new kalk.Calculator();
             expect(calc.add(4, 8)).toEqual(12);
         });
         
         it('should calculate sum given a decimal operand', function() {
-            var calc = new kalk.Calculator();
             expect(calc.add(4.5, 8.1)).toEqual(12.6);
         });        
         
         it('should calculate sum given a negative operand', function() {
-            var calc = new kalk.Calculator();
             expect(calc.add(-4, 8)).toEqual(4);
         });
     });
@@ -49,9 +60,13 @@ describe('kalk.Calculator', function() {
     });
     
     describe('getOp', function() {
+        var calc;
+        
+        beforeEach(function() {
+            calc = new kalk.Calculator();
+        });
+        
         it('should yield an add function given a "+" operator', function() {
-            var calc = new kalk.Calculator();
-            
             op = calc.getOp('+');
             
             expect(op).toBe(calc.add);
@@ -59,8 +74,6 @@ describe('kalk.Calculator', function() {
         });
         
         it('should yield a sub function given a "-" operator', function() {
-            var calc = new kalk.Calculator();
-            
             op = calc.getOp('-');
             
             expect(op).toBe(calc.sub);
@@ -68,8 +81,6 @@ describe('kalk.Calculator', function() {
         });
         
         it('should yield a prod function given a "*" operator', function() {
-            var calc = new kalk.Calculator();
-            
             op = calc.getOp('*');
             
             expect(op).toBe(calc.mult);
@@ -77,8 +88,6 @@ describe('kalk.Calculator', function() {
         });
         
         it('should yield a div function given a "/" operator', function() {
-            var calc = new kalk.Calculator();
-            
             op = calc.getOp('/');
             
             expect(op).toBe(calc.div);
@@ -91,12 +100,6 @@ describe('kalk.Calculator', function() {
         
         beforeEach(function() {
             calc = new kalk.Calculator();
-        });
-        
-        it('should initialize with a "lhs", "rhs" and "result" set to 0', function() {
-            expect(calc.lhs).toBe(0);
-            expect(calc.rhs).toBe(0);
-            expect(calc.result).toBe(0);
         });
         
         it('should accept regular numbers', function() {             
