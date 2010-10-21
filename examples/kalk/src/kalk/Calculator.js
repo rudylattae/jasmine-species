@@ -27,6 +27,7 @@ kalk.Calculator.prototype.input = function(val) {
             this.lhs = val;
         } else {
             this.rhs = val;
+            this.result = this.op(this.lhs, this.rhs);
         }
     }
 };

@@ -167,13 +167,22 @@ describe('kalk.Calculator', function() {
             expect(calc.op).toBe(calc.add);
         });
         
-        it('should store numeric value into "rhs" given no "rhs" value and "op" has been difined', function() {             
+        it('should store numeric value into "rhs" given no "rhs" value and "op" has been defined', function() {             
             calc.lhs = 5;
             calc.op = function() {};
             
             calc.input(23);
             
             expect(calc.rhs).toBe(23);
+        });
+        
+        it('should calculate the result when "rhs" is entered, given "lhs" and "op" have been previously input', function() {
+            calc.lhs = 2;
+            calc.op = calc.add;
+            
+            calc.input(5);
+            
+            expect(calc.result).toEqual(7);
         });
     });
 });
