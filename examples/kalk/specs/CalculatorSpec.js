@@ -1,12 +1,6 @@
 describe('kalk.Calculator', function() {
-    describe('When instantiated', function() {
-        it('should initialize "buffer" with 0 as the first entry', function() {
-            var calc = new kalk.Calculator();
-            
-            expect(calc.buffer[0]).toBe(0);
-        });
-        
-        it('should initialize "lhs", "rhs" and "result" to 0', function() {
+    describe('On initialize', function() {
+        it('should set "lhs", "rhs" and "result"', function() {
             var calc = new kalk.Calculator();
             
             expect(calc.lhs).toBe(null);
