@@ -48,11 +48,11 @@ describe('kalk.Calculator', function() {
         });
     });
     
-    describe('operation', function() {
+    describe('getOp', function() {
         it('should yield an add function given a "+" operator', function() {
             var calc = new kalk.Calculator();
             
-            op = calc.operation('+');
+            op = calc.getOp('+');
             
             expect(op).toBe(calc.add);
         });
@@ -60,7 +60,7 @@ describe('kalk.Calculator', function() {
         it('should yield a sub function given a "-" operator', function() {
             var calc = new kalk.Calculator();
             
-            op = calc.operation('-');
+            op = calc.getOp('-');
             
             expect(op).toBe(calc.sub);
         });

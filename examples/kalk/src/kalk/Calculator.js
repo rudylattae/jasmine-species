@@ -40,14 +40,14 @@ kalk.Calculator.prototype.isValidOperation = function(op) {
 };
 
 /**
- * Yields a function that implements the operation described by the given character
+ * Yields a function that implements the operation described by the given op-code
  *
- * @param {String} op   The character notation for the desired operation
+ * @param {String} opCode   The character notation for the desired operation
  */
-kalk.Calculator.prototype.operation = function(op) {
-    if (op === '+') {
+kalk.Calculator.prototype.getOp = function(opCode) {
+    if (opCode === '+') {
         return this.add;
-    } else if (op === '-') {
+    } else if (opCode === '-') {
         return this.sub;
     }
 };
