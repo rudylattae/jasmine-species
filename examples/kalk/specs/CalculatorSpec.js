@@ -55,6 +55,7 @@ describe('kalk.Calculator', function() {
             op = calc.getOp('+');
             
             expect(op).toBe(calc.add);
+            expect(op(10, 23)).toEqual(33);
         });
         
         it('should yield a sub function given a "-" operator', function() {
@@ -63,6 +64,7 @@ describe('kalk.Calculator', function() {
             op = calc.getOp('-');
             
             expect(op).toBe(calc.sub);
+            expect(op(45, 25)).toEqual(20);
         });
         
         it('should yield a prod function given a "*" operator', function() {
@@ -71,6 +73,7 @@ describe('kalk.Calculator', function() {
             op = calc.getOp('*');
             
             expect(op).toBe(calc.mult);
+            expect(op(10, 8)).toEqual(80);
         });
         
         it('should yield a div function given a "/" operator', function() {
@@ -79,6 +82,7 @@ describe('kalk.Calculator', function() {
             op = calc.getOp('/');
             
             expect(op).toBe(calc.div);
+            expect(op(55, 11)).toEqual(5);
         });
     });
     
