@@ -48,6 +48,24 @@ describe('kalk.Calculator', function() {
         });
     });
     
+    describe('operation', function() {
+        it('should yield an add function given a "+" operator', function() {
+            var calc = new kalk.Calculator();
+            
+            op = calc.operation('+');
+            
+            expect(op).toBe(calc.add);
+        });
+        
+        it('should yield a sub function given a "-" operator', function() {
+            var calc = new kalk.Calculator();
+            
+            op = calc.operation('-');
+            
+            expect(op).toBe(calc.sub);
+        });
+    });
+    
     describe('input', function() {
         var calc;
         

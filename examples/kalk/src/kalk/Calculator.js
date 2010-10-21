@@ -40,6 +40,19 @@ kalk.Calculator.prototype.isValidOperation = function(op) {
 };
 
 /**
+ * Yields a function that implements the operation described by the given character
+ *
+ * @param {String} op   The character notation for the desired operation
+ */
+kalk.Calculator.prototype.operation = function(op) {
+    if (op === '+') {
+        return this.add;
+    } else if (op === '-') {
+        return this.sub;
+    }
+};
+
+/**
  * Returns the sum of two operands
  *
  * @param {Number} lhs   The first operand
