@@ -17,6 +17,46 @@ This example project illustrates:
 * describing exposed api through executable documentation (xdocs)
 
 
+About
+-----
+
+Kalk is supposed to be an implementation of a simple calculator. The big idea is 
+to create a cimple calculator that is capable of handling basic arithmetic driven 
+by the operators "+", "-", "/" and "*".
+
+
+Requirements
+~~~~~~~~~~~~
+
+1) The calculator should accept user input as distinct entries that form 
+an expression like "2 + 5" or "3 / 4". The calculator would evaluate the 
+input and yield a result.
+
+Example:
+    
+    10 {enter}
+    +  {enter}
+    4  {enter}
+
+right after "4" is entered, the calculator evaluates the expression 10 + 4 and 
+provides a result "14".
+
+2) The result of the last evaluation should be used as the first operand of the 
+next evaluation. 
+
+Example (continuing from 1 above):
+
+    14 {enter}
+    /  {enter}
+    2  {enter}
+
+should yield a result of "7".
+
+3) It should be possible to clear the result and operands from the calculator.
+
+4) The calculator should maintain a history for the current session.
+
+
 Layout
 ------
 
