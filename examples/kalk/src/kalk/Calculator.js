@@ -43,7 +43,41 @@ kalk.Calculator.prototype.isValidOperation = function(op) {
  * Returns the sum of two operands
  *
  * @param {Number} lhs   The first operand
+ * @param {Number} rhs   The second operand
  */
 kalk.Calculator.prototype.add = function(lhs, rhs) {
     return lhs + rhs;
+};
+
+/**
+ * Returns the difference of two operands
+ *
+ * Subtracts the rhs value from the lhs value
+ *
+ * @param {Number} lhs   The first operand
+ * @param {Number} rhs   The second operand
+ */
+kalk.Calculator.prototype.sub = function(lhs, rhs) {
+    return lhs - rhs;
+};
+
+/**
+ * Returns the product of two operands
+ *
+ * @param {Number} lhs   The first operand
+ * @param {Number} rhs   The second operand
+ */
+kalk.Calculator.prototype.prod = function(lhs, rhs) {
+    return lhs * rhs;
+};
+
+
+/**
+ * Returns the result of dividing the lsh value by the rhs value
+ *
+ * @param {Number} lhs   The first operand
+ * @param {Number} rhs   The second operand
+ */
+kalk.Calculator.prototype.div = function(lhs, rhs) {
+    return lhs / rhs;
 };

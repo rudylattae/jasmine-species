@@ -8,7 +8,7 @@ describe('kalk.Calculator', function() {
     });
     
     describe('add', function() {
-        it('should calculate the sum of positive operands', function() {
+        it('should calculate the sum of two positive operands', function() {
             var calc = new kalk.Calculator();
             expect(calc.add(4, 8)).toEqual(12);
         });
@@ -21,6 +21,30 @@ describe('kalk.Calculator', function() {
         it('should calculate sum given a negative operand', function() {
             var calc = new kalk.Calculator();
             expect(calc.add(-4, 8)).toEqual(4);
+        });
+    });
+    
+    describe('sub', function() {
+        // not specced out with as much detail as "add"
+        it('should calculate the difference of two operands, subtracting the rhs value from the lhs value', function() {
+            var calc = new kalk.Calculator();
+            expect(calc.sub(15, 8)).toEqual(7);
+        });
+    });
+    
+    describe('prod', function() {
+        // not specced out with as much detail as "add"
+        it('should calculate the product of two operands', function() {
+            var calc = new kalk.Calculator();
+            expect(calc.prod(3, 5)).toEqual(15);
+        });
+    });
+    
+    describe('div', function() {
+        // not specced out with as much detail as "add"
+        it('should calculate the result of dividing the lhs operand by the rhs operand', function() {
+            var calc = new kalk.Calculator();
+            expect(calc.div(25, 5)).toEqual(5);
         });
     });
     
