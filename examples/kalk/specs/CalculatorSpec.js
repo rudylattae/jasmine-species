@@ -144,43 +144,41 @@ describe('kalk.Calculator', function() {
             }).toThrow('Invalid input. "r" is not a number or a valid operation');
         });
         
-        it('should overwrite the last buffer entry if it is a number and the new input is also a number', function() {
-            expect(calc.buffer[0]).toBe(0);
-            
+        it('should store numeric value into "lhs" given no "lhs" value and no "op" entered yet', function() {
             calc.input(5);
-            expect(calc.buffer[0]).toBe(5);
-            calc.input(14);
-            
-            expect(calc.buffer[0]).toBe(14);
-            expect(calc.buffer.length).toBe(1);
+            expect(calc.lhs).toBe(5);
         });
-        
-        it('should push an operation into the buffer if the last entry is a number', function() {             
-            calc.input(7);
             
-            calc.input('+');
-            
-            expect(calc.buffer.length).toBe(2);
-            expect(calc.buffer[1]).toBe('+');
-        });
-        
-        it('should push a number into the buffer if the last entry is not a number', function() {             
-            calc.input(50);
-            calc.input('-');
+        it('should overwrite an existing value in "lhs" given no "lhs" value and no "op" entered yet', function() {
+            calc.input(5);
             calc.input(10);
+            calc.input(43);
             
-            expect(calc.buffer.length).toBe(3);
-            expect(calc.buffer[2]).toBe(10);
+            expect(calc.lhs).toBe(43);
         });
         
-        it('should calculate the result of the expression in the buffer given the "=" operation', function() {
-            calc.input(25);
+        it('should store the corresponding operation in "op" given a valid op-code and an existing value in "lhs"', function() {
+            calc.input(5);
             calc.input('+');
-            calc.input(15);
             
-            calc.input('=');
+            expect(calc.op).toBe(calc.add);
+        });
+        
+        it('should default "lhs" to 0 and store the corresponding operation in "op" given a valid op-code and no existing value in "lhs"', function() {
+            calc.input('+');
             
-            expect(calc.result).toBe(40);
+            expect(calc.lhs).toBe(0);
+            expect(calc.op).toBe(calc.add);
+        });
+        
+        it('should store numeric value into "rhs" given no "rhs" value and "op" has been difined', function() {             
+            calc.input(5);
+            calc.input('+');
+            calc.input(23);
+            
+            expect(calc.lhs).toBe(5);
+            expect(calc.op).toBe(calc.add);
+            expect(calc.rhs).toBe(23);
         });
     });
 });

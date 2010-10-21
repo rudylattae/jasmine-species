@@ -5,7 +5,6 @@ kalk.Calculator = function() {
     this.lhs = null;
     this.rhs = null;
     this.op = null;
-    this.buffer = [0];
 };
 
 /**
@@ -18,11 +17,17 @@ kalk.Calculator.prototype.input = function(val) {
         throw new Error('Invalid input. "' + val + '" is not a number or a valid operation');
     }
     
-    var lastVal = this.buffer[this.buffer.length - 1]
-    if (!isNaN(Number(val)) && !isNaN(lastVal)) {
-        this.buffer[this.buffer.length - 1] = Number(val);
+    if (this.isValidOperation(val)) {
+        if (this.lhs == null) {
+            this.lhs = 0;
+        }
+        this.op = this.getOp(val);
     } else {
-        this.buffer.push(val);
+        if (this.op == null) {
+            this.lhs = val;
+        } else {
+            this.rhs = val;
+        }
     }
 };
 
