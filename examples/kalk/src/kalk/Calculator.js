@@ -52,7 +52,7 @@ kalk.Calculator.prototype.getOp = function(opCode) {
     } else if (opCode === '-') {
         op = this.sub;
     } else if (opCode === '*') {
-        op = this.prod;
+        op = this.mult;
     } else if (opCode === '/') {
         op = this.div;
     }
@@ -88,7 +88,7 @@ kalk.Calculator.prototype.sub = function(lhs, rhs) {
  * @param {Number} lhs   The first operand
  * @param {Number} rhs   The second operand
  */
-kalk.Calculator.prototype.prod = function(lhs, rhs) {
+kalk.Calculator.prototype.mult = function(lhs, rhs) {
     return lhs * rhs;
 };
 

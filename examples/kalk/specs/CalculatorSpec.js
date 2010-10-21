@@ -32,11 +32,11 @@ describe('kalk.Calculator', function() {
         });
     });
     
-    describe('prod', function() {
+    describe('mult', function() {
         // not specced out with as much detail as "add"
         it('should calculate the product of two operands', function() {
             var calc = new kalk.Calculator();
-            expect(calc.prod(3, 5)).toEqual(15);
+            expect(calc.mult(3, 5)).toEqual(15);
         });
     });
     
@@ -70,7 +70,7 @@ describe('kalk.Calculator', function() {
             
             op = calc.getOp('*');
             
-            expect(op).toBe(calc.prod);
+            expect(op).toBe(calc.mult);
         });
         
         it('should yield a div function given a "/" operator', function() {
