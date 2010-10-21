@@ -2,6 +2,9 @@ var kalk = {};
 
 kalk.Calculator = function() {
     this.result = 0;
+    this.lhs = 0;
+    this.rhs = 0;
+    this.op = null;
     this.buffer = [0];
 };
 
@@ -34,4 +37,13 @@ kalk.Calculator.prototype.isValidOperation = function(op) {
         return false;
     }
     return true;
+};
+
+/**
+ * Returns the sum of two operands
+ *
+ * @param {Number} lhs   The first operand
+ */
+kalk.Calculator.prototype.add = function(lhs, rhs) {
+    return lhs + rhs;
 };

@@ -8,16 +8,15 @@ feature('Addition', function() {
     scenario('Adding two positive numbers', function() {
         var calc = new kalk.Calculator();
         
-        given('I have input 2 + 3 into the calculator', function() {
-            calc.input(2);
+        given('I have input "10" and "+" into the calculator', function() {
+            calc.input(10);
             calc.input('+');
-            calc.input(3);
         });
-        when('I input =', function() {
-            calc.input('=');
+        when('I input 4', function() {
+            calc.input(4);
         });
-        then('The result should be 5', function() {
-            expect(calc.result).toEqual(5);
+        then('The result should be 14', function() {
+            expect(calc.result).toEqual(14);
         });
     });
 });
