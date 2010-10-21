@@ -13,6 +13,7 @@ kalk.Calculator = function() {
  * @param {String, Number} val   The operand/operation to handle 
  */
 kalk.Calculator.prototype.input = function(val) {
+    // NOTE: this method is a good candidate for refactoring
     if (isNaN(Number(val)) && !this.isValidOperation(val)) {
         throw new Error('Invalid input. "' + val + '" is not a number or a valid operation');
     }
@@ -27,7 +28,14 @@ kalk.Calculator.prototype.input = function(val) {
             this.lhs = val;
         } else {
             this.rhs = val;
+            
+            // calculate the result
             this.result = this.op(this.lhs, this.rhs);
+            
+            // reset the calculator
+            this.lhs = this.result;
+            this.rhs = null;
+            this.op = null
         }
     }
 };
