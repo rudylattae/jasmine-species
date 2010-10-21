@@ -9,8 +9,8 @@ describe('kalk.Calculator', function() {
         it('should initialize "lhs", "rhs" and "result" to 0', function() {
             var calc = new kalk.Calculator();
             
-            expect(calc.lhs).toBe(0);
-            expect(calc.rhs).toBe(0);
+            expect(calc.lhs).toBe(null);
+            expect(calc.rhs).toBe(null);
             expect(calc.result).toBe(0);
         });
     });
@@ -138,12 +138,6 @@ describe('kalk.Calculator', function() {
             }).not.toThrow();
         });
         
-        xit('should accept = as a valid operation', function() {             
-            expect(function() {
-                 calc.input('=');
-            }).not.toThrow();
-        });
-        
         it('should fail on any non-numeric and non-valid operation', function() {             
             expect(function() {
                  calc.input('r');
@@ -187,19 +181,6 @@ describe('kalk.Calculator', function() {
             calc.input('=');
             
             expect(calc.result).toBe(40);
-        });
-    });
-
-    xdescribe('add', function() {
-        it('should calculate the sum of the given operands', function() {
-            var calc = new kalk.Calculator();
-            
-            calc.input(5);
-            calc.input('+')
-            calc.input(4);
-            calc.input('=');
-            
-            expect(calc.result).toEqual(9);
         });
     });
 });

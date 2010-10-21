@@ -2,8 +2,8 @@ var kalk = {};
 
 kalk.Calculator = function() {
     this.result = 0;
-    this.lhs = 0;
-    this.rhs = 0;
+    this.lhs = null;
+    this.rhs = null;
     this.op = null;
     this.buffer = [0];
 };
