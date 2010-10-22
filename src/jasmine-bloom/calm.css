@@ -37,6 +37,8 @@
         color: #aaa; }
     .suite > .description {
         font-weight: bold; }
+    .suite.step > .description {
+        font-weight: normal; }
 
 .spec {
     margin: 0px;
