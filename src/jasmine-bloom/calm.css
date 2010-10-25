@@ -6,13 +6,12 @@
  */
  
 /* jasmine-reporter style overrides for */
-.jasmine_reporter a {
-  text-decoration:none; }
+.jasmine_reporter a { text-decoration:none; }
 
 .jasmine_reporter > .suite {
     padding-bottom: 0.3em;
     margin-bottom: 0.3em;
-    border-bottom: solid 2px #eee;}
+    border-bottom: solid 2px #eee; }
 
 .banner, .runner {
     -webkit-border-radius: 7px;
@@ -27,7 +26,9 @@
 .suite {
     border: none;
     padding-left: 0.5em; }
-    .suite.failed, .suite.passed, .suite.skipped {
+    .suite.failed, 
+    .suite.passed, 
+    .suite.skipped {
         background: transparent; }
     .suite.passed > a {
         color: green; }
@@ -45,7 +46,9 @@
     border: none;
     padding-left: 0.5em;
     margin-left: 0.5em; }
-    .spec.failed, .spec.passed, .spec.skipped {
+    .spec.failed, 
+    .spec.passed, 
+    .spec.skipped {
         background: transparent;
         border: none;
         padding-bottom: 0.2em; }

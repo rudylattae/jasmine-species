@@ -1,5 +1,5 @@
 /**
- * Jasmine-Bloom - Relaxed reporting for your Jasmine specs
+ * Jasmine-Bloom - Cleaner reporting with metadata output for your Jasmine specs
  * Copyright (C) 2010, Rudy Lattae
  * License: Simplified BSD
  * 
