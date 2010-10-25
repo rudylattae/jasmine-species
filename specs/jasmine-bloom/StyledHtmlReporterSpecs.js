@@ -190,7 +190,7 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
             
                 var divs = fakeDocument.body.getElementsByTagName("div");
                 var suiteDiv = getElementByClassName(divs, 'suite example skipped');
-                suiteDetails = getElementByClassName(suiteDiv.children, 'note');
+                var suiteDetails = getElementByClassName(suiteDiv.children, 'note');
                 
                 expect(suiteDetails.textContent).toEqual('This is a simple example');
             });
@@ -224,7 +224,7 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
             
                 var divs = fakeDocument.body.getElementsByTagName("div");
                 var suiteDiv = getElementByClassName(divs, 'suite example skipped');
-                suiteDetails = getElementByClassName(suiteDiv.children, 'info');
+                var suiteDetails = getElementByClassName(suiteDiv.children, 'info');
                 
                 expect(suiteDetails.children[1].textContent).toEqual('Step 2');
             });
@@ -232,7 +232,7 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
     });
     
     describe('when reporting the results of "examples"', function() {
-        it('should render the contents of the example in the output', function() {
+        it('should render the contents of the example in "pre" "code" tags', function() {
             var runner = env.currentRunner();
             XDocs.example('Illustrating the output of an example', function() {
                 env.describe('A simple example', function() {
@@ -245,10 +245,9 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
             runner.execute();
             
             var divs = fakeDocument.body.getElementsByTagName("div");
-            //console.log(divs);
             var suiteDiv = getElementByClassName(divs, 'suite example passed');
-            exampleOutput = suiteDiv.getElementsByTagName("p");
-            expect(exampleOutput[0].textContent).toContain("env.describe('A simple example', function() {");
+            var exampleOutput = suiteDiv.getElementsByTagName("pre");
+            expect(exampleOutput[0].textContent).toContain("env.describe(\"A simple example\", function");
         });
     });
 });

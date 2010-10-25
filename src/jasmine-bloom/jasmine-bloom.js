@@ -62,7 +62,7 @@ jasmine.bloom.StyledHtmlReporter.prototype.reportRunnerStarting = function(runne
         this.createDom('a', { className: 'run_spec', href: '?spec=' + encodeURIComponent(suite.getFullName()) }, "run"),
         this.createDom('a', { className: 'description', href: '?spec=' + encodeURIComponent(suite.getFullName()) }, suite.description),
         (typeof suite.details !== 'undefined') ? this.createDomFromDetails(suite.details) : null,
-        (typeof suite.expose !== 'undefined' && suite.expose) ? this.createDom('p', {}, suite.defs): null);
+        (typeof suite.expose !== 'undefined' && suite.expose) ? this.createDom('pre', {}, suite.defs): null);
     this.suiteDivs[suite.id] = suiteDiv;
     var parentDiv = this.outerDiv;
     if (suite.parentSuite) {
