@@ -11,7 +11,7 @@
 // Top level namespace for the package
 jasmine.bloom = (typeof jasmine.bloom === 'undefined') ? {} : jasmine.bloom;
 
-jasmine.bloom.VERSION = '0.4.2dev';
+jasmine.bloom.VERSION = '0.4.3dev';
 
 
 jasmine.bloom.StyledHtmlReporter = function(doc) {
