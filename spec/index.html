@@ -17,7 +17,9 @@
     </div>
 </body>
 <script type="text/javascript">
-    (function() {        
+    (function() {
+        Namespace.use('jasmine.grammar.FeatureStory.*');
+        
         document.addEventListener("DOMContentLoaded", init, false);
     
         function init() {
@@ -26,5 +28,6 @@
         }
     })();
 </script>
+<script type="text/javascript" src="jasmine-grammar/FeatureStorySpecs.js"></script>
 <script type="text/javascript" src="jasmine-reporting/StyledHtmlReporterSpecs.js"></script>
 </html>
