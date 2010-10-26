@@ -1,22 +1,23 @@
-describe('jasmine.bloom.StyledHtmlReporter', function() {
+describe('jasmine.reporting.StyledHtmlReporter', function() {
     var env;
     var reporter;
     var body;
     var fakeDocument;
     
-    var FeatureStory = jasmine.aroma.FeatureStory;
-    var GWT = jasmine.aroma.GWT;
-    var XDocs = jasmine.aroma.XDocs;
+    var FeatureStory = jasmine.grammar.FeatureStory;
+    var GWT = jasmine.grammar.GWT;
+    var XDoc = jasmine.grammar.XDoc;
+    var More = jasmine.grammar.More;
     
     // these helpers were ripped clean out of the jasmin's TrivialReporterSpec
     beforeEach(function() {
         env = new jasmine.Env();
         env.updateInterval = 0;
-        jasmine.aroma._currentEnv = env;
+        jasmine.grammar._currentEnv = env;
         
         body = document.createElement("body");
         fakeDocument = { body: body, location: { search: "" }};
-        reporter = new jasmine.bloom.StyledHtmlReporter(fakeDocument);
+        reporter = new jasmine.reporting.StyledHtmlReporter(fakeDocument);
         env.addReporter(reporter);
     });
 
@@ -182,8 +183,8 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
         describe('given the details are provided as a string', function() {
             it('should render the details as a paragraph with the given tag as the class attribute', function() {
                 var runner = env.currentRunner();
-                XDocs.example('Providing details for a suite', function() {
-                    XDocs.details('This is a simple example', 'note');
+                XDoc.example('Providing details for a suite', function() {
+                    More.details('This is a simple example', 'note');
                 });
                 
                 runner.execute();
@@ -199,8 +200,8 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
         describe('given the details are provided as a string with a list of tags', function() {
             it('should render the details as a paragraph with the given tags as the class attributes', function() {
                 var runner = env.currentRunner();
-                XDocs.example('Providing details for a suite', function() {
-                    XDocs.details('This is a simple example', ['note', 'readme']);
+                XDoc.example('Providing details for a suite', function() {
+                    More.details('This is a simple example', ['note', 'readme']);
                 });
                 
                 runner.execute();
@@ -216,8 +217,8 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
         describe('given the details are provided as a list', function() {
             it('should render the details as an unordered list', function() {
                 var runner = env.currentRunner();
-                XDocs.example('Providing details for a suite', function() {
-                    XDocs.details(['Step 1', 'Step 2', 'Step 3'], 'info');
+                XDoc.example('Providing details for a suite', function() {
+                    More.details(['Step 1', 'Step 2', 'Step 3'], 'info');
                 });
                 
                 runner.execute();
@@ -234,7 +235,7 @@ describe('jasmine.bloom.StyledHtmlReporter', function() {
     describe('when reporting the results of "examples"', function() {
         it('should render the contents of the example in "pre" "code" tags', function() {
             var runner = env.currentRunner();
-            XDocs.example('Illustrating the output of an example', function() {
+            XDoc.example('Illustrating the output of an example', function() {
                 env.describe('A simple example', function() {
                     env.it('should be rendered in the report', function() {
                         this.expect(true).toBeTruthy();

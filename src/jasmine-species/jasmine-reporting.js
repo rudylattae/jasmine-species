@@ -1,30 +1,33 @@
 /**
- * Jasmine-Bloom - Cleaner reporting with metadata output for your Jasmine specs
+ * Jasmine-Reporting - Companion reporting with metadata output for your Jasmine specs with extended grammar
  * Copyright (C) 2010, Rudy Lattae
  * License: Simplified BSD
- * 
- * Jasmine-Bloom provides a slightly modified Html Reporter that outputs additional 
- * meta-data relating to your specs. The aim is to make it easier to modify the 
- * presentation of the spec report.
  */
  
 // Top level namespace for the package
-jasmine.bloom = (typeof jasmine.bloom === 'undefined') ? {} : jasmine.bloom;
+jasmine.reporting = (typeof jasmine.reporting === 'undefined') ? {} : jasmine.reporting;
 
-jasmine.bloom.VERSION = '0.4.3dev';
+jasmine.reporting.VERSION = '0.5.1dev';
 
 
-jasmine.bloom.StyledHtmlReporter = function(doc) {
+/**
+ * The StyledHtmlReporter provides augments the jasmine.TrivialReporter
+ *
+ * It outputs additional meta-data relating to your specs to streamline 
+ * the presentation of the spec report. When used in conjunction with the 
+ * the alternate BDD grammar, your Html report is much easier on the eyes.
+ */
+jasmine.reporting.StyledHtmlReporter = function(doc) {
     this.document = doc || document;
     this.suiteDivs = {};
     this.logRunningSpecs = false;
 };
 
-jasmine.bloom.StyledHtmlReporter.prototype = new jasmine.TrivialReporter();
-jasmine.bloom.StyledHtmlReporter.prototype.constructor = jasmine.aroma.StyledHtmlReporter;
+jasmine.reporting.StyledHtmlReporter.prototype = new jasmine.TrivialReporter();
+jasmine.reporting.StyledHtmlReporter.prototype.constructor = jasmine.reporting.StyledHtmlReporter;
 
 
-jasmine.bloom.StyledHtmlReporter.prototype.reportRunnerStarting = function(runner) {
+jasmine.reporting.StyledHtmlReporter.prototype.reportRunnerStarting = function(runner) {
   var showPassed, showSkipped;
 
   this.outerDiv = this.createDom('div', { className: 'jasmine_reporter' },
@@ -87,7 +90,7 @@ jasmine.bloom.StyledHtmlReporter.prototype.reportRunnerStarting = function(runne
   };
 };
 
-jasmine.bloom.StyledHtmlReporter.prototype.reportSuiteResults = function(suite) {
+jasmine.reporting.StyledHtmlReporter.prototype.reportSuiteResults = function(suite) {
   var results = suite.results();
   var status = results.passed() ? 'passed' : 'failed';
   if (results.totalCount == 0 && (!status == 'failed' || !suite.isIntermediate)) { // todo: change this to check results.skipped
@@ -104,7 +107,7 @@ jasmine.bloom.StyledHtmlReporter.prototype.reportSuiteResults = function(suite) 
  * If the details.value is a list, the element created is an unordered list.
  * The details.tags are rendered to the class attribute on the dom element created  
  */
-jasmine.bloom.StyledHtmlReporter.prototype.createDomFromDetails = function(details) {
+jasmine.reporting.StyledHtmlReporter.prototype.createDomFromDetails = function(details) {
     var classAttrs = '';
     if (typeof details.tags !== 'undefined') {
         classAttrs = (details.tags instanceof Array) ? details.tags.join(' ') : details.tags; 
@@ -119,7 +122,7 @@ jasmine.bloom.StyledHtmlReporter.prototype.createDomFromDetails = function(detai
 /**
  * Creates dom element with the suite defs as content 
  */
-jasmine.bloom.StyledHtmlReporter.prototype.createDomFromSuiteDefs = function(defs) {
+jasmine.reporting.StyledHtmlReporter.prototype.createDomFromSuiteDefs = function(defs) {
     var classAttrs = '';
     if (typeof defs !== 'undefined') {
         return this.createDom('p', {}, defs);
@@ -129,7 +132,7 @@ jasmine.bloom.StyledHtmlReporter.prototype.createDomFromSuiteDefs = function(def
 /**
  * Creates a list of 'li' elements given an array
  */
-jasmine.bloom.StyledHtmlReporter.prototype.createDomList = function(type, attrs, items) {
+jasmine.reporting.StyledHtmlReporter.prototype.createDomList = function(type, attrs, items) {
     var list;
     if (typeof items !== 'undefined' && items.length > 0) {
         list = this.createDom(type, attrs);
