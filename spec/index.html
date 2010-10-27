@@ -18,7 +18,12 @@
 </body>
 <script type="text/javascript">
     (function() {
-        document.addEventListener("DOMContentLoaded", init, false);
+        // register the handler to run the specs after the document is loaded
+        if (document.addEventListener) {
+            document.addEventListener("DOMContentLoaded", init, false);
+        } else {
+            window.onload = function() { init(); }
+        }
     
         function init() {
             jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
