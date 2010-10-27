@@ -29,9 +29,9 @@ describe('jasmine.grammar.XDoc', function() {
             expect(suite.defs).not.toBe(null);
         });
         
-        it('should strip the "function() { ... }" block when it generates the def attribute', function() {
+        it('should strip the "function() { ... }" block delimeters when it generates the def attribute', function() {
             var suite = XDoc.example('A specific example', function() {
-                env.it('uses only this block', function () {});
+                env.it("uses only this block", function () {});
             });
             expect(suite.defs).toBe('env.it("uses only this block", function () {});');
         });

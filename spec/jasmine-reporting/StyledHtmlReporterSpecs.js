@@ -236,7 +236,7 @@ describe('jasmine.reporting.StyledHtmlReporter', function() {
         it('should render the contents of the example in "pre" "code" tags', function() {
             var runner = env.currentRunner();
             XDoc.example('Illustrating the output of an example', function() {
-                env.describe('A simple example', function() {
+                env.describe("A simple example", function() {
                     env.it('should be rendered in the report', function() {
                         this.expect(true).toBeTruthy();
                     });
