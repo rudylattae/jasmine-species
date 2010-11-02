@@ -1,20 +1,82 @@
-{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+	<meta name="description" content="{{ site.description }}">
+	<meta name="keywords" content="{{ site.keywords }}">
+	<meta name="copyright" content="{{ site.copyright }}">
+	<meta name="author" content="{{ site.author }}">
+    <!--[if IE]>
+    <script type="text/javascript" src="js/html5.js"/>
+    <![endif]-->
+	<style>
+	body {
+		width: 960px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	footer {
+	   position:absolute;
+	   clear:both;
+	   bottom:0;
+	   left:0;
+	   width:100%;
+	   height:2em;
+	}
+		footer div {
+			width:960px;
+			margin-left: auto;
+			margin-right: auto;
+		}
 
-<a href="http://github.com/rudylattae/jasmine-species">
-<img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
-</a>
-<header>
-	<h1>Jasmine Species</h1>
-</header>
+	.oxo {
+		display:table;
+		width: 100%;
+		border-collapse:collapse;
+		border-spacing:10px;
+	}
 
-<article>
-	{{ content }}
-</article>
+	.x {
+		display:table-row;
+	}
 
-<aside>
-	{% include menu.html%}
-</aside>
+	.x div, .x article, .x aside {
+		display:table-cell;
+	}
+    
+    article {
+        width:70%;
+    }
+    
+    aside {
+        width:30%;
+    }
+	</style>
+</head>
+<body>
+	<a href="http://github.com/rudylattae/jasmine-species">
+	<img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+	</a>
+	<header>
+		<h1>Jasmine Species</h1>
+	</header>
 
-<footer>
+	<div class="oxo">
+		<div class="x">
+			<article>
+				{{ content }}
+			</article>
 
-</footer>
+			<aside>
+				{% include menu.html%}
+			</aside>
+		</div>
+	</div>
+	
+	<footer>
+        <div>{{ site.copyright }}</div>
+	</footer>
+</body>
+</html>
