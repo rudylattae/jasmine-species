@@ -1,80 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
-	<meta name="description" content="{{ site.description }}">
-	<meta name="keywords" content="{{ site.keywords }}">
-	<meta name="copyright" content="{{ site.copyright }}">
-	<meta name="author" content="{{ site.author }}">
-	<style>
-	body {
-		width: 960px;
-		margin-left: auto;
-		margin-right: auto;
-	}
-	
-	#footer {
-	   position:absolute;
-	   clear:both;
-	   bottom:0;
-	   left:0;
-	   width:100%;
-	   height:2em;
-	}
-		#footer div {
-			width:960px;
-			margin-left: auto;
-			margin-right: auto;
-            border-top: 2px solid #ddd;
-		}
+    <meta charset="utf-8">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{{ site.description }}">
+    <meta name="keywords" content="{{ site.keywords }}">
+    <meta name="copyright" content="{{ site.copyright }}">
+    <meta name="author" content="{{ site.author }}">
+    <style type="text/css" media="screen">
+    /* base */
+    
+    /* oxymoron */
+    .oxo {
+        display: table;
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 10px;
+    }
 
-	.oxo {
-		display:table;
-		width: 100%;
-		border-collapse:collapse;
-		border-spacing:10px;
-	}
+    .x {
+        display: table-row;
+    }
 
-	.x {
-		display:table-row;
-	}
-
-	.x div, .x article, .x aside {
-		display:table-cell;
-	}
+    .x div {
+        display: table-cell;
+    }
+    
+    /* layout */
+    body {
+        width: 960px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    #footer {
+       position: absolute;
+       clear: both;
+       bottom: 0;
+       left: 0;
+       width: 100%;
+       height: 2em;
+    }
+        #footer div {
+            width:960px;
+            margin-left: auto;
+            margin-right: auto;
+        }
     
     #main {
-        width:70%;
+        width: 70%;
     }
     
-    .aside {
-        width:30%;
+    #aside {
+        width: 30%;
     }
-	</style>
+    
+    /* style */
+    #footer div {
+        border-top: 2px solid #ddd;
+        font-size: 1em;
+        color: #aaa;
+    }
+    </style>
 </head>
 <body>
-	<a href="http://github.com/rudylattae/jasmine-species">
-	<img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
-	</a>
-	<div id="header">
-		<h1>Jasmine Species</h1>
-	</div>
+    <a href="http://github.com/rudylattae/jasmine-species">
+    <img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+    </a>
+    <div id="header">
+        <h1>Jasmine Species</h1>
+    </div>
 
-	<div class="oxo">
-		<div class="x">
-			<div id="main">
-				{{ content }}
-			</div>
+    <div class="oxo">
+        <div class="x">
+            <div id="main">
+                {{ content }}
+            </div>
 
-			<div class="aside">
-				{% include menu.html%}
-			</div>
-		</div>
-	</div>
-	
-	<div id="footer">
+            <div id="aside">
+                {% include menu.html%}
+            </div>
+        </div>
+    </div>
+    
+    <div id="footer">
         <div>{{ site.copyright }}</div>
-	</div>
+    </div>
 </body>
 </html>
