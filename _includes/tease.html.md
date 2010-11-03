@@ -1,5 +1,3 @@
-----
-
 {% highlight javascript %}
 feature('Number addition', function() {
     scenario('Adding two positive integers', function() {
