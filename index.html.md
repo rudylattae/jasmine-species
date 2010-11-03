@@ -30,15 +30,17 @@ It also provides an Html Reporter that outputs cleaner specs.
 
 * [Jasmine](http://pivotal.github.com/jasmine/) herself
 * Any decent javascript namespace/package importer
+
     - Currently tested with [Namespacedotjs](https://github.com/smith/namespacedotjs)
+
     - You could try [AJILE](http://ajile.net/)
 
 
 ## Quick Start
 
-1. Download and include the requirements in your runner page
-2. Include the `calm.css` stylesheet 
-3. Import the grammar you wish to use
-4. Plug-in the StyledHtmlReporter to output your spec report
-5. Proceed with your BDD cycle as normal
+1. Add Jasmine-species and its requirements to your runner page
+2. Import the grammar you wish to use
+3. Proceed with your BDD cycle as normal
 
+**For bonus points**, Include the `calm.css` stylesheet and 
+plug-in the StyledHtmlReporter to output your spec reports.
