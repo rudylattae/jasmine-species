@@ -30,8 +30,8 @@ It also provides an Html Reporter that outputs cleaner specs.
 
 * [Jasmine](http://pivotal.github.com/jasmine/) herself
 * Any decent javascript namespace/package importer
-    * Currently tested with [Namespacedotjs](https://github.com/smith/namespacedotjs)
-    * You could try [AJILE](http://ajile.net/)
+    - Currently tested with [Namespacedotjs](https://github.com/smith/namespacedotjs)
+    - You could try [AJILE](http://ajile.net/)
 
 
 ## Quick Start
