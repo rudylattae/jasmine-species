@@ -8,6 +8,12 @@ title: Start
 Jasmine-species is ...
 
 
+## Features
+
+* One
+* Two
+* ...
+
 ## Quick Start
 
 What now?
