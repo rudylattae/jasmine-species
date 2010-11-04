@@ -14,7 +14,9 @@ It also provides an Html Reporter that outputs cleaner specs.
 
 ## A trivial example
 
-<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/rudylattae/J4PpC/3/embedded/result,js,html,css/"></iframe>
+<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/rudylattae/J4PpC/3/embedded/result,js,html,css/">
+    Example code from jsFiddle
+</iframe>
 
 {% highlight javascript %}
 feature('Number addition', function() {
