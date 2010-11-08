@@ -64,13 +64,13 @@ pre { font-size: 0.9em }
 #nav a { font-size: 1.3em }
 
 #nutshell ol {
-    font: italic 1.3em Georgia, Times, serif;
+    font: italic Georgia, Times, serif;
     color: #999;
     padding-left: 0;
     margin-left: 1.5em
 }
 #nutshell p, #nutshell pre, h4 {
-    font: normal 1em;
+    font: normal;
     color: #333;
 }
 #nutshell h4 { margin: 0.5em 0}
