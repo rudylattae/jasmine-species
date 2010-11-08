@@ -45,6 +45,7 @@ layout
 style
 =====
 */
+h1, h2, h3, h4, h5, h6 { color: #030 }
 a { 
     color: #aac261; 
     text-decoration:none 
@@ -65,16 +66,16 @@ pre { font-size: 0.9em }
 
 #nutshell ol {
     font: italic Georgia, Times, serif;
-    color: #999;
+    color: #777;
     padding-left: 0;
     margin-left: 1.5em
 }
 #nutshell p, #nutshell pre, h4 {
     font: normal;
-    color: #333;
+    color: #555;
 }
-#nutshell h4 { margin: 0.5em 0}
-#nutshell .img {
+#nutshell h4 { margin: 0.85em 0 0.5em 0}
+#nutshell img {
     border: 3px solid #999;
     padding: 0.2em;
 }
