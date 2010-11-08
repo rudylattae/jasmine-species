@@ -34,10 +34,11 @@ layout
     margin-left: auto;
     margin-right: auto;
 }
+#main { width: 70% }
+#aside { width: 30% }
 
-#main { width: 62%; }
-
-#aside { width: 38%; }
+body.home #main { width: 60% }
+body.home #aside { width: 40% }
 
 .highlight { 
     width: 90%; 
