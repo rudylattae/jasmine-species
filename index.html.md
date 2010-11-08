@@ -19,13 +19,12 @@ you can follow the quick steps below to start enjoying jasmine-species.
 
 ### 1. Add jasmine-grammar and jasmine-reporting to your runner page
 
-{% highlight html %}
+{% highlight javascript %}
     <link rel="stylesheet" type="text/css" href="lib/jasmine-species/calm.css">
 
     <script type="text/javascript" src="lib/jasmine-species/jasmine-grammar.js"></script>
     <script type="text/javascript" src="lib/jasmine-species/jasmine-reporting.js"></script>
     
-    // ...
     Namespace.use('jasmine.grammar.FeatureStory.*');  // imports feature, scenario, ...
     Namespace.use('jasmine.grammar.GWT.*');   // imports given, when, ...
     
