@@ -1,11 +1,20 @@
-/* base */
+/* 
+====
+base 
+====
+*/
 body {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 0.9em;
     color: #333;
 }
 
-/* oxymoron */
+
+/*
+==================
+oxymoron (lite) ;) 
+==================
+*/
 .oxo {
     display: table;
     width: 100%;
@@ -14,7 +23,12 @@ body {
 .x { display: table-row; }
 .x > div { display: table-cell; }
 
-/* layout */
+
+/* 
+======
+layout
+====== 
+*/
 #wrapper {
     width: 960px;
     margin-left: auto;
@@ -25,15 +39,20 @@ body {
 
 #aside { width: 30%; }
 
-/* style */
+
+/* 
+=====
+style
+=====
+*/
 a { color: #aac261; text-decoration:none }
-a:visited { color: #aaa }
+a:visited { color: #999 }
 a:hover { color: #669933 }
 pre { font-size: 0.9em }
 
 .x div { padding: 0.5em; }
 
-#header h1 a { color: #669933 }
+#header h1 a { color: #030 }
 
 #nav ul { list-style-type: none }
 #nav a { font-size: 1.3em }
