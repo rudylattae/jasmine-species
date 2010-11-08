@@ -35,7 +35,10 @@ layout
     margin-right: auto;
 }
 #main { width: 70% }
-#aside { width: 30% }
+#aside { 
+    width: 30%;
+    padding-left: 2em
+}
 
 body.home #main { width: 60% }
 body.home #aside { width: 40% }
