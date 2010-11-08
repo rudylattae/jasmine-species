@@ -6,14 +6,15 @@ title: Use it
 
 ## How to use Jasmine-Species
 
-To make use of the "grammar" component in Jasmine-Species, 
-you simply need to include the "<code>jasmine-grammar.js</code>" file in your spec runner. Then 
-you import (e.g. <code>Namespace.use('jasmine.grammar.FeatureStory.*')</code>) 
-only the grammar components you need.
+To make use of the **grammar** component in Jasmine-Species, 
+* include the **"<code>jasmine-grammar.js</code>"** file in your spec runner. 
+* then import only the grammar components you need e.g. 
+**<code>Namespace.use('jasmine.grammar.FeatureStory.*')</code>**
 
-To experience the cleaner and richer ouput available from the reporting component, 
-simply include the "<code>jasmine-reporting.js</code>" file in your spec runner. 
-Then register the **StyledHtmlReporter** with Jasmine.
+To experience the cleaner and richer ouput available from the **reporting** 
+component, simply 
+* include the **"<code>jasmine-reporting.js</code>"** file in your spec runner. 
+* then register the **StyledHtmlReporter** with Jasmine.
 
 You can follow the quick steps below to start enjoying jasmine-species.
 
