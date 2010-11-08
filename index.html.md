@@ -36,7 +36,10 @@ you can follow the quick steps below to start enjoying jasmine-species.
 ### 2. Import the grammar you wish to use
 
 {% highlight javascript %}
-
+    Namespace.use('jasmine.grammar.FeatureStory.*');  // imports feature, scenario, ...
+    Namespace.use('jasmine.grammar.GWT.*');   // imports given, when, ...
+    
+    jasmine.getEnv().addReporter(new jasmine.reporting.StyledHtmlReporter());
 {% endhighlight %}
 
 ### 3. Plug-in the StyledHtmlReporter to handle your spec reporting
