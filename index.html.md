@@ -12,66 +12,13 @@ software.
 It also provides an Html Reporter that outputs cleaner specs. 
 
 
-## Quick Start
+## Quick Start -- an interactive example
 
-If you already have a spec runner with Jasmine and a namespace importer, 
-you can follow the quick steps below to start enjoying jasmine-species.
-
-### 1. Add jasmine-grammar and jasmine-reporting to your runner page
-
-{% highlight javascript %}
-    <link rel="stylesheet" type="text/css" href="lib/jasmine-species/calm.css">
-
-    <script type="text/javascript" src="lib/jasmine-species/jasmine-grammar.js"></script>
-    <script type="text/javascript" src="lib/jasmine-species/jasmine-reporting.js"></script>
-    
-    Namespace.use('jasmine.grammar.FeatureStory.*');  // imports feature, scenario, ...
-    Namespace.use('jasmine.grammar.GWT.*');   // imports given, when, ...
-    
-    jasmine.getEnv().addReporter(new jasmine.reporting.StyledHtmlReporter());
-    
-{% endhighlight %}
-
-### 2. Import the grammar you wish to use
-
-{% highlight javascript %}
-    Namespace.use('jasmine.grammar.FeatureStory.*');  // imports feature, scenario, ...
-    Namespace.use('jasmine.grammar.GWT.*');   // imports given, when, ...
-    
-    jasmine.getEnv().addReporter(new jasmine.reporting.StyledHtmlReporter());
-{% endhighlight %}
-
-### 3. Plug-in the StyledHtmlReporter to handle your spec reporting
-
-{% highlight javascript %}
-
-{% endhighlight %}
-
-### 4. Happy BDDing!
-
-Create your specs with the extended grammar:
-
-{% highlight javascript %}
-feature('Number crunching', function() {
-    scenario('Adding two positive integers', function() {
-        var ans = 0;
-        
-        when('I sum the numbers 5 and 10', function() {
-            ans = 5 + 10;
-        });
-        
-        then('The answer should be 15', function() {
-            expect(ans).toEqual(15);
-        });
-    });
-});
-{% endhighlight %}
-
-
-## An interactive example on JSFiddle
+If you just want to jump right in and get started with Jasmine-Species, 
+here is an interactive example on JSFiddle.net
 
 <iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/rudylattae/R9Vrk/embedded/js,result/">
-    "Jasmine-Species - Quick Start" example on jsfiddle
+    <a href="http://jsfiddle.net/rudylattae/R9Vrk">"Jasmine-Species - Quick Start" example on jsfiddle</a>
 </iframe>
 
 
