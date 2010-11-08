@@ -57,6 +57,15 @@ pre { font-size: 0.9em }
 #nav ul { list-style-type: none }
 #nav a { font-size: 1.3em }
 
+#nutshell ol {
+    font: italic 1.3em Georgia, Times, serif;
+    color: #999;
+}
+#nutshell p, #nutshell pre, {
+    font: normal 1em;
+    color: #333;
+}
+
 #footer {
     padding-top: 0.5em;
     border-top: 2px solid #999;
