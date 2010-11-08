@@ -65,8 +65,8 @@ pre { font-size: 0.9em }
 #nav a { font-size: 1.3em }
 
 #nutshell ol {
-    font: italic Georgia, Times, serif;
-    color: #777;
+    font: italic bold 1em Georgia, Times, serif;
+    color: #bbb;
     padding-left: 0;
     margin-left: 1.5em
 }
@@ -76,7 +76,7 @@ pre { font-size: 0.9em }
 }
 #nutshell h4 { margin: 0.85em 0 0.5em 0}
 #nutshell img {
-    border: 3px solid #999;
+    border: 5px solid #bbb;
     padding: 0.2em;
 }
 
