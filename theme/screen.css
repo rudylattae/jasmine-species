@@ -39,7 +39,10 @@ layout
 
 #aside { width: 38%; }
 
-.highlight { width: 100%; }
+.highlight { 
+    width: 90%; 
+    overflow: auto;
+}
 
 
 /* 
