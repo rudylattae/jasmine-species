@@ -35,9 +35,11 @@ layout
     margin-right: auto;
 }
 
-#main {  width: 62%; }
+#main { width: 62%; }
 
 #aside { width: 38%; }
+
+.highlight { width: 100%; }
 
 
 /* 
