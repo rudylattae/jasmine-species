@@ -35,9 +35,9 @@ layout
     margin-right: auto;
 }
 
-#main {  width: 70%; }
+#main {  width: 62%; }
 
-#aside { width: 30%; }
+#aside { width: 38%; }
 
 
 /* 
@@ -45,7 +45,10 @@ layout
 style
 =====
 */
-a { color: #aac261; text-decoration:none }
+a { 
+    color: #aac261; 
+    text-decoration:none 
+}
 a:visited { color: #999 }
 a:hover { color: #669933 }
 pre { font-size: 0.9em }
@@ -54,7 +57,10 @@ pre { font-size: 0.9em }
 
 #header h1 a { color: #030 }
 
-#nav ul { list-style-type: none }
+#nav ul { 
+    list-style-type: none; 
+    padding-left:0
+}
 #nav a { font-size: 1.3em }
 
 #nutshell ol {
