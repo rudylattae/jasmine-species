@@ -12,26 +12,44 @@ software.
 It also provides an Html Reporter that outputs cleaner specs. 
 
 
-## A trivial example
+## Quick Start
 
-<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/rudylattae/J4PpC/3/embedded/">
-    Example code from jsFiddle
-</iframe>
+If you already have a spec runner with Jasmine and a namespace importer, 
+you can follow the quick steps below to start enjoying jasmine-species.
+
+### 1. Add jasmine-grammar and jasmine-reporting to your runner page
+
+{% highlight html %}
+    <link rel="stylesheet" type="text/css" href="lib/jasmine-species/calm.css">
+
+    <script type="text/javascript" src="lib/jasmine-species/jasmine-grammar.js"></script>
+    <script type="text/javascript" src="lib/jasmine-species/jasmine-reporting.js"></script>
+{% endhighlight %}
+
+### 2. Import the grammar you wish to use
 
 {% highlight javascript %}
-feature('Number addition', function() {
+    Namespace.use('jasmine.grammar.FeatureStory.*');  // imports feature, scenario, ...
+    Namespace.use('jasmine.grammar.GWT.*');   // imports given, when, ...
+{% endhighlight %}
+
+### 3. Plug-in the StyledHtmlReporter to handle your spec reporting
+
+{% highlight javascript %}
+jasmine.getEnv().addReporter(new jasmine.reporting.StyledHtmlReporter());
+{% endhighlight %}
+
+### 4. Happy BDDing!
+
+Create your specs with the extended grammar:
+
+{% highlight javascript %}
+feature('Number crunching', function() {
     scenario('Adding two positive integers', function() {
-        var num1 = 0;
-        var num2 = 0;
         var ans = 0;
         
-        given('I have the numbers 5 and 10', function() {
-            num1 = 5;
-            num2 = 10;
-        });
-        
-        when('I sum them', function() {
-            ans = num1 + num2;
+        when('I sum the numbers 5 and 10', function() {
+            ans = 5 + 10;
         });
         
         then('The answer should be 15', function() {
@@ -40,6 +58,13 @@ feature('Number addition', function() {
     });
 });
 {% endhighlight %}
+
+
+## An interactive example on JSFiddle
+
+<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/rudylattae/R9Vrk/embedded/">
+    "Jasmine-Species - Quick Start" example on jsfiddle
+</iframe>
 
 
 ## Features
@@ -65,12 +90,3 @@ feature('Number addition', function() {
 
     - You could try [AJILE](http://ajile.net/)
 
-
-## Quick Start
-
-1. Add Jasmine-species and its requirements to your runner page
-2. Import the grammar you wish to use
-3. Proceed with your BDD cycle as normal
-
-**For bonus points**, Include the `calm.css` stylesheet and 
-plug-in the StyledHtmlReporter to output your spec reports.
