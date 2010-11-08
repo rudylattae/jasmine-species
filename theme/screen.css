@@ -59,17 +59,24 @@ pre { font-size: 0.9em }
 
 #nav ul { 
     list-style-type: none; 
-    padding-left:0
+    padding-left: 0
 }
 #nav a { font-size: 1.3em }
 
 #nutshell ol {
     font: italic 1.3em Georgia, Times, serif;
     color: #999;
+    padding-left: 0;
+    margin-left: 1.5em
 }
-#nutshell p, #nutshell pre, {
+#nutshell p, #nutshell pre, h4 {
     font: normal 1em;
     color: #333;
+}
+#nutshell h4 { margin: 0.5em 0}
+#nutshell .img {
+    border: 3px solid #999;
+    padding: 0.2em;
 }
 
 #footer {
