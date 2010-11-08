@@ -24,19 +24,25 @@ you can follow the quick steps below to start enjoying jasmine-species.
 
     <script type="text/javascript" src="lib/jasmine-species/jasmine-grammar.js"></script>
     <script type="text/javascript" src="lib/jasmine-species/jasmine-reporting.js"></script>
+    
+    // ...
+    Namespace.use('jasmine.grammar.FeatureStory.*');  // imports feature, scenario, ...
+    Namespace.use('jasmine.grammar.GWT.*');   // imports given, when, ...
+    
+    jasmine.getEnv().addReporter(new jasmine.reporting.StyledHtmlReporter());
+    
 {% endhighlight %}
 
 ### 2. Import the grammar you wish to use
 
 {% highlight javascript %}
-    Namespace.use('jasmine.grammar.FeatureStory.*');  // imports feature, scenario, ...
-    Namespace.use('jasmine.grammar.GWT.*');   // imports given, when, ...
+
 {% endhighlight %}
 
 ### 3. Plug-in the StyledHtmlReporter to handle your spec reporting
 
 {% highlight javascript %}
-jasmine.getEnv().addReporter(new jasmine.reporting.StyledHtmlReporter());
+
 {% endhighlight %}
 
 ### 4. Happy BDDing!
@@ -62,7 +68,7 @@ feature('Number crunching', function() {
 
 ## An interactive example on JSFiddle
 
-<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/rudylattae/R9Vrk/embedded/">
+<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/rudylattae/R9Vrk/embedded/js,result/">
     "Jasmine-Species - Quick Start" example on jsfiddle
 </iframe>
 
