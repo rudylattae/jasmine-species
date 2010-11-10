@@ -6,7 +6,7 @@ Extensions to the Jasmine api to enable alternate BDD approaches.
 ## Get started
 
 For information on how to use Jasmine Species, head to the project site at 
-http://rudylattae.github.com/jasmine-species/
+(http://rudylattae.github.com/jasmine-species/)
 
 
 ## Contribute
@@ -19,7 +19,7 @@ and create a pull request. I'll be more than happy to merge in your work.
 
 * [Rudy Lattae](http://bitorb.com)
 
-## Speak-up
+## Speak up
 
 If you like it or think it's complete crap, hit me up on twitter 
 [@RudyLattae](http://twitter.com/RudyLattae)
