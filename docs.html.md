@@ -37,11 +37,11 @@ jasmine.grammar.FeatureStory
 {% highlight javascript %}
 component('ATM', function() {
     feature('Withdrawing cash', function() {
-        scenario('Enough money in account', function() {
+        scenario('Enough funds to cover requested amount', function() {
             // ... blah, blah, blah ...    
         });
         
-        scenario('Non sufficient funds in account', function() {
+        scenario('Non sufficient funds', function() {
             // ... blah, blah, blah ...    
         });
     });

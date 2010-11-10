@@ -44,7 +44,7 @@ body.home #main { width: 68% }
 body.home #aside { width: 32% }
 
 .highlight { 
-    width: 90%; 
+    width: 95%;
     overflow: auto;
 }
 
