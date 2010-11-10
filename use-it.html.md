@@ -3,8 +3,7 @@ layout: default
 title: Use it
 ---
 
-
-## How to use Jasmine Species
+## Use it!
 
 Jasmine Species provides two components that extend the base Jasmine API. 
 

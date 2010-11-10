@@ -27,7 +27,7 @@ here is an interactive example on JSFiddle.net
 **Alternate grammar to describe the behavior of your software:**
 
 * [Feature/Story](docs.html#featurestory_grammar)
-* [Given, When, Then (GWT)](docs.html#gwt_grammar)
+* [Given, When, Then (GWT)](docs.html#given_when_then_gwt_grammar)
 * [Context/Specification](docs.html#contextspecification_grammar)
 
 **Cleaner Html reporting:**
