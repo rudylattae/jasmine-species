@@ -5,7 +5,7 @@ title: Start
 
 ## Overview
 
-Jasmine-species enables you to go beyond "describe" and "it" when creating 
+Jasmine Species enables you to go beyond "describe" and "it" when creating 
 [Jasmine](http://pivotal.github.com/jasmine/) specification for your JavaScript 
 software.
 
@@ -14,11 +14,11 @@ It also provides an Html Reporter that outputs cleaner specs.
 
 ## Quick Start -- an interactive example
 
-If you just want to jump right in and get started with Jasmine-Species, 
+If you just want to jump right in and get started with Jasmine Species, 
 here is an interactive example on JSFiddle.net
 
 <iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/rudylattae/R9Vrk/embedded/js,result/">
-    <a href="http://jsfiddle.net/rudylattae/R9Vrk">"Jasmine-Species - Quick Start" example on jsfiddle</a>
+    <a href="http://jsfiddle.net/rudylattae/R9Vrk">"Jasmine Species - Quick Start" example on jsfiddle</a>
 </iframe>
 
 
@@ -26,9 +26,9 @@ here is an interactive example on JSFiddle.net
 
 **Alternate grammar to describe the behavior of your software:**
 
-* Feature/Story
-* Given, When, Then (GWT)
-* Context/Specification
+* [Feature/Story](docs.html#feature_story_grammar)
+* [Given, When, Then (GWT)](/jasmine-species/docs#gwt_grammar)
+* [Context/Specification](/jasmine-species/docs#context_specification_grammar)
 
 **Cleaner Html reporting:**
 
