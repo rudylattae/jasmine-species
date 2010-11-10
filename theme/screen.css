@@ -73,6 +73,11 @@ pre { font-size: 0.9em }
 }
 #nav a { font-size: 1.3em }
 
+#download ul { 
+    list-style-type: none; 
+    padding-left: 0
+}
+
 #nutshell ol {
     font: italic bold 1em Georgia, Times, serif;
     color: #bbb;
