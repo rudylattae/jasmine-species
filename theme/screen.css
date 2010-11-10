@@ -75,8 +75,10 @@ pre { font-size: 0.9em }
 
 #download ul { 
     list-style-type: none; 
-    padding-left: 0
+    padding-left: 0.5em
 }
+#download li { padding-left: 0.5em }
+#download h4 { margin: 0.85em 0 0.5em 0}
 
 #nutshell ol {
     font: italic bold 1em Georgia, Times, serif;
