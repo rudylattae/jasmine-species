@@ -40,8 +40,8 @@ layout
     padding-left: 2em
 }
 
-body.home #main { width: 60% }
-body.home #aside { width: 40% }
+body.home #main { width: 68% }
+body.home #aside { width: 32% }
 
 .highlight { 
     width: 90%; 
