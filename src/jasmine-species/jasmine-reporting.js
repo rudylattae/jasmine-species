@@ -1,13 +1,13 @@
 /**
- * Jasmine-Reporting - Companion reporting with metadata output for your Jasmine specs with extended grammar
+ * Jasmine Reporting - Companion reporting with metadata output for your 
+ * Jasmine specs with extended grammar
+ * 
  * Copyright (C) 2010, Rudy Lattae
  * License: Simplified BSD
  */
  
 // Top level namespace for the package
 jasmine.reporting = (typeof jasmine.reporting === 'undefined') ? {} : jasmine.reporting;
-
-jasmine.reporting.VERSION = '0.5.1dev';
 
 
 /**

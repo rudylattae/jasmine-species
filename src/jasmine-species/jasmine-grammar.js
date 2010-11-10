@@ -1,5 +1,6 @@
 /**
- * Jasmine-Grammar - Additional Jasmine grammar to enable alternate BDD approaches.
+ * Jasmine Grammar - Additional Jasmine grammar to enable alternate BDD approaches.
+ * 
  * Copyright (C) 2010, Rudy Lattae
  * License: Simplified BSD
  * 
@@ -14,8 +15,6 @@
 
 // Top level namespace for the package
 jasmine.grammar = (typeof jasmine.grammar === 'undefined') ? {} : jasmine.grammar;
-
-jasmine.grammar.VERSION = '0.8.1b';
 
 
 /**
