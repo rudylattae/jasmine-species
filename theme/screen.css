@@ -77,7 +77,10 @@ pre { font-size: 0.9em }
     list-style-type: none; 
     padding-left: 0.5em
 }
-#download li { padding-left: 0.5em }
+#download li { 
+    padding-left: 0em;
+    margin-left: 0.5em
+}
 #download h4 { margin: 0.85em 0 0.5em 0}
 
 #nutshell ol {
