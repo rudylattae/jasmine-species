@@ -11,11 +11,11 @@ For information on how to use Jasmine Species, head to the project site at
 
 ## Contribute
 
-The best way to contribute is to fork this project, make your modifications 
-and create a pull request. I'll be more than happy to merge in your work.
+The best way to contribute is to fork this project, make your modifications and 
+create a pull request. I'll be more than happy to merge in your work.
 
-The [wiki](https://github.com/rudylattae/jasmine-species/wiki) contains  
-rational for certain design decisions, some dev notes and even a dry back story. 
+The [wiki](https://github.com/rudylattae/jasmine-species/wiki) contains rational 
+for certain design decisions, some dev notes and even a dry back story. 
 Be sure to Check it out before you begin hacking and slashing.
 
 
