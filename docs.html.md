@@ -27,10 +27,10 @@ jasmine.grammar.FeatureStory
 
 **What's in it?**
 
-* feature: Defines a suite tagged as a "feature"
-* story: Defines a suite tagged as a "story"
-* scenario: Defines a suite tagged as a "scenario"
-* component: Defines a suite tagged as a "component"
+* **feature**: Defines a suite tagged as a "feature"
+* **story**: Defines a suite tagged as a "story"
+* **scenario**: Defines a suite tagged as a "scenario"
+* **component**: Defines a suite tagged as a "component"
 
 **Trivial usage example**
 
@@ -58,11 +58,11 @@ jasmine.grammar.GWT
 
 **What's in it?**
 
-* given: Defines a suite tagged as a "given" step (marked as "isIntermediate")
-* when: Defines a suite tagged as a "when" step (marked as "isIntermediate")
-* then: Defines a "then" spec that marks the conclusion of a Given, when, then construct
-* and: Defines an "and" spec that is a continuation from a "then" statement
-* but: Defines an "and" spec that is a continuation from a "then" statement
+* **given**: Defines a suite tagged as a "given" step (marked as "isIntermediate")
+* **when**: Defines a suite tagged as a "when" step (marked as "isIntermediate")
+* **then**: Defines a "then" spec that marks the conclusion of a Given, when, then construct
+* **and**: Defines an "and" spec that is a continuation from a "then" statement
+* **but**: Defines an "and" spec that is a continuation from a "then" statement
 
 **Trivial usage example**
 
@@ -99,9 +99,9 @@ jasmine.grammar.ContextSpecification
 
 **What's in it?**
 
-* concern: Defines a suite tagged as a "concern"
-* context: Defines a suite tagged as a "context"
-* spec: Defines a simple spec -- similar to "it"
+* **concern**: Defines a suite tagged as a "concern"
+* **context**: Defines a suite tagged as a "context"
+* **spec**: Defines a simple spec -- similar to "it"
 
 **Trivial usage example**
 
