@@ -83,17 +83,17 @@ jasmine.grammar.GWT = {
     },
     
     /**
-     * Defines a suite tagged as a "given" step
+     * Defines a "given" step as a spec that marks the beginning of a GWT chain
      */
-    given: function(description, specDefinitions) {
-        return jasmine.grammar.GWT.step('Given ' + description, specDefinitions, ['given'])
+    given: function(desc, func) {
+        return jasmine.grammar.getEnv().it('Given ' + desc, func);
     },
     
     /**
-     * Defines a suite tagged as a "when" step
+     * Defines a "when" step as a spec that marks the interesting event in a GWT chain
      */
-    when: function(description, specDefinitions) {
-        return jasmine.grammar.GWT.step('When ' + description, specDefinitions, ['when']);
+    when: function(desc, func) {
+        return jasmine.grammar.getEnv().it('When ' + desc, func);
     },
     
     /**

@@ -8,27 +8,33 @@ describe('jasmine.grammar.GWT', function() {
     });
     
     describe('given', function() {
-        it('should create a suite that is marked as an intermediary step', function() {
-            var suite = GWT.given('the first in a series of actions', function() {});
-            expect(suite.description).toBe('Given the first in a series of actions');
-            expect(suite.tags).toEqual(['step', 'given']);
-            expect(suite.isIntermediate).toBe(true);
+        it('should create a spec block within the current suite', function() {
+            var parentSuite = env.describe('dummy suite', function() {});
+            jasmine.grammar.getEnv().currentSuite = parentSuite;
+            
+            var spec = GWT.given('the first in a series of actions', function() {});
+            
+            expect(spec.description).toBe('Given the first in a series of actions');
+            expect(spec.suite).toBe(parentSuite);
         });
     });
     
     describe('when', function() {
-        it('should create a suite that is marked as an intermediary step', function() {
-            var suite = GWT.when('an event occurs', function() {});
-            expect(suite.description).toBe('When an event occurs');
-            expect(suite.tags).toEqual(['step', 'when']);
-            expect(suite.isIntermediate).toBe(true);
+        it('should create a spec block within the current suite', function() {
+            var parentSuite = env.describe('dummy suite', function() {});
+            jasmine.grammar.getEnv().currentSuite = parentSuite;
+            
+            var spec = GWT.when('an event occurs', function() {});
+            
+            expect(spec.description).toBe('When an event occurs');
+            expect(spec.suite).toBe(parentSuite);
         });
     });
     
     describe('then', function() {
         it('should create an end result specification item', function() {
-            // we need a suite before a spec
-            var parentSuite = GWT.given('dummy suite', function() {});
+            var parentSuite = env.describe('dummy suite', function() {});
+            
             jasmine.grammar.getEnv().currentSuite = parentSuite;
             
             var spec = GWT.then('expect this outcome', function() {});
@@ -39,8 +45,8 @@ describe('jasmine.grammar.GWT', function() {
     
     describe('and', function() {
         it('should create an end result specification item', function() {
-            // we need a suite before a spec
-            var parentSuite = GWT.given('dummy suite', function() {});
+            var parentSuite = env.describe('dummy suite', function() {});
+            
             jasmine.grammar.getEnv().currentSuite = parentSuite;
             
             var spec = GWT.and('expect this outcome', function() {});
@@ -51,8 +57,8 @@ describe('jasmine.grammar.GWT', function() {
     
     describe('but', function() {
         it('should create an end result specification item', function() {
-            // we need a suite before a spec
-            var parentSuite = GWT.given('dummy suite', function() {});
+            var parentSuite = env.describe('dummy suite', function() {});
+            
             jasmine.grammar.getEnv().currentSuite = parentSuite;
             
             var spec = GWT.but('expect this outcome', function() {});
