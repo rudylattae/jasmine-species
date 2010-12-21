@@ -18,16 +18,17 @@
 </body>
 <script type="text/javascript">
     (function() {
-        // register the handler to run the specs after the document is loaded
-        if (document.addEventListener) {
-            document.addEventListener("DOMContentLoaded", init, false);
-        } else {
-            window.onload = function() { init(); }
-        }
-    
-        function init() {
-            jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
-            jasmine.getEnv().execute();
+        var jasmineEnv = jasmine.getEnv();
+        var trivialReporter = new jasmine.TrivialReporter();
+        
+        jasmineEnv.addReporter(trivialReporter);
+        
+        jasmineEnv.specFilter = function(spec) {
+            return trivialReporter.specFilter(spec);
+        };
+      
+        window.onload = function() {
+            jasmineEnv.execute(); 
         }
     })();
 </script>
