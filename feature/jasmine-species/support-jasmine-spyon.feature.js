@@ -25,6 +25,6 @@ feature('Support Jasmine "spyOn" in Given, When, Then blocks', function() {
         then('the spy should indicate that it was called', function() {
             expect(obj.method).toHaveBeenCalled(); 
             expect(obj.method.callCount).toEqual(1); 
-        }); 
+        });
     });
 });
