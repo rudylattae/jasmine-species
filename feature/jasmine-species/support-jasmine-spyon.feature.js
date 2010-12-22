@@ -5,7 +5,7 @@ feature('Support Jasmine "spyOn" in Given, When, Then blocks', function() {
         'I want to use spies in my GWT blocks'
     ]);
     
-    scenario('Intercepting method calls', function() {
+    scenario('Intercepting a method call on an object', function() {
         var Klass = function() {};
         Klass.prototype.method = function() {
             return true;
