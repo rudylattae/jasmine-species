@@ -130,55 +130,6 @@ describe('jasmine.reporting.StyledHtmlReporter', function() {
         });
     });
     
-    describe('when reporting results for intermediate suites', function() { 
-        it('should render an intermediate suite with no specs as passed', function() {
-            var runner = env.currentRunner();
-            GWT.when('an intermediate event occurs', function() {});
-            
-            runner.execute();
-            
-            var divs = fakeDocument.body.getElementsByTagName("div");
-            var suiteDiv = getElementByClassName(divs, 'suite step when passed');
-            var suiteDescription = getElementByClassName(suiteDiv.children, 'description');
-            
-            expect(suiteDescription.text).toEqual('When an intermediate event occurs');
-        });
-        
-        it('should render an intermediate suite with passing specs as passed', function() {
-            var runner = env.currentRunner();
-            GWT.given('a pre-condition is met', function() {
-                env.it("should pass", function() {
-                    this.expect(true).toBeTruthy();
-                });
-            });
-            
-            runner.execute();
-            
-            var divs = fakeDocument.body.getElementsByTagName("div");
-            var suiteDiv = getElementByClassName(divs, 'suite step given passed');
-            var suiteDescription = getElementByClassName(suiteDiv.children, 'description');
-            
-            expect(suiteDescription.text).toEqual('Given a pre-condition is met');
-        });
-        
-        it('should render an intermediate suite with failing specs as failed', function() {
-            var runner = env.currentRunner();
-            GWT.given('a pre-condition is met', function() {
-                env.it("should fail", function() {
-                    this.expect(true).toBeFalsey();
-                });
-            });
-            
-            runner.execute();
-            
-            var divs = fakeDocument.body.getElementsByTagName("div");
-            var suiteDiv = getElementByClassName(divs, 'suite step given failed');
-            var suiteDescription = getElementByClassName(suiteDiv.children, 'description');
-            
-            expect(suiteDescription.text).toEqual('Given a pre-condition is met');
-        });
-    });
-    
     describe('when reporting results for suites with details', function() {
         describe('given the details are provided as a string', function() {
             it('should render the details as a paragraph with the given tag as the class attribute', function() {

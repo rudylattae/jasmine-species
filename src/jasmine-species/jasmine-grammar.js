@@ -66,23 +66,6 @@ jasmine.grammar.FeatureStory = {
 jasmine.grammar.GWT = {
     
     /**
-     * Defines a suite tagged as a "step" and marked as "isIntermediate"
-     * 
-     * An intermediate suite is not expected to declare any expectations. As such
-     * any reporter rendering the results of an intermediate suite should render it as passed
-     * if it does not have an explicitly failed expectation.
-     */
-    step: function(description, specDefinitions, tags) {
-        var suite = jasmine.grammar.getEnv().describe(description, specDefinitions);
-        suite.tags = ['step'];
-        if (typeof tags !== 'undefined') {
-            suite.tags = suite.tags.concat(tags);
-        }
-        suite.isIntermediate = true;
-        return suite;
-    },
-    
-    /**
      * Defines a "given" step as a spec that marks the beginning of a GWT chain
      */
     given: function(desc, func) {
