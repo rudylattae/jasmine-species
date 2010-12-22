@@ -41,21 +41,19 @@ jasmine.grammar.FeatureStory = {
     },
     
     /**
-     * Defines a suite tagged as a "scenario"
-     */
-    scenario: function(description, specDefinitions) {
-        var suite = jasmine.grammar.getEnv().describe('Scenario: ' + description, specDefinitions);
-        suite.tags = ['scenario'];
-        return suite;
-    },
-    
-    /**
      * Defines a suite tagged as a "component"
      */
     component: function(description, specDefinitions) {
         var suite = jasmine.grammar.getEnv().describe('Component: ' + description, specDefinitions);
         suite.tags = ['component'];
         return suite;
+    },
+    
+    /**
+     * Defines a spec marked as a "scenario"
+     */
+    scenario: function(desc, func) {
+        return jasmine.grammar.getEnv().it('Scenario: ' + desc, func);
     }
 };
 
@@ -66,38 +64,49 @@ jasmine.grammar.FeatureStory = {
 jasmine.grammar.GWT = {
     
     /**
-     * Defines a "given" step as a spec that marks the beginning of a GWT chain
+     * Defines a "given" step as a runs block that marks the beginning of a GWT chain
      */
     given: function(desc, func) {
-        return jasmine.grammar.getEnv().it('Given ' + desc, func);
+        return this._addStepToCurrentSpec('Given ' + desc, func);
     },
     
     /**
-     * Defines a "when" step as a spec that marks the interesting event in a GWT chain
+     * Defines a "when" step as a runs block that marks the interesting event in a GWT chain
      */
     when: function(desc, func) {
-        return jasmine.grammar.getEnv().it('When ' + desc, func);
+        return this._addStepToCurrentSpec('When ' + desc, func);
     },
     
     /**
-     * Defines a "then" spec that marks the conclusion of a Given, when, then construct
+     * Defines a "then" step as a runs block that marks the conclusion of a Given, when, then construct
      */
     then: function(desc, func) {
-        return jasmine.grammar.getEnv().it('Then ' + desc, func);
+        return this._addStepToCurrentSpec('Then ' + desc, func);
     },
     
     /**
-     * Defines an "and" spec that is a continuation from a "then" statement
+     * Defines an "and" step as a runs block that is a continuation from a "then" statement
      */
     and: function(desc, func) {
-        return jasmine.grammar.getEnv().it('And ' + desc, func);
+        return this._addStepToCurrentSpec('And ' + desc, func);
     },
     
     /**
-     * Defines a "but" spec that is a continuation from a "then" statement
+     * Defines a "but" step as a runs block that is a continuation from a "then" statement
      */
     but: function(desc, func) {
-        return jasmine.grammar.getEnv().it('But ' + desc, func);
+        return this._addStepToCurrentSpec('But ' + desc, func);
+    },    
+        
+    /**
+     * Adds the given function as a step (runs block) in the current spec. Also adds the description to the details list of the spec
+     */
+    _addStepToCurrentSpec: function(desc, func) {
+        var spec = jasmine.grammar.getEnv().currentSpec;
+        spec.details = spec.details || [];
+        spec.details.push(desc);
+        spec.runs(func);
+        return spec;
     }
 };
 
