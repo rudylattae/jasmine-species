@@ -36,7 +36,7 @@ describe('jasmine.reporting.StyledHtmlReporter', function() {
     };
     
     describe('when reporting results for default suites and specs', function() {
-        it('should render a skipped suite with "skipped" class', function() {
+        it('renders a skipped suite with "skipped" class', function() {
             var runner = env.currentRunner();
             env.describe("A skipped suite", function() {});
             
@@ -48,7 +48,7 @@ describe('jasmine.reporting.StyledHtmlReporter', function() {
             }).not.toThrow();
         });
         
-        it('should render a passing suite with "passed" class', function() {
+        it('renders a passing suite with "passed" class', function() {
             var runner = env.currentRunner();
             env.describe("A passing suite", function() {
                 env.it("should pass", function() {
@@ -64,7 +64,7 @@ describe('jasmine.reporting.StyledHtmlReporter', function() {
             expect(suiteDiv.innerHTML).toContain("should pass");
         });
         
-        it('should render a failing suite with "failed" class', function() {
+        it('renders a failing suite with "failed" class', function() {
             var runner = env.currentRunner();
             env.describe("A failing suite", function() {
                 env.it("should fail", function() {
@@ -82,7 +82,7 @@ describe('jasmine.reporting.StyledHtmlReporter', function() {
     });
     
     describe('when reporting results for suites and specs with tags', function() { 
-        it('should render tags on a skipped suite as class attributes', function() {
+        it('renders tags on a skipped suite as class attributes', function() {
             var runner = env.currentRunner();
             FeatureStory.feature('A skipped suite', function() {});
             
@@ -95,7 +95,7 @@ describe('jasmine.reporting.StyledHtmlReporter', function() {
             expect(suiteDescription.text).toEqual('Feature: A skipped suite');
         });
         
-        it('should render tags on a passing suite as class attributes', function() {
+        it('renders tags on a passing suite as class attributes', function() {
             var runner = env.currentRunner();
             FeatureStory.feature('A passing suite', function() {
                 env.it("should pass", function() {
@@ -112,7 +112,7 @@ describe('jasmine.reporting.StyledHtmlReporter', function() {
             expect(suiteDescription.text).toEqual('Feature: A passing suite');
         });
         
-        it('should render tags on a failing suite as class attributes', function() {
+        it('renders tags on a failing suite as class attributes', function() {
             var runner = env.currentRunner();
             FeatureStory.feature('A failing suite', function() {
                 env.it("should fail", function() {
@@ -132,7 +132,7 @@ describe('jasmine.reporting.StyledHtmlReporter', function() {
     
     describe('when reporting results for suites with details', function() {
         describe('given the details are provided as a string', function() {
-            it('should render the details as a paragraph with the given tag as the class attribute', function() {
+            it('renders the details as a paragraph with the given tag as the class attribute', function() {
                 var runner = env.currentRunner();
                 XDoc.example('Providing details for a suite', function() {
                     More.details('This is a simple example', 'note');
@@ -149,7 +149,7 @@ describe('jasmine.reporting.StyledHtmlReporter', function() {
         });
         
         describe('given the details are provided as a string with a list of tags', function() {
-            it('should render the details as a paragraph with the given tags as the class attributes', function() {
+            it('renders the details as a paragraph with the given tags as the class attributes', function() {
                 var runner = env.currentRunner();
                 XDoc.example('Providing details for a suite', function() {
                     More.details('This is a simple example', ['note', 'readme']);
@@ -166,7 +166,7 @@ describe('jasmine.reporting.StyledHtmlReporter', function() {
         });
         
         describe('given the details are provided as a list', function() {
-            it('should render the details as an unordered list', function() {
+            it('renders the details as an unordered list', function() {
                 var runner = env.currentRunner();
                 XDoc.example('Providing details for a suite', function() {
                     More.details(['Step 1', 'Step 2', 'Step 3'], 'info');
@@ -184,7 +184,7 @@ describe('jasmine.reporting.StyledHtmlReporter', function() {
     });
     
     describe('when reporting the results of "examples"', function() {
-        it('should render the contents of the example in "pre" "code" tags', function() {
+        it('renders the contents of the example in "pre" "code" tags', function() {
             var runner = env.currentRunner();
             XDoc.example('Illustrating the output of an example', function() {
                 env.describe("A simple example", function() {
