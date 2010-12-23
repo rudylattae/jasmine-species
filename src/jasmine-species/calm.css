@@ -45,7 +45,8 @@
     margin: 0px;
     border: none;
     padding-left: 0.5em;
-    margin-left: 0.5em; }
+    margin-left: 0.5em;
+    margin-top: 0.2em; }
     .spec.failed, 
     .spec.passed, 
     .spec.skipped {
@@ -71,13 +72,22 @@
     margin-left: 1em;
     padding-bottom: 0.5em; }
 
-.jasmine_reporter .suite ul.details {
-    font-size: 0.8em;
-    color: #777;
+.jasmine_reporter .summary ul {
+    font-size: 0.9em;
+    color: #333;
     padding-left: 0.2em;
     margin: 0 0.5em; }
 
-.jasmine_reporter .suite ul.details li {
+.jasmine_reporter .summary li {
+    list-style: none; }
+
+.jasmine_reporter .details ul {
+    font-size: 0.8em;
+    color: #777;
+    padding-left: 0.2em;
+    margin: 0 0.8em; }
+
+.jasmine_reporter .details li {
     list-style: none; }
 
 

@@ -59,9 +59,16 @@ jasmine.reporting.StyledHtmlReporter.prototype.reportRunnerStarting = function(r
     var suiteTags = (typeof suite.tags === 'undefined') ? '' : ' ' + suite.tags.join(' ');
     var suiteDiv = this.createDom('div', { className: 'suite' + suiteTags },
         this.createDom('a', { className: 'run_spec', href: '?spec=' + encodeURIComponent(suite.getFullName()) }, "run"),
-        this.createDom('a', { className: 'description', href: '?spec=' + encodeURIComponent(suite.getFullName()) }, suite.description),
-        (typeof suite.details !== 'undefined') ? this.createDomFromDetails(suite.details) : null,
-        (typeof suite.expose !== 'undefined' && suite.expose) ? this.createDom('pre', {}, suite.defs): null);
+        this.createDom('a', { className: 'description', href: '?spec=' + encodeURIComponent(suite.getFullName()) }, suite.description));
+        
+    if (suite.summary) {
+      suiteDiv.appendChild(this.createDom('div', {className: 'summary'}, this.createDomFromListOrString(suite.summary)));
+    }
+    
+    if (suite.expose) {
+      suiteDiv.appendChild(this.createDom('pre', {}, suite.defs));
+    }
+    
     this.suiteDivs[suite.id] = suiteDiv;
     var parentDiv = this.outerDiv;
     if (suite.parentSuite) {
@@ -99,24 +106,64 @@ jasmine.reporting.StyledHtmlReporter.prototype.reportSuiteResults = function(sui
   this.suiteDivs[suite.id].className += " " + status;
 };
 
+jasmine.reporting.StyledHtmlReporter.prototype.reportSpecResults = function(spec) {
+  var results = spec.results();
+  var status = results.passed() ? 'passed' : 'failed';
+  if (results.skipped) {
+    status = 'skipped';
+  }
+  var specDiv = this.createDom('div', { className: 'spec '  + status },
+      this.createDom('a', { className: 'run_spec', href: '?spec=' + encodeURIComponent(spec.getFullName()) }, "run"),
+      this.createDom('a', {
+        className: 'description',
+        href: '?spec=' + encodeURIComponent(spec.getFullName()),
+        title: spec.getFullName()
+      }, spec.description));
+
+  if (spec.details) {
+    specDiv.appendChild(this.createDom('div', {className: 'details'}, this.createDomFromListOrString(spec.details)));
+  }
+  
+  var resultItems = results.getItems();
+  var messagesDiv = this.createDom('div', { className: 'messages' });
+  for (var i = 0; i < resultItems.length; i++) {
+    var result = resultItems[i];
+
+    if (result.type == 'log') {
+      messagesDiv.appendChild(this.createDom('div', {className: 'resultMessage log'}, result.toString()));
+    } else if (result.type == 'expect' && result.passed && !result.passed()) {
+      messagesDiv.appendChild(this.createDom('div', {className: 'resultMessage fail'}, result.message));
+
+      if (result.trace.stack) {
+        messagesDiv.appendChild(this.createDom('div', {className: 'stackTrace'}, result.trace.stack));
+      }
+    }
+  }
+
+  if (messagesDiv.childNodes.length > 0) {
+    specDiv.appendChild(messagesDiv);
+  }
+
+  this.suiteDivs[spec.suite.id].appendChild(specDiv);
+};
 
 /**
- * Creates the proper dom element for the given details object.
+ * Creates the proper dom element for the given data object.
  *
- * If the details.value is a simple string, the element created is a "p".
- * If the details.value is a list, the element created is an unordered list.
- * The details.tags are rendered to the class attribute on the dom element created  
+ * If the data is a simple string, the element created is a "p".
+ * If the data is a list, the element created is an unordered list.
+ * The tags are rendered to the class attribute on the dom element created  
  */
-jasmine.reporting.StyledHtmlReporter.prototype.createDomFromDetails = function(details) {
+jasmine.reporting.StyledHtmlReporter.prototype.createDomFromListOrString = function(data, tags) {
     var classAttrs = '';
-    if (typeof details.tags !== 'undefined') {
-        classAttrs = (details.tags instanceof Array) ? details.tags.join(' ') : details.tags; 
+    if (typeof tags !== 'undefined') {
+        classAttrs = (tags instanceof Array) ? tags.join(' ') : tags; 
     }
-    if (details.value instanceof Array) {
-        return this.createDomList('ul', { className: classAttrs}, details.value);
+    if (data instanceof Array) {
+        return this.createDomList('ul', ((classAttrs == '') ? {} : { className: classAttrs}), data);
     }
     
-    return this.createDom('p', { className: classAttrs}, details.value);
+    return this.createDom('p', { className: classAttrs}, data);
 }
 
 /**

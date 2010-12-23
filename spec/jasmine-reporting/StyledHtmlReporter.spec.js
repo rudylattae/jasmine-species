@@ -130,59 +130,64 @@ describe('jasmine.reporting.StyledHtmlReporter', function() {
         });
     });
     
-    describe('when reporting results for suites with details', function() {
-        describe('given the details are provided as a string', function() {
-            it('renders the details as a paragraph with the given tag as the class attribute', function() {
+    describe('when reporting results for suite with summary entries', function() {
+        describe('given a single summary entry', function() {
+            it('renders the summary as an unordered list', function() {
                 var runner = env.currentRunner();
-                XDoc.example('Providing details for a suite', function() {
-                    More.details('This is a simple example', 'note');
+                env.describe('A suite with summary', function() {
+                    More.summary('Summary content');
                 });
                 
                 runner.execute();
             
                 var divs = fakeDocument.body.getElementsByTagName("div");
-                var suiteDiv = getElementByClassName(divs, 'suite example skipped');
-                var suiteDetails = getElementByClassName(suiteDiv.children, 'note');
+                var suiteDiv = getElementByClassName(divs, 'suite skipped');
+                var suiteSummary = getElementByClassName(suiteDiv.children, 'summary');
                 
-                expect(suiteDetails.textContent).toEqual('This is a simple example');
+                expect(suiteSummary.children[0].textContent).toEqual('Summary content');
             });
         });
         
-        describe('given the details are provided as a string with a list of tags', function() {
-            it('renders the details as a paragraph with the given tags as the class attributes', function() {
+        describe('given multiple summary entries', function() {
+            it('renders the summary as an unordered list', function() {
                 var runner = env.currentRunner();
-                XDoc.example('Providing details for a suite', function() {
-                    More.details('This is a simple example', ['note', 'readme']);
+                env.describe('A suite with summary', function() {
+                    More.summary('Summary content');
+                    More.summary('Another summary content');
                 });
                 
                 runner.execute();
             
                 var divs = fakeDocument.body.getElementsByTagName("div");
-                var suiteDiv = getElementByClassName(divs, 'suite example skipped');
-                var suiteDetails = getElementByClassName(suiteDiv.children, 'note readme');
+                var suiteDiv = getElementByClassName(divs, 'suite skipped');
+                var suiteSummary = getElementByClassName(suiteDiv.children, 'summary');
                 
-                expect(suiteDetails.textContent).toEqual('This is a simple example');
-            });
-        });
-        
-        describe('given the details are provided as a list', function() {
-            it('renders the details as an unordered list', function() {
-                var runner = env.currentRunner();
-                XDoc.example('Providing details for a suite', function() {
-                    More.details(['Step 1', 'Step 2', 'Step 3'], 'info');
-                });
-                
-                runner.execute();
-            
-                var divs = fakeDocument.body.getElementsByTagName("div");
-                var suiteDiv = getElementByClassName(divs, 'suite example skipped');
-                var suiteDetails = getElementByClassName(suiteDiv.children, 'info');
-                
-                expect(suiteDetails.children[1].textContent).toEqual('Step 2');
+                expect(suiteSummary.children[0].children[1].textContent).toEqual('Another summary content');
             });
         });
     });
     
+    describe('when reporting results for specs with details', function() {
+        describe('given a single detail item', function() {
+            it('renders the detail as an unordered list', function() {
+                var runner = env.currentRunner();
+                env.describe('A suite', function() {
+                    env.it('A spec with details', function() {
+                        More.details('Detail content');
+                    });
+                });
+                
+                runner.execute();
+            
+                var divs = fakeDocument.body.getElementsByTagName("div");
+                var specDiv = getElementByClassName(divs, 'spec passed');
+                var specDetails = getElementByClassName(specDiv.children, 'details');
+                
+                expect(specDetails.children[0].children[0].textContent).toEqual('Detail content');
+            });
+        });
+    });
+        
     describe('when reporting the results of "examples"', function() {
         it('renders the contents of the example in "pre" "code" tags', function() {
             var runner = env.currentRunner();

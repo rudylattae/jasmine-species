@@ -7,45 +7,75 @@ describe('jasmine.grammar.More', function() {
         jasmine.grammar._currentEnv = env;
     });
     
-    describe('details', function() {
-        it('attaches the given details (value, tags) to the current suite', function() {
-            var suite = new jasmine.Suite(
-                jasmine.grammar.getEnv(), 
-                'A dummy suite', 
-                function() {}, 
-                jasmine.grammar.getEnv().currentSuite);
+    describe('summary', function() {
+        it('attaches the given summary to the current suite', function() {
+            var expectedSummary = 'A summary of this example';
+            var suite = env.describe('dummy suite', function() {});
             jasmine.grammar.getEnv().currentSuite = suite;
             
-            More.details('Further details about this example', 'info');
+            More.summary(expectedSummary);
             
-            expect(suite.description).toBe('A dummy suite');
-            expect(suite.details.value).toBe('Further details about this example');
-            expect(suite.details.tags).toBe('info');
+            expect(suite.summary[0]).toEqual(expectedSummary);
         });
         
-        it('adds a "details" tag to the details object if no tags are provided', function() {
-            var suite = new jasmine.Suite(
-                jasmine.grammar.getEnv(), 
-                'A dummy suite', 
-                function() {}, 
-                jasmine.grammar.getEnv().currentSuite);
+        it('appends additional summary entries to the current suite when applied more than once', function() {
+            var suite = env.describe('dummy suite', function() {});
             jasmine.grammar.getEnv().currentSuite = suite;
             
-            More.details('Details with no tags initially');
+            More.summary('Summary 1');
+            More.summary('Summary 2');
             
-            expect(suite.description).toBe('A dummy suite');
-            expect(suite.details.value).toBe('Details with no tags initially');
-            expect(suite.details.tags).toBe('details');
+            expect(suite.summary[1]).toEqual('Summary 2');
+        });
+        
+        it('attaches a variable number of summary entries to the current suite with one call', function() {
+            var suite = env.describe('dummy suite', function() {});
+            jasmine.grammar.getEnv().currentSuite = suite;
+            
+            More.summary('First Summary', 'Second Summary', 'Last Summary');
+            
+            expect(suite.summary[0]).toEqual('First Summary');
+            expect(suite.summary[1]).toEqual('Second Summary');
+            expect(suite.summary[2]).toEqual('Last Summary');
         });
     });
-});
-
-describe('jasmine.grammar.SuiteDetails', function() {
-    it('should create a details object with the given value and tags', function() {
-        var expectedValue = 'Some further details on the suite';
-        var d = new jasmine.grammar.SuiteDetails(expectedValue, 'info');
+    
+    describe('details', function() {
+        it('attaches the given details to the current spec', function() {
+            var expectedDetails = 'More info about this spec';
+            var suite = env.describe('dummy suite', function() {});
+            jasmine.grammar.getEnv().currentSuite = suite;
+            var spec = env.describe('dummy spec', function() {});
+            jasmine.grammar.getEnv().currentSpec = spec;
+            
+            More.details(expectedDetails);
+            
+            expect(spec.details[0]).toEqual(expectedDetails);
+        });
         
-        expect(d.value).toBe(expectedValue);
-        expect(d.tags).toBe('info');
+        it('appends additional details to the current spec when applied more than once', function() {
+            var suite = env.describe('dummy suite', function() {});
+            jasmine.grammar.getEnv().currentSuite = suite;
+            var spec = env.describe('dummy spec', function() {});
+            jasmine.grammar.getEnv().currentSpec = spec;
+            
+            More.details('Detail 1');
+            More.details('Detail 2');
+            
+            expect(spec.details[1]).toEqual('Detail 2');
+        });
+        
+        it('attaches a variable number of details to the current spec with one call', function() {
+            var suite = env.describe('dummy suite', function() {});
+            jasmine.grammar.getEnv().currentSuite = suite;
+            var spec = env.describe('dummy spec', function() {});
+            jasmine.grammar.getEnv().currentSpec = spec;
+            
+            More.details('First Detail', 'Second Detail', 'Last Detail');
+            
+            expect(spec.details[0]).toEqual('First Detail');
+            expect(spec.details[1]).toEqual('Second Detail');
+            expect(spec.details[2]).toEqual('Last Detail');
+        });
     });
 });

@@ -187,18 +187,38 @@ jasmine.grammar.XDoc = {
 jasmine.grammar.More = {
     
     /**
-     * Attaches details to the parent suite.
+     * Adds summary content to the current suite.
      *
-     * @param {String}/{List} value     content of the details
-     * @param {String}  tags            the tags for the details
+     * @param {String} content(s)     variable number of detail content
      * @see jasmine.grammar.SuiteDetails
      */
-    details: function(value, tags) {
-        if (typeof tags === 'undefined') {
-            tags = 'details';
+    summary: function() {
+        var suite = jasmine.grammar.getEnv().currentSuite;
+        suite.summary = suite.summary || [];
+        
+        if (arguments.length > 0) {
+            for(i=0; i<arguments.length; i++) {
+                suite.summary.push(arguments[i]);
+            }
         }
-        jasmine.grammar.getEnv().currentSuite.details = new jasmine.grammar.SuiteDetails(value, tags);
-    }
+    },
+    
+    /**
+     * Adds detail entries in the current spec.
+     *
+     * @param {String} content(s)     variable number of detail content
+     * @see jasmine.grammar.SuiteDetails
+     */
+    details: function() {
+        var spec = jasmine.grammar.getEnv().currentSpec;
+        spec.details = spec.details || [];
+        
+        if (arguments.length > 0) {
+            for(i=0; i<arguments.length; i++) {
+                spec.details.push(arguments[i]);
+            }
+        }
+    },
 };
 
 
@@ -209,18 +229,5 @@ jasmine.grammar.More = {
  * Getter for the Jasmine environment. Makes it possible to inject a different environment when necessary.
  */
 jasmine.grammar.getEnv = function() {
-  return jasmine.grammar._currentEnv = jasmine.grammar._currentEnv || jasmine.getEnv();
-};
-
-/**
- * Defines a details object to be attached to a suite
- * 
- * @constructor
- * @param {String}/{List} value     the content of the details (string or list)
- * @param {String}  tags            the tags for the details
- * @see jasmine.grammar.More.details
- */
-jasmine.grammar.SuiteDetails = function(value, tags) {
-    this.value = value;
-    this.tags = tags;
+    return jasmine.grammar._currentEnv = jasmine.grammar._currentEnv || jasmine.getEnv();
 };
