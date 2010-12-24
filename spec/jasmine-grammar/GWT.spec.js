@@ -85,20 +85,48 @@ describe('jasmine.grammar.GWT', function() {
         });
     });
     
-    describe('"given, when, then" when used as steps in a spec', function() {
-        it('creates runs blocks in sequence and adds entries for all the steps to the spec details', function() {
-            GWT.given('a piece of cake', function() { return "I am a given"; });
-            GWT.when('I eat it', function() { return "I am a when"; });
-            GWT.then('I should have it too', function() { return "I am a then"; });
-            
-            expect(parentSpec.queue.blocks[1].func()).toEqual("I am a given");
-            expect(parentSpec.details[0]).toEqual('Given a piece of cake');
-            
-            expect(parentSpec.queue.blocks[2].func()).toEqual("I am a when");
-            expect(parentSpec.details[1]).toEqual('When I eat it');
-            
-            expect(parentSpec.queue.blocks[3].func()).toEqual("I am a then");
-            expect(parentSpec.details[2]).toEqual('Then I should have it too');
+    describe('"given, when, then, ..." grammar', function() {
+        describe('when used as steps in a spec', function() {
+            it('creates runs blocks in sequence and adds entries for all the steps to the spec details', function() {
+                GWT.given('a piece of cake', function() { return "I have my cake"; });
+                GWT.when('I eat it', function() { return "I just ate my cake"; });
+                GWT.then('I no longer have my cake', function() { return "I do not have my cake"; });
+                
+                expect(parentSpec.details[0]).toEqual('Given a piece of cake');
+                expect(parentSpec.queue.blocks[1].func()).toEqual("I have my cake");
+                
+                expect(parentSpec.details[1]).toEqual('When I eat it');
+                expect(parentSpec.queue.blocks[2].func()).toEqual("I just ate my cake");
+                
+                expect(parentSpec.details[2]).toEqual('Then I no longer have my cake');
+                expect(parentSpec.queue.blocks[3].func()).toEqual("I do not have my cake");
+            });
+        });
+        
+        describe('when used in combination with jasmine "spyOn"', function() {
+            it('the spy intercepts method calls as usual', function() {
+                var Klass = function() {};
+                Klass.prototype.method = function() {
+                    return true;
+                };
+                
+                var obj = new Klass();
+                
+                GWT.given('I spy on a method', function() {
+                    spyOn(obj, 'method');
+                    expect(obj.method.callCount).toEqual(0);
+                });
+                
+                GWT.when('the method is invoked', function() {
+                    obj.method();
+                });
+                
+                GWT.then('the spy should indicate that it was called', function() {
+                    expect(obj.method).toHaveBeenCalled(); 
+                    expect(obj.method.callCount).toEqual(1); 
+                });
+            });
         });
     });
 });
+    
