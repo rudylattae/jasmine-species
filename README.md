@@ -1,6 +1,6 @@
 # Jasmine Species
 
-Extensions to the Jasmine api to enable alternate BDD approaches.
+Extensions to the [Jasmine](http://pivotal.github.com/jasmine) api to enable alternate BDD approaches.
 
 
 ## Get started
