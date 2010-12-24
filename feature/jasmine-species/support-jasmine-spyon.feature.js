@@ -1,4 +1,4 @@
-feature('Support Jasmine "spyOn" in Given, When, Then blocks', function() {
+feature('Support for Jasmine "spyOn" in Given, When, Then blocks', function() {
     summary(
         'In order to clearly describe interactions between components in my software',
         'As a developer',

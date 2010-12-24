@@ -218,7 +218,7 @@ jasmine.grammar.More = {
                 spec.details.push(arguments[i]);
             }
         }
-    },
+    }
 };
 
 
