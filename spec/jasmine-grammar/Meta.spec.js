@@ -1,5 +1,5 @@
-describe('jasmine.grammar.More', function() {
-    var More = jasmine.grammar.More;
+describe('jasmine.grammar.Meta', function() {
+    var Meta = jasmine.grammar.Meta;
     var env;
         
     beforeEach(function() {
@@ -13,7 +13,7 @@ describe('jasmine.grammar.More', function() {
             var suite = env.describe('dummy suite', function() {});
             jasmine.grammar.getEnv().currentSuite = suite;
             
-            More.summary(expectedSummary);
+            Meta.summary(expectedSummary);
             
             expect(suite.summary[0]).toEqual(expectedSummary);
         });
@@ -22,8 +22,8 @@ describe('jasmine.grammar.More', function() {
             var suite = env.describe('dummy suite', function() {});
             jasmine.grammar.getEnv().currentSuite = suite;
             
-            More.summary('Summary 1');
-            More.summary('Summary 2');
+            Meta.summary('Summary 1');
+            Meta.summary('Summary 2');
             
             expect(suite.summary[1]).toEqual('Summary 2');
         });
@@ -32,7 +32,7 @@ describe('jasmine.grammar.More', function() {
             var suite = env.describe('dummy suite', function() {});
             jasmine.grammar.getEnv().currentSuite = suite;
             
-            More.summary('First Summary', 'Second Summary', 'Last Summary');
+            Meta.summary('First Summary', 'Second Summary', 'Last Summary');
             
             expect(suite.summary[0]).toEqual('First Summary');
             expect(suite.summary[1]).toEqual('Second Summary');
@@ -42,13 +42,13 @@ describe('jasmine.grammar.More', function() {
     
     describe('details', function() {
         it('attaches the given details to the current spec', function() {
-            var expectedDetails = 'More info about this spec';
+            var expectedDetails = 'Meta info about this spec';
             var suite = env.describe('dummy suite', function() {});
             jasmine.grammar.getEnv().currentSuite = suite;
             var spec = env.describe('dummy spec', function() {});
             jasmine.grammar.getEnv().currentSpec = spec;
             
-            More.details(expectedDetails);
+            Meta.details(expectedDetails);
             
             expect(spec.details[0]).toEqual(expectedDetails);
         });
@@ -59,8 +59,8 @@ describe('jasmine.grammar.More', function() {
             var spec = env.describe('dummy spec', function() {});
             jasmine.grammar.getEnv().currentSpec = spec;
             
-            More.details('Detail 1');
-            More.details('Detail 2');
+            Meta.details('Detail 1');
+            Meta.details('Detail 2');
             
             expect(spec.details[1]).toEqual('Detail 2');
         });
@@ -71,7 +71,7 @@ describe('jasmine.grammar.More', function() {
             var spec = env.describe('dummy spec', function() {});
             jasmine.grammar.getEnv().currentSpec = spec;
             
-            More.details('First Detail', 'Second Detail', 'Last Detail');
+            Meta.details('First Detail', 'Second Detail', 'Last Detail');
             
             expect(spec.details[0]).toEqual('First Detail');
             expect(spec.details[1]).toEqual('Second Detail');

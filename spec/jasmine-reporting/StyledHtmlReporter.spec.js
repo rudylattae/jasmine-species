@@ -7,7 +7,7 @@ describe('jasmine.reporting.StyledHtmlReporter', function() {
     var FeatureStory = jasmine.grammar.FeatureStory;
     var GWT = jasmine.grammar.GWT;
     var XDoc = jasmine.grammar.XDoc;
-    var More = jasmine.grammar.More;
+    var Meta = jasmine.grammar.Meta;
     
     // these helpers were ripped clean out of the jasmin's TrivialReporterSpec
     beforeEach(function() {
@@ -135,7 +135,7 @@ describe('jasmine.reporting.StyledHtmlReporter', function() {
             it('renders the summary as an unordered list', function() {
                 var runner = env.currentRunner();
                 env.describe('A suite with summary', function() {
-                    More.summary('Summary content');
+                    Meta.summary('Summary content');
                 });
                 
                 runner.execute();
@@ -152,8 +152,8 @@ describe('jasmine.reporting.StyledHtmlReporter', function() {
             it('renders the summary as an unordered list', function() {
                 var runner = env.currentRunner();
                 env.describe('A suite with summary', function() {
-                    More.summary('Summary content');
-                    More.summary('Another summary content');
+                    Meta.summary('Summary content');
+                    Meta.summary('Another summary content');
                 });
                 
                 runner.execute();
@@ -173,7 +173,7 @@ describe('jasmine.reporting.StyledHtmlReporter', function() {
                 var runner = env.currentRunner();
                 env.describe('A suite', function() {
                     env.it('A spec with details', function() {
-                        More.details('Detail content');
+                        Meta.details('Detail content');
                     });
                 });
                 

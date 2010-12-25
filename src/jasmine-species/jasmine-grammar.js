@@ -182,9 +182,9 @@ jasmine.grammar.XDoc = {
 
 
 /**
- * Some more useful constructs that add data to or modify the behavior of suites/specs 
+ * Some more useful constructs that attach metadata to suites and specs
  */
-jasmine.grammar.More = {
+jasmine.grammar.Meta = {
     
     /**
      * Adds summary content to the current suite.
