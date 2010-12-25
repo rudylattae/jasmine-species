@@ -1,8 +1,46 @@
 # Jasmine Species
 
-Extensions to the [Jasmine](http://pivotal.github.com/jasmine) api to enable alternate BDD approaches.
+Provides extended BDD grammar and reporting for [Jasmine](http://pivotal.github.com/jasmine). 
+It allows for constructs like “Feature -> Scenario”, “Given -> When -> Then” and other useful BDD styles.
 
+With Species you can define higher level feature specs for your software in a more
+fluid manner than what you get with just "describe" and "it". 
 
+For example, your spec for the addition feature in a calculator software could read:
+
+    feature('Addition', function() {
+        summary(
+            'In order to do basic calculations involving numbers',
+            'As a math challenged student',
+            'I want to be told the sum of two numbers'
+        );
+        
+        scenario('Adding two positive numbers', function() {
+            var calc = new Calculator();
+            
+            given('I input 10 into the calculator', function() {
+                calc.input(10);
+            });
+            
+            and('I input +', function() {
+                calc.input('+');
+            });
+            
+            when('I input 4', function() {
+                calc.input(4);
+            });
+            
+            then('The result should be 14', function() {
+                expect(calc.result).toEqual(14);
+            });
+        });
+    });
+
+Species also comes with a StyledHtmlReporter which is simply an augmentation of the 
+TrivialHtmlReporter that ships with Jasmine. The StyledHtmlReporter outputs reports that
+include the additional metadata attached to suites and specs by grammar elemens like "summary"
+in the example above.
+    
 ## Get started
 
 For information on how to use Jasmine Species, head to the project site at 
