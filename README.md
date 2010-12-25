@@ -1,7 +1,7 @@
 # Jasmine Species
 
 Provides extended BDD grammar and reporting for [Jasmine](http://pivotal.github.com/jasmine). 
-It allows for constructs like “Feature -> Scenario”, “Given -> When -> Then” and other useful BDD styles.
+It allows for constructs like "Feature -> Scenario", "Given -> When -> Then" and other useful BDD styles.
 
 With Species you can define higher level feature specs for your software in a more
 fluid manner than what you get with just "describe" and "it". 
