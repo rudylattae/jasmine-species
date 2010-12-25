@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>Specs | Jasmine-Species</title>
+    <link rel="stylesheet" type="text/css" href="lib/jasmine-1.0.1/jasmine.css">
+    <link rel="stylesheet" type="text/css" href="src/jasmine-species/calm.css">
+    <script type="text/javascript" src="lib/head.load.min.js"></script>
+    <script type="text/javascript">
+        head.js(
+            'lib/jasmine-1.0.1/jasmine.js',
+            'lib/jasmine-1.0.1/jasmine-html.js',
+            'src/jasmine-species/jasmine-grammar.js',
+            'src/jasmine-species/jasmine-reporting.js',
+            'spec/jasmine-grammar/FeatureStory.spec.js',
+            'spec/jasmine-grammar/GWT.spec.js',
+            'spec/jasmine-grammar/ContextSpecification.spec.js',
+            'spec/jasmine-grammar/XDoc.spec.js',
+            'spec/jasmine-grammar/More.spec.js',
+            'spec/jasmine-reporting/StyledHtmlReporter.spec.js'
+        );
+        
+        head(function() {
+            var jasmineEnv = jasmine.getEnv();
+            var trivialReporter = new jasmine.TrivialReporter();
+            
+            jasmineEnv.addReporter(trivialReporter);
+            
+            jasmineEnv.specFilter = function(spec) {
+                return trivialReporter.specFilter(spec);
+            };
+          
+            jasmineEnv.execute();
+        });
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>Specs | Jasmine-Species</h1>
+    </div>
+</body>
+</html>
