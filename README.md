@@ -72,4 +72,4 @@ of what you would like to see.
 
 -----
 
-(c) 2010 - Rudy Lattae. Released under the New BSD License.
+(c) 2010-2011 - Rudy Lattae. Released under the New BSD License.

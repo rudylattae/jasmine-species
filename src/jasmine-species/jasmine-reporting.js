@@ -2,7 +2,7 @@
  * Jasmine Reporting - Companion reporting with metadata output for your 
  * Jasmine specs with extended grammar
  * 
- * Copyright (C) 2010, Rudy Lattae
+ * Copyright (C) 2010-2011, Rudy Lattae
  * License: Simplified BSD
  */
  

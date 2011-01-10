@@ -1,7 +1,7 @@
 /**
  * Jasmine Grammar - Additional Jasmine grammar to enable alternate BDD approaches.
  * 
- * Copyright (C) 2010, Rudy Lattae
+ * Copyright (C) 2010-2011, Rudy Lattae
  * License: Simplified BSD
  * 
  * Jasmine-Grammar contains some additions to the jasmine api that  make it 
