@@ -65,7 +65,10 @@ pre { font-size: 0.9em }
 
 .x div { padding: 0.5em; }
 
-#header .title a { color: #030 }
+#header .title a { 
+    color: #030;
+    font-size: 1.35em
+}
 
 #nav ul { 
     list-style-type: none; 
