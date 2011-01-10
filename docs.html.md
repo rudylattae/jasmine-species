@@ -5,14 +5,14 @@ title: Documentation
 
 ## Documentation
 
-If you have already taken a look at the [Use it!](use-it.html) guide, you know 
-that the Jasmine Species project provides two extensions to the awesome Jasmine 
-BDD tool: **Jasmine Grammar** and **Jasmine Reporting**. 
+If you have already taken a look at the [Getting started](index.html) guide, 
+you know that the jasmine-species project provides two extensions to the 
+awesome Jasmine BDD tool: **Jasmine Grammar** and **Jasmine Reporting**. 
 
-The **grammar** component of Jasmine Species offers additional "words" 
-for use in your Jasmine-powered specifications. So as to keep from polluting 
-your global namespace, all the grammar elements are available in modules. 
-It is up to you to import only the modules or specific words you wish to use in 
+The **grammar** component offers additional "words" for use in your 
+Jasmine-powered specifications. In order to keep from polluting your global 
+namespace, all the grammar elements are available in modules. Thus you have 
+the choice to import only the modules or specific words you wish to use in 
 your specefications. 
 
 Here we will look at the grammar modules available and what they offer.
@@ -20,17 +20,14 @@ Here we will look at the grammar modules available and what they offer.
 
 ### Feature/Story grammar
 
-**The module**
-{% highlight javascript %}
-jasmine.grammar.FeatureStory
-{% endhighlight %}
+Located in the **jasmine.grammar.FeatureStory** module.
 
 **What's in it?**
 
 * **feature**: Defines a suite tagged as a "feature"
 * **story**: Defines a suite tagged as a "story"
-* **scenario**: Defines a suite tagged as a "scenario"
 * **component**: Defines a suite tagged as a "component"
+* **scenario**: Defines a spec
 
 **Trivial usage example**
 
@@ -51,10 +48,7 @@ component('ATM', function() {
 
 ### Given, When, Then (GWT) grammar
 
-**The module**
-{% highlight javascript %}
-jasmine.grammar.GWT
-{% endhighlight %}
+Located in the **jasmine.grammar.GWT** module.
 
 **What's in it?**
 
@@ -71,7 +65,7 @@ var Account = function(balance) {
     this.balance = balance;
 };
 
-feature('Open an account', [], function() {
+feature('Open an account', function() {
     scenario('I have $5', function() {
         var cash; 
         var account;
@@ -89,13 +83,36 @@ feature('Open an account', [], function() {
 });
 {% endhighlight %}
 
+**Note:** all the "words" in this module **must only be used within a spec**. 
+These grammar elements create ["runs"](http://pivotal.github.com/jasmine/async.html) 
+blocks as such they need to live within a spec block and not a suite. 
+
+E.g. you may not do this:
+
+{% highlight javascript %}
+describe('My suite', function() {
+    given('A pre-condition is met', function() {
+        // ...
+    });
+});
+{% endhighlight %}
+
+You may use the GWT grammar within spec blocks:
+
+{% highlight javascript %}
+describe('My suite', function() {
+    it('My spec', function() {
+        given('A pre-condition is met', function() {
+            // ...
+        });
+    });
+});
+{% endhighlight %}
+
 
 ### Context/Specification grammar
 
-**The module**
-{% highlight javascript %}
-jasmine.grammar.ContextSpecification
-{% endhighlight %}
+Located in the **jasmine.grammar.ContextSpecification** module.
 
 **What's in it?**
 
@@ -124,3 +141,41 @@ concern('Lists', function() {
     });
 });
 {% endhighlight %}
+
+
+### Metadata grammar
+
+Located in the **jasmine.grammar.Meta** module.
+
+**What's in it?**
+
+* **summary**: Adds summary content to the current **suite**
+* **details**: Adds detail entries in the current **spec**
+
+**Trivial usage example**
+
+You may only add summary metadata to a suite:
+
+{% highlight javascript %}
+describe('My suite', function() {
+    summary(
+        'Some relevant info about this suite',
+        'Another less relevant info',
+        'You get the idea ...'
+    );
+});
+{% endhighlight %}
+
+You may only add details metadata to a spec:
+
+{% highlight javascript %}
+describe('My suite', function() {
+    it('My spec', function() {
+        details('Some key details about this spec');
+    });
+});
+{% endhighlight %}
+
+**Note:** Both these constructs are provided primarily to assist 
+in describing features. The metadata they attach is currently only 
+displayed by the StyledHtmlReporter that ships with jasmine-species.
