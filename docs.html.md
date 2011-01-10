@@ -3,7 +3,7 @@ layout: default
 title: Documentation
 ---
 
-## Documentation
+# Documentation
 
 If you have already taken a look at the [Getting started](index.html) guide, 
 you know that the jasmine-species project provides two extensions to the 
@@ -18,7 +18,7 @@ your specefications.
 Here we will look at the grammar modules available and what they offer.
 
 
-### Feature/Story grammar
+## Feature/Story grammar
 
 Located in the **jasmine.grammar.FeatureStory** module.
 
@@ -46,7 +46,7 @@ component('ATM', function() {
 {% endhighlight %}
 
 
-### Given, When, Then (GWT) grammar
+## Given, When, Then (GWT) grammar
 
 Located in the **jasmine.grammar.GWT** module.
 
@@ -110,7 +110,7 @@ describe('My suite', function() {
 {% endhighlight %}
 
 
-### Context/Specification grammar
+## Context/Specification grammar
 
 Located in the **jasmine.grammar.ContextSpecification** module.
 
@@ -143,7 +143,7 @@ concern('Lists', function() {
 {% endhighlight %}
 
 
-### Metadata grammar
+## Metadata grammar
 
 Located in the **jasmine.grammar.Meta** module.
 

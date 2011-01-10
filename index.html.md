@@ -3,7 +3,7 @@ layout: home
 title: Getting started
 ---
 
-## Overview
+# Getting started
 
 Jasmine-species provides extended BDD grammar and reporting for 
 [Jasmine](http://pivotal.github.com/jasmine/). The grammar component 
