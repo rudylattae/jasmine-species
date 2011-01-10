@@ -56,22 +56,22 @@ style
 */
 h1, h2, h3, h4, h5, h6 { color: #030 }
 a { 
-    color: #aac261; 
+    color: #336600; 
     text-decoration:none 
 }
-a:visited { color: #999 }
+a:visited { color: #66cc66 }
 a:hover { color: #669933 }
 pre { font-size: 0.9em }
 
 .x div { padding: 0.5em; }
 
-#header h1 a { color: #030 }
+#header .title a { color: #030 }
 
 #nav ul { 
     list-style-type: none; 
     padding-left: 0
 }
-#nav a { font-size: 1.3em }
+#nav a { font-size: 1.2em }
 
 #download ul { 
     list-style-type: none; 
