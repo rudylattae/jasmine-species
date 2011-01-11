@@ -78,7 +78,6 @@ You can follow the steps below to start enjoying Jasmine Species.
 2. Download and include the grammar and reporting components from the jasmine-species package 
 
 {% highlight html %}
-<head>
 ...
 
 <link rel="stylesheet" type="text/css" href="lib/jasmine-species/calm.css">
@@ -86,7 +85,6 @@ You can follow the steps below to start enjoying Jasmine Species.
 <script type="text/javascript" src="lib/jasmine-species/jasmine-reporting.js"></script>
 
 ...
-</head>
 {% endhighlight %}
 
 3. Import the extended grammar you wish to use
