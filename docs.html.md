@@ -5,11 +5,29 @@ title: Documentation
 
 # Documentation
 
+## Requirements and setup
+
+To use jasmine-species in your project, you simply include it and the 
+necessary dependencies into your spec runner. Below are the requirements:
+
+* [Jasmine BDD](http://pivotal.github.com/jasmine/)
+* [Namespacedotjs](https://github.com/smith/namespacedotjs), 
+or any javascript namespace importing tool
+
+For more information on setting up your your project to use jasmine-specied, 
+see the [Getting started](index.html) guide.
+
 If you have already taken a look at the [Getting started](index.html) guide, 
 you know that the jasmine-species project provides two extensions to the 
-awesome Jasmine BDD tool: **Jasmine Grammar** and **Jasmine Reporting**. 
+awesome Jasmine BDD tool: **Grammar (jasmine-grammar)** and 
+**Reporting (jasmine-reporting)**. 
+Here you will find descriptions of the features offered by each of these
+extensions.
 
-The **grammar** component offers additional "words" for use in your 
+
+## Grammar extensions (jasmine-grammar)
+
+The grammar component offers additional "words" for use in your 
 Jasmine-powered specifications. In order to keep from polluting your global 
 namespace, all the grammar elements are available in modules. Thus you have 
 the choice to import only the modules or specific words you wish to use in 
@@ -18,7 +36,7 @@ your specefications.
 Here we will look at the grammar modules available and what they offer.
 
 
-## Feature/Story grammar
+### Feature/Story grammar
 
 Located in the **jasmine.grammar.FeatureStory** module.
 
@@ -46,7 +64,7 @@ component('ATM', function() {
 {% endhighlight %}
 
 
-## Given, When, Then (GWT) grammar
+### Given, When, Then (GWT) grammar
 
 Located in the **jasmine.grammar.GWT** module.
 
@@ -110,7 +128,7 @@ describe('My suite', function() {
 {% endhighlight %}
 
 
-## Context/Specification grammar
+### Context/Specification grammar
 
 Located in the **jasmine.grammar.ContextSpecification** module.
 
@@ -143,7 +161,7 @@ concern('Lists', function() {
 {% endhighlight %}
 
 
-## Metadata grammar
+### Metadata grammar
 
 Located in the **jasmine.grammar.Meta** module.
 
@@ -181,7 +199,9 @@ in describing features. The metadata they attach is currently only
 displayed by the StyledHtmlReporter that ships with jasmine-species.
 
 
-## StyledHtmlReporter
+## Reporting extensions (jasmine-reporting)
+
+### StyledHtmlReporter
 
 The StyledHtmlReporter is a simple extension of the TrivialReporter 
 that ships with Jasmine. It provides the following additional features:
