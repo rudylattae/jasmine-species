@@ -49,14 +49,14 @@ Jasmine Species provides two components that extend the base Jasmine API.
 The first is the **grammar** component which is the home of the extended 
 BDD grammar. To use this component,
 
-* include the ”jasmine-grammar.js” file in your spec runner.
+* include the "jasmine-grammar.js" file in your spec runner.
 * then import only the grammar components you need e.g. Namespace.use('jasmine.grammar.FeatureStory.*')
 
 The second components is the reporting component which outputs your spec 
 reports with rich metadata for ease of use and customization. To experience 
 the cleaner and richer ouput available from this component,
 
-* include the ”jasmine-reporting.js” file in your spec runner.
+* include the "jasmine-reporting.js" file in your spec runner.
 * then register the StyledHtmlReporter with Jasmine.
 
 You can follow the steps below to start enjoying Jasmine Species.
@@ -64,7 +64,6 @@ You can follow the steps below to start enjoying Jasmine Species.
 1. Download and include the required libraries, Namespace.js and Jasmine in your runner
 
 {% highlight html %}
-<head>
 ...
 
 <script type="text/javascript" src="lib/namespacedotjs/Namespace.js"></script>
@@ -74,7 +73,6 @@ You can follow the steps below to start enjoying Jasmine Species.
 <script type="text/javascript" src="lib/jasmine/jasmine-html.js"></script>
 
 ...
-</head>
 {% endhighlight %}
 
 2. Download and include the grammar and reporting components from the jasmine-species package 
