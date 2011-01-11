@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Getting started
+title: "Getting started"
 ---
 
 # Getting started
