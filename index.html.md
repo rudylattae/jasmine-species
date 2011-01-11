@@ -144,33 +144,3 @@ feature('Car engine startup', function() {
 Note: in the example above, we assume that "toBeRunning" is a custom 
 matcher we wrote that does some quick checks against the api of a car 
 to ensure that it is running.
-
-    
-## An interactive example
-
-If you just want to jump right in and get started with jasmine-species, 
-here is an interactive example on JSFiddle.net. It is based on a hypotethical 
-case: 
-
-We have been tasked with creating a page turning component 
-for an e-book reader. Per the customer, this component must be able to handle
-basic page turning as well as some advanced functions
-  
-Requirements
-
-* flip to the next page
-* flip to the previous page
-* jump to a particular page
-
-* skip over a given number of pages
-* maintain a navigation history for the book
-    
-<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/rudylattae/R9Vrk/embedded/js,result/">
-    <a href="http://jsfiddle.net/rudylattae/R9Vrk">"Jasmine Species - Quick Start" example on jsfiddle</a>
-</iframe>
-
-**Cleaner Html reporting:**
-
-* Renders the metadata tags of extended suites as css classes for custom styling
-* Uses calm styles to display spec results that are easy to look at
-
