@@ -61,87 +61,112 @@ the cleaner and richer ouput available from this component,
 
 You can follow the steps below to start enjoying Jasmine Species.
 
-1. Download and include the required libraries, Jasmine and Namespace.js, in your runner
+1. Download and include the required libraries, Namespace.js and Jasmine in your runner
 
-    <head>
-    ...
-    
-    <link rel="stylesheet" type="text/css" href="lib/jasmine/jasmine.css">
-    <script type="text/javascript" src="lib/jasmine/jasmine.js"></script>
-    <script type="text/javascript" src="lib/jasmine/jasmine-html.js"></script>
-    <script type="text/javascript" src="lib/namespacedotjs/Namespace.js"></script>
-    
-    ...
-    </head>
+{% highlight html %}
+<head>
+...
+
+<script type="text/javascript" src="lib/namespacedotjs/Namespace.js"></script>
+
+<link rel="stylesheet" type="text/css" href="lib/jasmine/jasmine.css">
+<script type="text/javascript" src="lib/jasmine/jasmine.js"></script>
+<script type="text/javascript" src="lib/jasmine/jasmine-html.js"></script>
+
+...
+</head>
+{% endhighlight %}
 
 2. Download and include the grammar and reporting components from the jasmine-species package 
 
-    <head>
-    ...
-    
-    <link rel="stylesheet" type="text/css" href="lib/jasmine-species/calm.css">
-    <script type="text/javascript" src="lib/jasmine-species/jasmine-grammar.js"></script>
-    <script type="text/javascript" src="lib/jasmine-species/jasmine-reporting.js"></script>
-    
-    ...
-    </head>
+{% highlight html %}
+<head>
+...
+
+<link rel="stylesheet" type="text/css" href="lib/jasmine-species/calm.css">
+<script type="text/javascript" src="lib/jasmine-species/jasmine-grammar.js"></script>
+<script type="text/javascript" src="lib/jasmine-species/jasmine-reporting.js"></script>
+
+...
+</head>
+{% endhighlight %}
 
 3. Import the extended grammar you wish to use
 
-    // import feature, scenario ...
-    Namespace.use('jasmine.grammar.FeatureStory.*');
-    Namespace.use('jasmine.grammar.GWT.*');
-    Namespace.use('jasmine.grammar.Meta.*');
+{% highlight javascript %}
+// import feature, scenario ...
+Namespace.use('jasmine.grammar.FeatureStory.*');
+Namespace.use('jasmine.grammar.GWT.*');
+Namespace.use('jasmine.grammar.Meta.*');
+{% endhighlight %}
 
 4. Setup your jasmine runner to use the StyledHtmlReporter
 
-    var jasmineEnv = jasmine.getEnv();
-    var styledReporter = new jasmine.reporting.StyledHtmlReporter();
-    
-    jasmineEnv.addReporter(styledReporter);
-    
-    jasmineEnv.specFilter = function(spec) {
-        return styledReporter.specFilter(spec);
-    };
-  
-    window.onload = function() {
-        jasmineEnv.execute(); 
-    }
- 
+{% highlight javascript %}
+var jasmineEnv = jasmine.getEnv();
+var styledReporter = new jasmine.reporting.StyledHtmlReporter();
+
+jasmineEnv.addReporter(styledReporter);
+
+jasmineEnv.specFilter = function(spec) {
+    return styledReporter.specFilter(spec);
+};
+
+window.onload = function() {
+    jasmineEnv.execute(); 
+}
+{% endhighlight %}
+
 5. Describe the features and behavior of your product
 
-    feature('Car engine startup', function() {
-        summary(
-            'In order to drive my car around',
-            'As a vehicle owner',
-            'I want to press a button to start my car'
-        );
+{% highlight javascript %}
+feature('Car engine startup', function() {
+    summary(
+        'In order to drive my car around',
+        'As a vehicle owner',
+        'I want to press a button to start my car'
+    );
+    
+    scenario('The is stopped with the engine off', function() {
+        var car;
         
-        scenario('The is stopped with the engine off', function() {
-            var car;
-            
-            given('My car is parked and not running', function() {
-                car = new MyAwesomeCar();
-            });
-            when('I press the start button', function() {
-                car.start();
-            });
-            then('The car should start up', function() {
-                expect(car).toBeRunning();
-            });
+        given('My car is parked and not running', function() {
+            car = new MyAwesomeCar();
+        });
+        when('I press the start button', function() {
+            car.start();
+        });
+        then('The car should start up', function() {
+            expect(car).toBeRunning();
         });
     });
-    
+});
+{% endhighlight %}
+
 Note: in the example above, we assume that "toBeRunning" is a custom 
 matcher we wrote that does some quick checks against the api of a car 
 to ensure that it is running.
 
     
-## Quick Start -- an interactive example
+## An interactive example
 
-If you just want to jump right in and get started with Jasmine Species, 
-here is an interactive example on JSFiddle.net
+If you just want to jump right in and get started with jasmine-species, 
+here is an interactive example on JSFiddle.net. It is based on a hypotethical 
+case: 
 
+We have been tasked with creating a page turning component 
+for an e-book reader. Per the customer, this component must be able to handle
+basic page turning as well as some advanced functions
+  
+Requirements
+
+* flip to the next page
+* flip to the previous page
+* jump to a particular page
+
+* skip over a given number of pages
+* maintain a navigation history for the book
+    
 <iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/rudylattae/R9Vrk/embedded/js,result/">
     <a href="http://jsfiddle.net/rudylattae/R9Vrk">"Jasmine Species - Quick Start" example on jsfiddle</a>
 </iframe>
