@@ -54,7 +54,7 @@ For information on how to use Jasmine-species in your product specs, head to the
 
 ## Contribute
 
-I am eager to receive any questions or feedback about bugs and suggestions on how to 
+I welcome any questions or feedback about bugs and suggestions on how to 
 improve jasmine-species.
 
 ### As a user
