@@ -108,5 +108,12 @@ pre { font-size: 0.9em }
 
 .prefix {
     background-color: #FFF9D8;
-    border-bottom: 2px solid #555
-}
+    border-bottom: 2px solid #555; }
+    .prefix p, .prefix pre, .prefix h4 {
+        font: normal;
+        color: #555; }
+    .prefix h4 {
+        margin: 0.85em 0 0.5em 0; }
+    .prefix img {
+        border: 5px solid #bbb;
+        padding: 0.2em; }
