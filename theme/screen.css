@@ -81,7 +81,8 @@ pre { font-size: 0.9em }
     list-style-type: none; 
     padding-left: 0 }
 #nav a { 
-    font-size: 1.2em }
+    font-size: 1.2em;
+    font-weight: bold }
 
 #download ul { 
     list-style-type: none; 
