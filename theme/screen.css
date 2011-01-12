@@ -105,3 +105,8 @@ pre { font-size: 0.9em }
     font-size: 0.8em;
     color: #bbb;
 }
+
+.prefix {
+    background-color: #FFF9D8;
+    border-bottom: 2px solid #555
+}
