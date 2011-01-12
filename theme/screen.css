@@ -3,11 +3,10 @@
 base 
 ====
 */
-body {
+body { 
     font-family: Helvetica, Arial, sans-serif;
     font-size: 0.9em;
-    color: #333;
-}
+    color: #333 }
 
 
 /*
@@ -15,13 +14,15 @@ body {
 oxymoron (lite) ;) 
 ==================
 */
-.oxo {
+.oxo { 
     display: table;
     width: 100%;
-    border-collapse: collapse;
-}
-.x { display: table-row; }
-.x > div { display: table-cell; }
+    border-collapse: collapse }
+
+.x { 
+    display: table-row }
+    .x > div { 
+        display: table-cell }
 
 
 /* 
@@ -29,24 +30,24 @@ oxymoron (lite) ;)
 layout
 ====== 
 */
-#wrapper {
+#wrapper { 
     width: 960px;
     margin-left: auto;
-    margin-right: auto;
-}
+    margin-right: auto }
+
 #main { width: 70% }
+
 #aside { 
     width: 30%;
-    padding-left: 2em
-}
+    padding-left: 2em }
 
 body.home #main { width: 68% }
+
 body.home #aside { width: 32% }
 
 .highlight { 
     width: 95%;
-    overflow: auto;
-}
+    overflow: auto }
 
 
 /* 
@@ -55,65 +56,51 @@ style
 =====
 */
 h1, h2, h3, h4, h5, h6 { color: #030 }
+
 a { 
     color: #336600; 
-    text-decoration:none 
-}
-a:visited { color: #777 }
-a:hover { color: #669933 }
+    text-decoration:none }
+    a:visited { 
+        color: #777 }
+    a:hover { 
+        color: #669933 }
+
 pre { font-size: 0.9em }
 
-.x div { padding: 0.5em; }
+.x div { padding: 0.5em }
 
 #header .title a { 
     color: #030;
-    font-size: 1.4em
-}
+    font-size: 1.4em }
 
 #nav ul { 
     list-style-type: none; 
-    padding-left: 0
-}
-#nav a { font-size: 1.2em }
+    padding-left: 0 }
+#nav a { 
+    font-size: 1.2em }
 
 #download ul { 
     list-style-type: none; 
     padding-left: 0em;
-    margin-left: 0.5em
-}
-#download h4 { margin: 0.85em 0 0.5em 0}
+    margin-left: 0.5em }
+#download h4 { 
+    margin: 0.85em 0 0.5em 0 }
 
-#nutshell ol {
-    font: italic bold 1em Georgia, Times, serif;
-    color: #bbb;
-    padding-left: 0;
-    margin-left: 1.5em
-}
-#nutshell p, #nutshell pre, h4 {
-    font: normal;
-    color: #555;
-}
-#nutshell h4 { margin: 0.85em 0 0.5em 0}
-#nutshell img {
-    border: 5px solid #bbb;
-    padding: 0.2em;
-}
-
-#footer {
+#footer { 
     padding-top: 0.5em;
     border-top: 2px solid #999;
     font-size: 0.8em;
-    color: #bbb;
-}
+    color: #bbb }
 
-.prefix {
+.prefix { 
+    margin-top: 1em;
     background-color: #FFF9D8;
-    border-bottom: 2px solid #555; }
-    .prefix p, .prefix pre, .prefix h4 {
+    border-bottom: 2px solid #555 }
+    .prefix p, .prefix pre, .prefix h4 { 
         font: normal;
-        color: #555; }
-    .prefix h4 {
+        color: #555 }
+    .prefix h4 { 
         margin: 0.85em 0 0.5em 0; }
-    .prefix img {
+    .prefix img { 
         border: 5px solid #bbb;
-        padding: 0.2em; }
+        padding: 0.2em }
