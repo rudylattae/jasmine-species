@@ -11,6 +11,11 @@ This release contains an overhauled implementation of the GWT grammar.
 The documentation has been reorganized for clarity and updated to reflect 
 the changes to the grammar.
 
+As usual any feedback -- how you are using it, bug reports, patches, 
+documentation updates, etc. -- are welcome.
+
+Cheers!
+
 ### Highlights
 
 The key change is that all GWT grammar elements now create "runs" blocks, 

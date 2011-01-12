@@ -69,9 +69,12 @@ pre { font-size: 0.9em }
 
 .x div { padding: 0.5em }
 
-#header .title a { 
-    color: #030;
-    font-size: 1.4em }
+#header {
+    border-bottom: 2px solid #999; 
+    margin-bottom: 0.5em }
+    #header .title a { 
+        color: #030;
+        font-size: 1.4em }
 
 #nav ul { 
     list-style-type: none; 
@@ -93,7 +96,6 @@ pre { font-size: 0.9em }
     color: #bbb }
 
 .prefix { 
-    margin-top: 1em;
     background-color: #FFF9D8;
     border-bottom: 2px solid #555 }
     .prefix p, .prefix pre, .prefix h4 { 
