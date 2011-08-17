@@ -72,9 +72,15 @@ Located in the **jasmine.grammar.GWT** module.
 
 * **given**: Defines a suite tagged as a "given" step (marked as "isIntermediate")
 * **when**: Defines a suite tagged as a "when" step (marked as "isIntermediate")
+* **whilst**[^cs]: Defines a suite tagged as a "whilst" step (marked as "isIntermediate")
 * **then**: Defines a "then" spec that marks the conclusion of a Given, when, then construct
+* **hence**[^cs]: Defines a "hence" spec that marks the conclusion of a Given, whilst, hence construct
 * **and**: Defines an "and" spec that is a continuation from a "then" statement
+* **likewise**[^cs]: Defines an "likewise" spec that is a continuation from a "hence" statement
 * **but**: Defines an "and" spec that is a continuation from a "then" statement
+
+[^cs]: Provided for CoffeeScript use, as `when`, `then`, and `and` are
+CoffeeScript keywords.
 
 **Trivial usage example**
 
@@ -100,6 +106,26 @@ feature('Open an account', function() {
     });
 });
 {% endhighlight %}
+
+**Trivial usage example - CoffeeScript**
+
+{% highlight coffeescript %}
+Account = (balance) ->
+  @balance = balance
+
+feature "Open an account", ->
+  scenario "I have $5", ->
+    
+    given "I have enough money to open an account", ->
+      cash = 5
+
+    whilst "I open my account", ->
+      account = new Account cash
+
+    hence "my account balance should be $5", ->
+      (expect account.balance).toEqual 5
+{% endhighlight %}
+
 
 **Note:** all the "words" in this module **must only be used within a spec**. 
 These grammar elements create ["runs"](http://pivotal.github.com/jasmine/async.html) 
