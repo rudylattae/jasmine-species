@@ -78,6 +78,13 @@ jasmine.grammar.GWT = {
     },
     
     /**
+     * Defines a "whilst" step as a runs block that marks the interesting event in a GWT chain
+     */
+    whilst: function(desc, func) {
+        return this._addStepToCurrentSpec('Whilst ' + desc, func);
+    },
+    
+    /**
      * Defines a "then" step as a runs block that marks the conclusion of a Given, when, then construct
      */
     then: function(desc, func) {
@@ -85,10 +92,24 @@ jasmine.grammar.GWT = {
     },
     
     /**
+     * Defines a "hence" step as a runs block that marks the conclusion of a Given, whilst, hence construct
+     */
+    hence: function(desc, func) {
+        return this._addStepToCurrentSpec('Hence ' + desc, func);
+    },
+    
+    /**
      * Defines an "and" step as a runs block that is a continuation from a "then" statement
      */
     and: function(desc, func) {
         return this._addStepToCurrentSpec('And ' + desc, func);
+    },
+    
+    /**
+     * Defines an "likewise" step as a runs block that is a continuation from a "then" or "hence" statement
+     */
+    likewise: function(desc, func) {
+        return this._addStepToCurrentSpec('Likewise ' + desc, func);
     },
     
     /**

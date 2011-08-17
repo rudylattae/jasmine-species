@@ -43,6 +43,20 @@ describe('jasmine.grammar.GWT', function() {
         });
     });
     
+    describe('whilst', function() {
+        it('creates a runs block within the current spec', function() {
+            GWT.whilst('an event occurs', function() { return "whilst"; });
+            
+            expect(parentSpec.queue.blocks[1].func()).toEqual("whilst");
+        });
+        
+        it('adds a "Whilst..." entry to the spec details', function() {
+            GWT.whilst('an event occurs', function() { return "whilst"; });
+            
+            expect(parentSpec.details[0]).toEqual('Whilst an event occurs');
+        });
+    });
+    
     describe('then', function() {
         it('creates a runs block within the current spec', function() {
             GWT.then('expect this outcome', function() { return "then"; });
@@ -57,6 +71,20 @@ describe('jasmine.grammar.GWT', function() {
         });
     });
     
+    describe('hence', function() {
+        it('creates a runs block within the current spec', function() {
+            GWT.hence('expect this outcome', function() { return "hence"; });
+            
+            expect(parentSpec.queue.blocks[1].func()).toEqual("hence");
+        });
+        
+        it('adds a "Hence..." entry to the spec details', function() {
+            GWT.hence('expect this outcome', function() { return "hence"; });
+            
+            expect(parentSpec.details[0]).toEqual('Hence expect this outcome');
+        });
+    });
+    
     describe('and', function() {
         it('creates a runs block within the current spec', function() {
             GWT.and('expect this outcome too', function() { return "and"; });
@@ -68,6 +96,20 @@ describe('jasmine.grammar.GWT', function() {
             GWT.and('expect this outcome too', function() { return "and"; });
             
             expect(parentSpec.details[0]).toEqual('And expect this outcome too');
+        });
+    });
+    
+    describe('likewise', function() {
+        it('creates a runs block within the current spec', function() {
+            GWT.likewise('expect this outcome too', function() { return "likewise"; });
+            
+            expect(parentSpec.queue.blocks[1].func()).toEqual("likewise");
+        });
+        
+        it('adds a "Likewise..." entry to the spec details', function() {
+            GWT.likewise('expect this outcome too', function() { return "likewise"; });
+            
+            expect(parentSpec.details[0]).toEqual('Likewise expect this outcome too');
         });
     });
     
