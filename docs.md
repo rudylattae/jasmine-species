@@ -79,8 +79,7 @@ Located in the **jasmine.grammar.GWT** module.
 * **likewise**\*: Defines an "likewise" spec that is a continuation from a "hence" statement
 * **but**: Defines an "and" spec that is a continuation from a "then" statement
 
-\* Provided for CoffeeScript use, as `when`, `then`, and `and` are
-CoffeeScript keywords.
+\* Provided for CoffeeScript use, as `when`, `then`, and `and` are CoffeeScript keywords.
 
 **Trivial usage example**
 
