@@ -114,6 +114,7 @@ Account = (balance) ->
 
 feature "Open an account", ->
   scenario "I have $5", ->
+    cash = account = null
     
     given "I have enough money to open an account", ->
       cash = 5
