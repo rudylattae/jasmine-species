@@ -111,6 +111,20 @@ jasmine.grammar.GWT = {
 };
 
 
+/**
+ * Add proper case aliases to GWT for Coffeescript use
+ */
+
+(function(GWT) {
+  GWT.Given = GWT.given;
+  GWT.When  = GWT.when;
+  GWT.Then  = GWT.then;
+  GWT.And   = GWT.and;
+  GWT.But   = GWT.but;
+}) (jasmine.grammar.GWT);
+
+
+
 
 /**
  * Concern => Context => Specification style grammar
