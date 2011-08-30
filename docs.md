@@ -72,14 +72,9 @@ Located in the **jasmine.grammar.GWT** module.
 
 * **given**: Defines a suite tagged as a "given" step (marked as "isIntermediate")
 * **when**: Defines a suite tagged as a "when" step (marked as "isIntermediate")
-* **whilst**\*: Defines a suite tagged as a "whilst" step (marked as "isIntermediate")
 * **then**: Defines a "then" spec that marks the conclusion of a Given, when, then construct
-* **hence**\*: Defines a "hence" spec that marks the conclusion of a Given, whilst, hence construct
 * **and**: Defines an "and" spec that is a continuation from a "then" statement
-* **likewise**\*: Defines an "likewise" spec that is a continuation from a "hence" statement
 * **but**: Defines an "and" spec that is a continuation from a "then" statement
-
-\* Provided for CoffeeScript use, as `when`, `then`, and `and` are CoffeeScript keywords.
 
 **Trivial usage example**
 
@@ -106,6 +101,10 @@ feature('Open an account', function() {
 });
 {% endhighlight %}
 
+
+There are also propercased aliases provided for Coffeescript use, since
+'when', 'then', and 'and' are reserved words.
+
 **Trivial usage example - CoffeeScript**
 
 {% highlight coffeescript %}
@@ -116,13 +115,13 @@ feature "Open an account", ->
   scenario "I have $5", ->
     cash = account = null
     
-    given "I have enough money to open an account", ->
+    Given "I have enough money to open an account", ->
       cash = 5
 
-    whilst "I open my account", ->
+    When "I open my account", ->
       account = new Account cash
 
-    hence "my account balance should be $5", ->
+    Then "my account balance should be $5", ->
       (expect account.balance).toEqual 5
 {% endhighlight %}
 
