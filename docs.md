@@ -101,6 +101,31 @@ feature('Open an account', function() {
 });
 {% endhighlight %}
 
+
+There are also propercased aliases provided for Coffeescript use, since
+'when', 'then', and 'and' are reserved words.
+
+**Trivial usage example - CoffeeScript**
+
+{% highlight coffeescript %}
+Account = (balance) ->
+  @balance = balance
+
+feature "Open an account", ->
+  scenario "I have $5", ->
+    cash = account = null
+    
+    Given "I have enough money to open an account", ->
+      cash = 5
+
+    When "I open my account", ->
+      account = new Account cash
+
+    Then "my account balance should be $5", ->
+      (expect account.balance).toEqual 5
+{% endhighlight %}
+
+
 **Note:** all the "words" in this module **must only be used within a spec**. 
 These grammar elements create ["runs"](http://pivotal.github.com/jasmine/async.html) 
 blocks as such they need to live within a spec block and not a suite. 
