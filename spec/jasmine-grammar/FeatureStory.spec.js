@@ -4,7 +4,7 @@ describe('jasmine.grammar.FeatureStory', function() {
         
     beforeEach(function() {
         env = new jasmine.Env();
-        jasmine.grammar._currentEnv = env;
+        spyOn(jasmine.grammar, 'getEnv').andReturn(env);
     });
     
     describe('feature', function() {

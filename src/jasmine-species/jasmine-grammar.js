@@ -13,6 +13,36 @@
  * for "describe" and "it" so they follow the same rules for nesting. 
  */
 
+(function(context) {
+    // ensure jasmine dependency is met
+    if (typeof context.jasmine === 'undefined') {
+        throw new Error("Jasmine must be available before Jasmine Species is loaded.")
+    }
+
+    var _currentEnv;
+
+    /**
+     * Getter for the Jasmine environment. Makes it possible to inject a different environment when necessary.
+     */
+    var getEnv = function() {
+        if (_currentEnv == null) {
+            _currentEnv = context.jasmine.getEnv();
+        }
+        return _currentEnv;
+    };
+
+
+    // ==== exports ====
+
+
+    context.jasmine.grammar = {
+        //FeatureStory: FeatureStory,
+        getEnv: getEnv
+    };
+
+})(this);
+
+
 // Top level namespace for the package
 jasmine.grammar = (typeof jasmine.grammar === 'undefined') ? {} : jasmine.grammar;
 
@@ -233,15 +263,4 @@ jasmine.grammar.Meta = {
             }
         }
     }
-};
-
-
-// Utilities
-// =========
-
-/**
- * Getter for the Jasmine environment. Makes it possible to inject a different environment when necessary.
- */
-jasmine.grammar.getEnv = function() {
-    return jasmine.grammar._currentEnv = jasmine.grammar._currentEnv || jasmine.getEnv();
 };
