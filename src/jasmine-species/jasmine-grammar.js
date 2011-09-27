@@ -24,20 +24,65 @@
     /**
      * Getter for the Jasmine environment. Makes it possible to inject a different environment when necessary.
      */
-    var getEnv = function() {
+    function getEnv() {
         if (_currentEnv == null) {
             _currentEnv = context.jasmine.getEnv();
         }
         return _currentEnv;
     };
 
+    /**
+     * Injects a custom Jasmine environment
+     */
+    function setEnv(env) {
+        _currentEnv = env;
+    }
+
+
+    /**
+     * Feature / Story => Scenario => ... style grammar
+     */
+    var FeatureStory = {
+
+        /**
+         * Defines a suite tagged as a "feature"
+         */
+        feature: function(description, specDefinitions) {
+            var suite = getEnv().describe('Feature: ' + description, specDefinitions);
+            suite.tags = ['feature'];
+            return suite;
+        },
+
+        /**
+         * Defines a suite tagged as a "story"
+         */
+        story: function(description, specDefinitions) {
+            var suite = getEnv().describe('Story: ' + description, specDefinitions);
+            suite.tags = ['story'];
+            return suite;
+        },
+
+        /**
+         * Defines a suite tagged as a "component"
+         */
+        component: function(description, specDefinitions) {
+            var suite = getEnv().describe('Component: ' + description, specDefinitions);
+            suite.tags = ['component'];
+            return suite;
+        },
+
+        /**
+         * Defines a spec marked as a "scenario"
+         */
+        scenario: function(desc, func) {
+            return getEnv().it('Scenario: ' + desc, func);
+        }
+    };
 
     // ==== exports ====
-
-
     context.jasmine.grammar = {
-        //FeatureStory: FeatureStory,
-        getEnv: getEnv
+        FeatureStory: FeatureStory,
+        setEnv: setEnv
     };
 
 })(this);
@@ -46,46 +91,6 @@
 // Top level namespace for the package
 jasmine.grammar = (typeof jasmine.grammar === 'undefined') ? {} : jasmine.grammar;
 
-
-/**
- * Feature / Story => Scenario => ... style grammar
- */
-jasmine.grammar.FeatureStory = {
-    
-    /**
-     * Defines a suite tagged as a "feature"
-     */
-    feature: function(description, specDefinitions) {
-        var suite = jasmine.grammar.getEnv().describe('Feature: ' + description, specDefinitions);
-        suite.tags = ['feature'];
-        return suite;
-    },
-    
-    /**
-     * Defines a suite tagged as a "story"
-     */
-    story: function(description, specDefinitions) {
-        var suite = jasmine.grammar.getEnv().describe('Story: ' + description, specDefinitions);
-        suite.tags = ['story'];
-        return suite;
-    },
-    
-    /**
-     * Defines a suite tagged as a "component"
-     */
-    component: function(description, specDefinitions) {
-        var suite = jasmine.grammar.getEnv().describe('Component: ' + description, specDefinitions);
-        suite.tags = ['component'];
-        return suite;
-    },
-    
-    /**
-     * Defines a spec marked as a "scenario"
-     */
-    scenario: function(desc, func) {
-        return jasmine.grammar.getEnv().it('Scenario: ' + desc, func);
-    }
-};
 
 
 /**

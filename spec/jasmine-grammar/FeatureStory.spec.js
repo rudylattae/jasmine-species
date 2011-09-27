@@ -4,7 +4,7 @@ describe('jasmine.grammar.FeatureStory', function() {
         
     beforeEach(function() {
         env = new jasmine.Env();
-        spyOn(jasmine.grammar, 'getEnv').andReturn(env);
+        jasmine.grammar.setEnv(env);
     });
     
     describe('feature', function() {
@@ -33,14 +33,14 @@ describe('jasmine.grammar.FeatureStory', function() {
             expect(suite.tags).toEqual(['component']);
         });
     });
-    
+
     describe('scenario', function() {
         it('creates a spec marked as a "Scenario" within the current suite', function() {
             var parentSuite = env.describe('dummy suite', function() {});
-            jasmine.grammar.getEnv().currentSuite = parentSuite;
-            
+            env.currentSuite = parentSuite;
+
             var spec = FeatureStory.scenario('A complex scenario', function() {});
-            
+
             expect(spec.description).toBe('Scenario: A complex scenario');
             expect(spec.suite).toBe(parentSuite);
         });
