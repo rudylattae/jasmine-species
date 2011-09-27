@@ -22,7 +22,7 @@
     var _currentEnv;
 
     /**
-     * Getter for the Jasmine environment. Makes it possible to inject a different environment when necessary.
+     * Yields a lazy reference to the current jasmine env
      */
     function getEnv() {
         if (_currentEnv == null) {
