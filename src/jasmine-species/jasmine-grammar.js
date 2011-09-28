@@ -213,10 +213,6 @@
 })(jasmine);
 
 
-// Top level namespace for the package
-jasmine.grammar = (typeof jasmine.grammar === 'undefined') ? {} : jasmine.grammar;
-
-
 /**
  * Add proper case aliases to GWT for Coffeescript use
  */
