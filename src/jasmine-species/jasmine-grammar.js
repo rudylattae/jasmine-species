@@ -68,9 +68,48 @@
     };
 
 
+    /**
+     * Given => When => Then ... style grammar
+     */
+    var GWT = {
+
+        given: function(desc, func) {
+            return _addStepToCurrentSpec('Given ' + desc, func);
+        },
+
+        when: function(desc, func) {
+            return _addStepToCurrentSpec('When ' + desc, func);
+        },
+
+        then: function(desc, func) {
+            return _addStepToCurrentSpec('Then ' + desc, func);
+        },
+
+        and: function(desc, func) {
+            return _addStepToCurrentSpec('And ' + desc, func);
+        },
+
+        but: function(desc, func) {
+            return _addStepToCurrentSpec('But ' + desc, func);
+        }
+    };
+
+
+    /**
+     * Adds the given function as a step (runs block) in the current spec. Also adds the description to the details list of the spec
+     */
+    function _addStepToCurrentSpec(desc, func) {
+        var spec = getEnv().currentSpec;
+        spec.details = spec.details || [];
+        spec.details.push(desc);
+        spec.runs(func);
+        return spec;
+    }
+
     // ==== exports ====
     jasmine.grammar = {
         FeatureStory: FeatureStory,
+        GWT: GWT,
         setEnv: setEnv
     };
 
@@ -79,60 +118,6 @@
 
 // Top level namespace for the package
 jasmine.grammar = (typeof jasmine.grammar === 'undefined') ? {} : jasmine.grammar;
-
-
-
-/**
- * Given => When => Then ... style grammar
- */
-jasmine.grammar.GWT = {
-
-    /**
-     * Defines a "given" step as a runs block that marks the beginning of a GWT chain
-     */
-    given: function(desc, func) {
-        return this._addStepToCurrentSpec('Given ' + desc, func);
-    },
-
-    /**
-     * Defines a "when" step as a runs block that marks the interesting event in a GWT chain
-     */
-    when: function(desc, func) {
-        return this._addStepToCurrentSpec('When ' + desc, func);
-    },
-
-    /**
-     * Defines a "then" step as a runs block that marks the conclusion of a Given, when, then construct
-     */
-    then: function(desc, func) {
-        return this._addStepToCurrentSpec('Then ' + desc, func);
-    },
-
-    /**
-     * Defines an "and" step as a runs block that is a continuation from a "then" statement
-     */
-    and: function(desc, func) {
-        return this._addStepToCurrentSpec('And ' + desc, func);
-    },
-
-    /**
-     * Defines a "but" step as a runs block that is a continuation from a "then" statement
-     */
-    but: function(desc, func) {
-        return this._addStepToCurrentSpec('But ' + desc, func);
-    },
-
-    /**
-     * Adds the given function as a step (runs block) in the current spec. Also adds the description to the details list of the spec
-     */
-    _addStepToCurrentSpec: function(desc, func) {
-        var spec = jasmine.grammar.getEnv().currentSpec;
-        spec.details = spec.details || [];
-        spec.details.push(desc);
-        spec.runs(func);
-        return spec;
-    }
-};
 
 
 /**

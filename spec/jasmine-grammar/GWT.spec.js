@@ -6,13 +6,13 @@ describe('jasmine.grammar.GWT', function() {
     
     beforeEach(function() {
         env = new jasmine.Env();
-        jasmine.grammar._currentEnv = env;
+        jasmine.grammar.setEnv(env);
         
         parentSuite = env.describe('dummy suite', function() {});
-        jasmine.grammar.getEnv().currentSuite = parentSuite;
+        env.currentSuite = parentSuite;
         
         parentSpec = env.it('dummy spec', function() {});
-        jasmine.grammar.getEnv().currentSpec = parentSpec;
+        env.currentSpec = parentSpec;
     });
     
     describe('given', function() {
