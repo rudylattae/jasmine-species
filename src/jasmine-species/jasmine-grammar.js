@@ -13,23 +13,14 @@
  * for "describe" and "it" so they follow the same rules for nesting. 
  */
 
-(function(context) {
+(function(jasmine) {
     // ensure jasmine dependency is met
-    if (typeof context.jasmine === 'undefined') {
+    if (typeof jasmine === 'undefined') {
         throw new Error("Jasmine must be available before Jasmine Species is loaded.")
     }
 
-    var _currentEnv;
 
-    /**
-     * Yields a lazy reference to the current jasmine env
-     */
-    function getEnv() {
-        if (_currentEnv == null) {
-            _currentEnv = context.jasmine.getEnv();
-        }
-        return _currentEnv;
-    };
+    var _currentEnv;
 
     /**
      * Injects a custom Jasmine environment
@@ -37,6 +28,15 @@
     function setEnv(env) {
         _currentEnv = env;
     }
+    /**
+     * Yields a lazy reference to the current jasmine env
+     */
+    function getEnv() {
+        if (_currentEnv == null) {
+            _currentEnv = jasmine.getEnv();
+        }
+        return _currentEnv;
+    };
 
 
     /**
@@ -79,13 +79,14 @@
         }
     };
 
+
     // ==== exports ====
-    context.jasmine.grammar = {
+    jasmine.grammar = {
         FeatureStory: FeatureStory,
         setEnv: setEnv
     };
 
-})(this);
+})(jasmine);
 
 
 // Top level namespace for the package
