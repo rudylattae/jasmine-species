@@ -96,6 +96,29 @@
 
 
     /**
+     * Concern => Context => Specification style grammar
+     */
+    var ContextSpecification = {
+
+        concern: function(description, specDefinitions) {
+            var suite = getEnv().describe(description, specDefinitions);
+            suite.tags = ['concern'];
+            return suite;
+        },
+
+        context: function(description, specDefinitions) {
+            var suite = getEnv().describe(description, specDefinitions);
+            suite.tags = ['context'];
+            return suite;
+        },
+
+        spec: function(desc, func) {
+            return getEnv().it(desc, func);
+        }
+    };
+
+
+    /**
      * Adds the given function as a step (runs block) in the current spec. Also adds the description to the details list of the spec
      */
     function _addStepToCurrentSpec(desc, func) {
@@ -110,6 +133,7 @@
     jasmine.grammar = {
         FeatureStory: FeatureStory,
         GWT: GWT,
+        ContextSpecification: ContextSpecification,
         setEnv: setEnv
     };
 
@@ -132,39 +156,6 @@ jasmine.grammar = (typeof jasmine.grammar === 'undefined') ? {} : jasmine.gramma
   GWT.But   = GWT.but;
 }) (jasmine.grammar.GWT);
 
-
-
-
-/**
- * Concern => Context => Specification style grammar
- */
-jasmine.grammar.ContextSpecification = {
-    
-    /**
-     * Defines a suite tagged as a "concern"
-     */
-    concern: function(description, specDefinitions) {
-        var suite = jasmine.grammar.getEnv().describe(description, specDefinitions);
-        suite.tags = ['concern'];
-        return suite;
-    },
-    
-    /**
-     * Defines a suite tagged as a "context"
-     */
-    context: function(description, specDefinitions) {
-        var suite = jasmine.grammar.getEnv().describe(description, specDefinitions);
-        suite.tags = ['context'];
-        return suite;
-    },
-    
-    /**
-     * Defines a simple spec -- similar to it
-     */
-    spec: function(desc, func) {
-        return jasmine.grammar.getEnv().it(desc, func);
-    }
-}
 
 /**
  * Executable docs (Topic => Example) style grammar

@@ -4,7 +4,7 @@ describe('jasmine.grammar.ContextSpecification', function() {
         
     beforeEach(function() {
         env = new jasmine.Env();
-        jasmine.grammar._currentEnv = env;
+        jasmine.grammar.setEnv(env);
     });
     
     describe('concern', function() {
@@ -28,7 +28,7 @@ describe('jasmine.grammar.ContextSpecification', function() {
     describe('spec', function() {
         it('creates a spec in the current suite', function() {
             var parentSuite = ContextSpecification.context('Dummy context', function() {});
-            jasmine.grammar.getEnv().currentSuite = parentSuite;
+            env.currentSuite = parentSuite;
             
             var spec = ContextSpecification.spec('Observe this outcome', function() {});
             
