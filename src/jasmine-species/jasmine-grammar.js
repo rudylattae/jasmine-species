@@ -67,6 +67,16 @@
         }
     };
 
+    /**
+     * Alternative (capitalised) elements for FeatureStory grammar
+     */
+    var FeatureStoryAlias = {
+        Feature: FeatureStory.feature,
+        Story: FeatureStory.story,
+        Component: FeatureStory.component,
+        Scenario: FeatureStory.scenario
+    };
+
 
     /**
      * Given => When => Then ... style grammar
@@ -93,6 +103,20 @@
         }
     };
 
+    /**
+     * Alternative (capitalized) elements for GWT grammar
+     *  use this for CoffeeScript compatibility
+     *  https://github.com/rudylattae/jasmine-species/issues/10
+     *  https://github.com/rudylattae/jasmine-species/pull/13
+     */
+    var GWTAlias = {
+        Given: GWT.given,
+        When: GWT.when,
+        Then: GWT.then,
+        And: GWT.and,
+        But: GWT.but
+    };
+
 
     /**
      * Concern => Context => Specification style grammar
@@ -115,6 +139,14 @@
         }
     };
 
+    /**
+     * Alternative (capitalized) elements for ContextSpecification grammar
+     */
+    var ContextSpecificationAlias = {
+        Concern: GWT.concern,
+        Context: GWT.context,
+        Spec: GWT.spec
+    };
 
     /**
      * Executable docs (Topic => Example) style grammar
@@ -144,6 +176,15 @@
         pass: function(desc, func) {
             return getEnv().it(desc);
         }
+    };
+
+    /**
+     * Alternative (capitalized) elements for XDoc grammar
+     */
+    var XDocAlias = {
+        Topic: GWT.topic,
+        Example: GWT.example,
+        Pass: GWT.pass
     };
 
 
@@ -187,6 +228,14 @@
         }
     };
 
+    /**
+     * Alternative (capitalized) elements for Meta grammar
+     */
+    var MetaAlias = {
+        Summary: GWT.summary,
+        Details: GWT.details
+    };
+
 
     /**
      * Adds the given function as a step (runs block) in the current spec. Also adds the description to the details list of the spec
@@ -207,21 +256,12 @@
         ContextSpecification: ContextSpecification,
         XDoc: XDoc,
         Meta: Meta,
+        FeatureStoryAlias: FeatureStoryAlias,
+        GWTAlias: GWTAlias,
+        ContextSpecificationAlias: ContextSpecificationAlias,
+        XDocAlias: XDocAlias,
+        MetaAlias: MetaAlias,
         setEnv: setEnv
     };
 
 })(jasmine);
-
-
-/**
- * Add proper case aliases to GWT for Coffeescript use
- */
-
-(function(GWT) {
-  GWT.Given = GWT.given;
-  GWT.When  = GWT.when;
-  GWT.Then  = GWT.then;
-  GWT.And   = GWT.and;
-  GWT.But   = GWT.but;
-}) (jasmine.grammar.GWT);
-
