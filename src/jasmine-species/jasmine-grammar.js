@@ -28,6 +28,7 @@
     function setEnv(env) {
         _currentEnv = env;
     }
+
     /**
      * Yields a lazy reference to the current jasmine env
      */
@@ -43,7 +44,6 @@
      * Feature / Story => Scenario => ... style grammar
      */
     var FeatureStory = {
-
         feature: function(description, specDefinitions) {
             var suite = getEnv().describe('Feature: ' + description, specDefinitions);
             suite.tags = ['feature'];
@@ -72,7 +72,6 @@
      * Given => When => Then ... style grammar
      */
     var GWT = {
-
         given: function(desc, func) {
             return _addStepToCurrentSpec('Given ' + desc, func);
         },
@@ -99,7 +98,6 @@
      * Concern => Context => Specification style grammar
      */
     var ContextSpecification = {
-
         concern: function(description, specDefinitions) {
             var suite = getEnv().describe(description, specDefinitions);
             suite.tags = ['concern'];
@@ -114,6 +112,37 @@
 
         spec: function(desc, func) {
             return getEnv().it(desc, func);
+        }
+    };
+
+
+    /**
+     * Executable docs (Topic => Example) style grammar
+     */
+    var XDoc = {
+        topic: function(description, specDefinitions) {
+            var suite = getEnv().describe(description, specDefinitions);
+            suite.tags = ['topic'];
+            return suite;
+        },
+
+        /**
+         * Defines a suite tagged as an "example".
+         *
+         * An axample suite stores the inner suites as a string in the "defs" attribute
+         */
+        example: function(description, specDefinitions) {
+            var suite = getEnv().describe(description, specDefinitions);
+            suite.tags = ['example'];
+            suite.expose = true;
+            suite.defs = specDefinitions.toString()
+                .replace(/^function.*\(.*\).*{/, '')
+                .replace(/}$/, '').trim(); // stored for later output
+            return suite;
+        },
+
+        pass: function(desc, func) {
+            return getEnv().it(desc);
         }
     };
 
@@ -134,6 +163,7 @@
         FeatureStory: FeatureStory,
         GWT: GWT,
         ContextSpecification: ContextSpecification,
+        XDoc: XDoc,
         setEnv: setEnv
     };
 
@@ -155,44 +185,6 @@ jasmine.grammar = (typeof jasmine.grammar === 'undefined') ? {} : jasmine.gramma
   GWT.And   = GWT.and;
   GWT.But   = GWT.but;
 }) (jasmine.grammar.GWT);
-
-
-/**
- * Executable docs (Topic => Example) style grammar
- */
-jasmine.grammar.XDoc = {
-    
-    /**
-     * Defines a suite tagged as a "topic"
-     */
-    topic: function(description, specDefinitions) {
-        var suite = jasmine.grammar.getEnv().describe(description, specDefinitions);
-        suite.tags = ['topic'];
-        return suite;
-    },
-    
-    /**
-     * Defines a suite tagged as an "example".
-     *
-     * An axample suite actually stores the inner suites as a string in the "defs" attribute 
-     */
-    example: function(description, specDefinitions) {
-        var suite = jasmine.grammar.getEnv().describe(description, specDefinitions);
-        suite.tags = ['example'];
-        suite.expose = true;
-        suite.defs = specDefinitions.toString()
-            .replace(/^function.*\(.*\).*{/, '')
-            .replace(/}$/, '').trim(); // stored for later output 
-        return suite;
-    },
-    
-    /**
-     * Defines a simple spec without any associated function
-     */
-    pass: function(desc, func) {
-        return jasmine.grammar.getEnv().it(desc);
-    }
-};
 
 
 /**

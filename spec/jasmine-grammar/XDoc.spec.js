@@ -4,7 +4,7 @@ describe('jasmine.grammar.XDoc', function() {
         
     beforeEach(function() {
         env = new jasmine.Env();
-        jasmine.grammar._currentEnv = env;
+        jasmine.grammar.setEnv(env);
     });
     
     describe('topic', function() {
@@ -44,7 +44,7 @@ describe('jasmine.grammar.XDoc', function() {
     describe('pass', function() {
         it('creates a spec in the current suite', function() {
             var parentSuite = XDoc.example('A simple example', function() {});
-            jasmine.grammar.getEnv().currentSuite = parentSuite;
+            env.currentSuite = parentSuite;
             
             var spec = XDoc.pass('This should pass', function() {});
             
