@@ -148,6 +148,47 @@
 
 
     /**
+     * Some more useful constructs that attach metadata to suites and specs
+     */
+    var Meta = {
+
+        /**
+         * Adds summary content to the current suite.
+         *
+         * @param {String} content(s)     variable number of detail content
+         * @see jasmine.grammar.SuiteDetails
+         */
+        summary: function() {
+            var suite = getEnv().currentSuite;
+            suite.summary = suite.summary || [];
+
+            if (arguments.length > 0) {
+                for(i=0; i<arguments.length; i++) {
+                    suite.summary.push(arguments[i]);
+                }
+            }
+        },
+
+        /**
+         * Adds detail entries in the current spec.
+         *
+         * @param {String} content(s)     variable number of detail content
+         * @see jasmine.grammar.SuiteDetails
+         */
+        details: function() {
+            var spec = getEnv().currentSpec;
+            spec.details = spec.details || [];
+
+            if (arguments.length > 0) {
+                for(i=0; i<arguments.length; i++) {
+                    spec.details.push(arguments[i]);
+                }
+            }
+        }
+    };
+
+
+    /**
      * Adds the given function as a step (runs block) in the current spec. Also adds the description to the details list of the spec
      */
     function _addStepToCurrentSpec(desc, func) {
@@ -158,12 +199,14 @@
         return spec;
     }
 
+
     // ==== exports ====
     jasmine.grammar = {
         FeatureStory: FeatureStory,
         GWT: GWT,
         ContextSpecification: ContextSpecification,
         XDoc: XDoc,
+        Meta: Meta,
         setEnv: setEnv
     };
 
@@ -186,43 +229,3 @@ jasmine.grammar = (typeof jasmine.grammar === 'undefined') ? {} : jasmine.gramma
   GWT.But   = GWT.but;
 }) (jasmine.grammar.GWT);
 
-
-/**
- * Some more useful constructs that attach metadata to suites and specs
- */
-jasmine.grammar.Meta = {
-    
-    /**
-     * Adds summary content to the current suite.
-     *
-     * @param {String} content(s)     variable number of detail content
-     * @see jasmine.grammar.SuiteDetails
-     */
-    summary: function() {
-        var suite = jasmine.grammar.getEnv().currentSuite;
-        suite.summary = suite.summary || [];
-        
-        if (arguments.length > 0) {
-            for(i=0; i<arguments.length; i++) {
-                suite.summary.push(arguments[i]);
-            }
-        }
-    },
-    
-    /**
-     * Adds detail entries in the current spec.
-     *
-     * @param {String} content(s)     variable number of detail content
-     * @see jasmine.grammar.SuiteDetails
-     */
-    details: function() {
-        var spec = jasmine.grammar.getEnv().currentSpec;
-        spec.details = spec.details || [];
-        
-        if (arguments.length > 0) {
-            for(i=0; i<arguments.length; i++) {
-                spec.details.push(arguments[i]);
-            }
-        }
-    }
-};

@@ -4,14 +4,14 @@ describe('jasmine.grammar.Meta', function() {
         
     beforeEach(function() {
         env = new jasmine.Env();
-        jasmine.grammar._currentEnv = env;
+        jasmine.grammar.setEnv(env);
     });
     
     describe('summary', function() {
         it('attaches the given summary to the current suite', function() {
             var expectedSummary = 'A summary of this example';
             var suite = env.describe('dummy suite', function() {});
-            jasmine.grammar.getEnv().currentSuite = suite;
+            env.currentSuite = suite;
             
             Meta.summary(expectedSummary);
             
@@ -20,7 +20,7 @@ describe('jasmine.grammar.Meta', function() {
         
         it('appends additional summary entries to the current suite when applied more than once', function() {
             var suite = env.describe('dummy suite', function() {});
-            jasmine.grammar.getEnv().currentSuite = suite;
+            env.currentSuite = suite;
             
             Meta.summary('Summary 1');
             Meta.summary('Summary 2');
@@ -30,7 +30,7 @@ describe('jasmine.grammar.Meta', function() {
         
         it('attaches a variable number of summary entries to the current suite with one call', function() {
             var suite = env.describe('dummy suite', function() {});
-            jasmine.grammar.getEnv().currentSuite = suite;
+            env.currentSuite = suite;
             
             Meta.summary('First Summary', 'Second Summary', 'Last Summary');
             
@@ -44,9 +44,9 @@ describe('jasmine.grammar.Meta', function() {
         it('attaches the given details to the current spec', function() {
             var expectedDetails = 'Meta info about this spec';
             var suite = env.describe('dummy suite', function() {});
-            jasmine.grammar.getEnv().currentSuite = suite;
+            env.currentSuite = suite;
             var spec = env.describe('dummy spec', function() {});
-            jasmine.grammar.getEnv().currentSpec = spec;
+            env.currentSpec = spec;
             
             Meta.details(expectedDetails);
             
@@ -55,9 +55,9 @@ describe('jasmine.grammar.Meta', function() {
         
         it('appends additional details to the current spec when applied more than once', function() {
             var suite = env.describe('dummy suite', function() {});
-            jasmine.grammar.getEnv().currentSuite = suite;
+            env.currentSuite = suite;
             var spec = env.describe('dummy spec', function() {});
-            jasmine.grammar.getEnv().currentSpec = spec;
+            env.currentSpec = spec;
             
             Meta.details('Detail 1');
             Meta.details('Detail 2');
@@ -67,9 +67,9 @@ describe('jasmine.grammar.Meta', function() {
         
         it('attaches a variable number of details to the current spec with one call', function() {
             var suite = env.describe('dummy suite', function() {});
-            jasmine.grammar.getEnv().currentSuite = suite;
+            env.currentSuite = suite;
             var spec = env.describe('dummy spec', function() {});
-            jasmine.grammar.getEnv().currentSpec = spec;
+            env.currentSpec = spec;
             
             Meta.details('First Detail', 'Second Detail', 'Last Detail');
             
