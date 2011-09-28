@@ -44,36 +44,24 @@
      */
     var FeatureStory = {
 
-        /**
-         * Defines a suite tagged as a "feature"
-         */
         feature: function(description, specDefinitions) {
             var suite = getEnv().describe('Feature: ' + description, specDefinitions);
             suite.tags = ['feature'];
             return suite;
         },
 
-        /**
-         * Defines a suite tagged as a "story"
-         */
         story: function(description, specDefinitions) {
             var suite = getEnv().describe('Story: ' + description, specDefinitions);
             suite.tags = ['story'];
             return suite;
         },
 
-        /**
-         * Defines a suite tagged as a "component"
-         */
         component: function(description, specDefinitions) {
             var suite = getEnv().describe('Component: ' + description, specDefinitions);
             suite.tags = ['component'];
             return suite;
         },
 
-        /**
-         * Defines a spec marked as a "scenario"
-         */
         scenario: function(desc, func) {
             return getEnv().it('Scenario: ' + desc, func);
         }
@@ -98,42 +86,42 @@ jasmine.grammar = (typeof jasmine.grammar === 'undefined') ? {} : jasmine.gramma
  * Given => When => Then ... style grammar
  */
 jasmine.grammar.GWT = {
-    
+
     /**
      * Defines a "given" step as a runs block that marks the beginning of a GWT chain
      */
     given: function(desc, func) {
         return this._addStepToCurrentSpec('Given ' + desc, func);
     },
-    
+
     /**
      * Defines a "when" step as a runs block that marks the interesting event in a GWT chain
      */
     when: function(desc, func) {
         return this._addStepToCurrentSpec('When ' + desc, func);
     },
-    
+
     /**
      * Defines a "then" step as a runs block that marks the conclusion of a Given, when, then construct
      */
     then: function(desc, func) {
         return this._addStepToCurrentSpec('Then ' + desc, func);
     },
-    
+
     /**
      * Defines an "and" step as a runs block that is a continuation from a "then" statement
      */
     and: function(desc, func) {
         return this._addStepToCurrentSpec('And ' + desc, func);
     },
-    
+
     /**
      * Defines a "but" step as a runs block that is a continuation from a "then" statement
      */
     but: function(desc, func) {
         return this._addStepToCurrentSpec('But ' + desc, func);
-    },    
-        
+    },
+
     /**
      * Adds the given function as a step (runs block) in the current spec. Also adds the description to the details list of the spec
      */
