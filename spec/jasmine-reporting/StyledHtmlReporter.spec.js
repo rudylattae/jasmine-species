@@ -8,12 +8,12 @@ describe('jasmine.reporting.StyledHtmlReporter', function() {
     var GWT = jasmine.grammar.GWT;
     var XDoc = jasmine.grammar.XDoc;
     var Meta = jasmine.grammar.Meta;
-    
+
     // these helpers were ripped clean out of the jasmin's TrivialReporterSpec
     beforeEach(function() {
         env = new jasmine.Env();
         env.updateInterval = 0;
-        jasmine.grammar._currentEnv = env;
+        jasmine.grammar.setEnv(env);
         
         body = document.createElement("body");
         fakeDocument = { body: body, location: { search: "" }};
