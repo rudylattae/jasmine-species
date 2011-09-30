@@ -1,4 +1,4 @@
-describe('jasmine.grammar.X-Alias', function() {
+describe('aliases', function() {
     describe('FeatureStoryAlias', function() {
         var FeatureStoryAlias = jasmine.grammar.FeatureStoryAlias;
         var FeatureStory = jasmine.grammar.FeatureStory;

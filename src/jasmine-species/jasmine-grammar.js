@@ -237,6 +237,16 @@
     };
 
 
+    var explode = function(modules, context) {
+        for (var i=0, limit=modules.length; i < limit; i++) {
+            var module = modules[i];
+            console.log(module)
+            for (item in jasmine.grammar[module]) {
+                context[item] = jasmine.grammar[module][item];
+            }
+        }
+    };
+    
     /**
      * Adds the given function as a step (runs block) in the current spec. Also adds the description to the details list of the spec
      */
@@ -261,7 +271,8 @@
         ContextSpecificationAlias: ContextSpecificationAlias,
         XDocAlias: XDocAlias,
         MetaAlias: MetaAlias,
-        setEnv: setEnv
+        setEnv: setEnv,
+        explode: explode
     };
 
 })(jasmine);
