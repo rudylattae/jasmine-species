@@ -143,9 +143,9 @@
      * Alternative (capitalized) elements for ContextSpecification grammar
      */
     var ContextSpecificationAlias = {
-        Concern: GWT.concern,
-        Context: GWT.context,
-        Spec: GWT.spec
+        Concern: ContextSpecification.concern,
+        Context: ContextSpecification.context,
+        Spec: ContextSpecification.spec
     };
 
     /**
@@ -182,9 +182,9 @@
      * Alternative (capitalized) elements for XDoc grammar
      */
     var XDocAlias = {
-        Topic: GWT.topic,
-        Example: GWT.example,
-        Pass: GWT.pass
+        Topic: XDoc.topic,
+        Example: XDoc.example,
+        Pass: XDoc.pass
     };
 
 
@@ -232,8 +232,8 @@
      * Alternative (capitalized) elements for Meta grammar
      */
     var MetaAlias = {
-        Summary: GWT.summary,
-        Details: GWT.details
+        Summary: Meta.summary,
+        Details: Meta.details
     };
 
 
