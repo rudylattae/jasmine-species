@@ -1,7 +1,7 @@
 # Jasmine-species
 
 Jasmine-species provides extended BDD grammar and reporting for 
-[Jasmine](http://pivotal.github.com/jasmine). It allows for constructs 
+[Jasmine](https://jasmine.github.io/). It allows for constructs 
 like "Feature -> Scenario", "Given -> When -> Then" (GWT) and other useful BDD styles.
 
 Using the extended grammar provided by jasmine-species, you may define executable 
